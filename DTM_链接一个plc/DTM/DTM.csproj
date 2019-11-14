@@ -34,11 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSkin">
-      <HintPath>bin\CSkin.dll</HintPath>
       <HintPath>..\..\DTM\DTM\bin\CSkin.dll</HintPath>
     </Reference>
     <Reference Include="HZH_Controls">
-      <HintPath>bin\HZH_Controls.dll</HintPath>
       <HintPath>..\..\DTM\DTM\bin\HZH_Controls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
