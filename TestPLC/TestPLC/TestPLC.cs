@@ -47,11 +47,19 @@ namespace TestPLC
             dt_data.Add(label73); dt_data.Add(label72); dt_data.Add(label71); dt_data.Add(label70); dt_data.Add(label69);
             dt_data.Add(label74); dt_data.Add(label75); dt_data.Add(label76); dt_data.Add(label77); dt_data.Add(label78);
         }
-        public void show_dt_data(List<Label> lable_list, int[] data,int len)
+        int[] showdata = new int[256];
+        public void show_dt_data(List<Label> lable_list,byte [] recdata,int len)
         {
+           
+            for (int i = 0;i <= len;)
+            {
+                showdata[i/2] = convert(recdata[ i + 9], recdata[i + 10]);
+                i += 2;
+            }
+
             for (int i = 0;i < len; i++)
             {
-                lable_list[i].Text = data[i].ToString();
+                lable_list[i].Text = showdata[i].ToString();
             }
         }
         public void Connect()
@@ -142,9 +150,9 @@ namespace TestPLC
                     showGuangdian(str3, La3);
 
                 }
-                DT_data[0] = convert(data[9], data[10]);
-                DT_data[1] = convert(data[11], data[12]);
-                show_dt_data(dt_data,DT_data,2);
+                //DT_data[0] = convert(data[9], data[10]);
+                //DT_data[1] = convert(data[11], data[12]);
+                show_dt_data(dt_data,data,4);
                 showMsg(stringdata + "==" + DT_data[0] + "////"+DT_data[1] + "\r\n");
             }
         }
