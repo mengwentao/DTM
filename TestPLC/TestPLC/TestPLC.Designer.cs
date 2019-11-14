@@ -1519,7 +1519,7 @@
             this.ucTrackBar.IsShowTips = true;
             this.ucTrackBar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
             this.ucTrackBar.LineWidth = 10F;
-            this.ucTrackBar.Location = new System.Drawing.Point(704, 616);
+            this.ucTrackBar.Location = new System.Drawing.Point(718, 616);
             this.ucTrackBar.MaxValue = 100F;
             this.ucTrackBar.MinValue = 0F;
             this.ucTrackBar.Name = "ucTrackBar";

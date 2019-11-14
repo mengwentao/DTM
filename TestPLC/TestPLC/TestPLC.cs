@@ -106,6 +106,7 @@ namespace TestPLC
         }
         //消息显示
         int j = 0;
+        int m = 0;
         public void ReceiveMsg()
         {
             while (true)
@@ -145,7 +146,7 @@ namespace TestPLC
                     showGuangdian(str3, La3);
 
                 }
-                DT_data[0] = convert(data[9], data[10]);
+                /*DT_data[0] = convert(data[9], data[10]);
                 DT_data[1] = convert(data[11], data[12]);
                 DT_data[2] = convert(data[13], data[14]);
                 DT_data[3] = convert(data[15], data[16]);
@@ -154,11 +155,30 @@ namespace TestPLC
                 DT_data[6] = convert(data[21], data[22]);
                 DT_data[7] = convert(data[23], data[24]);
                 DT_data[8] = convert(data[25], data[26]);
-                DT_data[9] = convert(data[27], data[28]);
-               
+                DT_data[9] = convert(data[27], data[28]);*/
+                
+                for (int j = 0;j < 10;j++)
+                {
+                    DT_data[j] = convert(data[9 + m], data[10 + m]);
+                    m = m + 2;
+
+                }
+                m = 0;
                 show_dt_data(dt_data, DT_data, 10);
+                label79.Text =  avg(DT_data, 10).ToString();
                 showMsg(stringdata + "==" + DT_data[0] + "////"+DT_data[1] + "\r\n");
             }
+        }
+        public int avg(int []arr,int len)
+        {
+            int res = 0;
+            int sum = 0;
+            for (int i = 0;i < len;i++)
+            {
+                sum += arr[i];
+            }
+            res = sum / len;
+            return res;
         }
         public void ReceiveMsg2()
         {
