@@ -30,6 +30,7 @@ namespace TestPLC
         List<Label> La1 = new List<Label>();
         List<Label> La2 = new List<Label>();
         List<Label> La3 = new List<Label>();
+        static int[] DT_data = new int[256];
         public TestPLC()
         {
             InitializeComponent();
