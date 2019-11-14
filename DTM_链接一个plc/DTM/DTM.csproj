@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSkin">
-      <HintPath>bin\CSkin.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\CSkin 16.1.14.3\CSkin 4.0\CSkin.dll</HintPath>
     </Reference>
     <Reference Include="HZH_Controls">
-      <HintPath>bin\HZH_Controls.dll</HintPath>
+      <HintPath>.\HZH_Controls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

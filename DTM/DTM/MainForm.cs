@@ -38,10 +38,7 @@ namespace DTM
             CurveChart_Init();//表格初始化
             pieChar_Init();
             barChar_Init();
-
-
-
-
+            label5.Text = "欢迎：" + LoginForm.uid;           
         }
 
         public void barChar_Init()
@@ -245,6 +242,11 @@ namespace DTM
                 button1.BackColor = Color.LightGray;
                 btn_flag = true;
             }
+
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -30,8 +30,8 @@
         {
             this.Login_Btn = new HZH_Controls.Controls.UCBtnExt();
             this.cur_measure_lable = new System.Windows.Forms.Label();
-            this.User_tb = new System.Windows.Forms.TextBox();
-            this.Password_tb = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPwd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -50,12 +50,12 @@
             this.Login_Btn.IsRadius = true;
             this.Login_Btn.IsShowRect = false;
             this.Login_Btn.IsShowTips = false;
-            this.Login_Btn.Location = new System.Drawing.Point(274, 364);
+            this.Login_Btn.Location = new System.Drawing.Point(185, 218);
             this.Login_Btn.Margin = new System.Windows.Forms.Padding(0);
             this.Login_Btn.Name = "Login_Btn";
             this.Login_Btn.RectColor = System.Drawing.Color.Gainsboro;
             this.Login_Btn.RectWidth = 1;
-            this.Login_Btn.Size = new System.Drawing.Size(139, 50);
+            this.Login_Btn.Size = new System.Drawing.Size(93, 33);
             this.Login_Btn.TabIndex = 19;
             this.Login_Btn.TabStop = false;
             this.Login_Btn.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
@@ -67,56 +67,67 @@
             this.cur_measure_lable.AutoSize = true;
             this.cur_measure_lable.BackColor = System.Drawing.Color.Transparent;
             this.cur_measure_lable.Font = new System.Drawing.Font("宋体", 18F);
-            this.cur_measure_lable.Location = new System.Drawing.Point(153, 142);
+            this.cur_measure_lable.Location = new System.Drawing.Point(102, 95);
+            this.cur_measure_lable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cur_measure_lable.Name = "cur_measure_lable";
-            this.cur_measure_lable.Size = new System.Drawing.Size(87, 36);
+            this.cur_measure_lable.Size = new System.Drawing.Size(58, 24);
             this.cur_measure_lable.TabIndex = 20;
             this.cur_measure_lable.Text = "工号";
             // 
-            // User_tb
+            // txtName
             // 
-            this.User_tb.Location = new System.Drawing.Point(246, 129);
-            this.User_tb.Multiline = true;
-            this.User_tb.Name = "User_tb";
-            this.User_tb.Size = new System.Drawing.Size(235, 49);
-            this.User_tb.TabIndex = 21;
+            this.txtName.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtName.Location = new System.Drawing.Point(164, 86);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(158, 34);
+            this.txtName.TabIndex = 21;
+            this.txtName.TextChanged += new System.EventHandler(this.User_tb_TextChanged);
             // 
-            // Password_tb
+            // txtPwd
             // 
-            this.Password_tb.Location = new System.Drawing.Point(246, 205);
-            this.Password_tb.Multiline = true;
-            this.Password_tb.Name = "Password_tb";
-            this.Password_tb.Size = new System.Drawing.Size(235, 49);
-            this.Password_tb.TabIndex = 22;
+            this.txtPwd.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtPwd.Location = new System.Drawing.Point(164, 137);
+            this.txtPwd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPwd.Multiline = true;
+            this.txtPwd.Name = "txtPwd";
+            this.txtPwd.PasswordChar = '*';
+            this.txtPwd.Size = new System.Drawing.Size(158, 34);
+            this.txtPwd.TabIndex = 22;
+            this.txtPwd.TextChanged += new System.EventHandler(this.Password_tb_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("宋体", 18F);
-            this.label1.Location = new System.Drawing.Point(153, 205);
+            this.label1.Location = new System.Drawing.Point(102, 137);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 36);
+            this.label1.Size = new System.Drawing.Size(58, 24);
             this.label1.TabIndex = 23;
             this.label1.Text = "密码";
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderPalace = global::DTM.Properties.Resources._19588ac08489c03c9cc6aefde7693819;
-            this.ClientSize = new System.Drawing.Size(737, 490);
+            this.ClientSize = new System.Drawing.Size(491, 327);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Password_tb);
-            this.Controls.Add(this.User_tb);
+            this.Controls.Add(this.txtPwd);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.cur_measure_lable);
             this.Controls.Add(this.Login_Btn);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MdiStretchImage = true;
             this.Name = "LoginForm";
             this.ShowDrawIcon = false;
-            this.Text = "登录";
+            this.Text = "                登录";
             this.TitleCenter = true;
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,8 +137,8 @@
 
         private HZH_Controls.Controls.UCBtnExt Login_Btn;
         private System.Windows.Forms.Label cur_measure_lable;
-        private System.Windows.Forms.TextBox User_tb;
-        private System.Windows.Forms.TextBox Password_tb;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtPwd;
         private System.Windows.Forms.Label label1;
     }
 }
