@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E258669-EE7C-4FD5-A77C-0F9269B33F96}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DTM</RootNamespace>
+    <AssemblyName>DTM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin">
+      <HintPath>bin\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="HZH_Controls">
+      <HintPath>bin\HZH_Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugForm.Designer.cs">
+      <DependentUpon>DebugForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm1.Designer.cs">
+      <DependentUpon>TestForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\DebugControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\DebugControl.Designer.cs">
+      <DependentUpon>DebugControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\TestControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\TestControl.Designer.cs">
+      <DependentUpon>TestControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DebugForm.resx">
+      <DependentUpon>DebugForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TestForm1.resx">
+      <DependentUpon>TestForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\DebugControl.resx">
+      <DependentUpon>DebugControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\TestControl.resx">
+      <DependentUpon>TestControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4张模糊背景图片1_lanrentuku.com.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7d98daf82bc2bedc55114f232aab92f2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13ecc68692573ccf6f729fa19e59680d.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\953e00a01029a11a611238f5fbecb9ec.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3712f009d379e3ceb8f60fd38d083b32.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\19588ac08489c03c9cc6aefde7693819.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6646297fdad40b59b2dc652fa6ad04ab.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baimuban.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\baise.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bfa708ae71218b4781093b55d857943e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BorderHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\getwork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gongdian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group_user_users_128px_4283_easyicon.net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heiban.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huimuban.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jinsebg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lanse.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loding.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lodingSmall.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maokong.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_check_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu_check_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mingpain.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muban.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\packup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send_icon_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send_icon_press.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\set.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuidi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\span.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_64px_29354_easyicon.net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users_128px_29209_easyicon.net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xinzhi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yumao.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zhujian.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\木质纹理.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\纹理.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
