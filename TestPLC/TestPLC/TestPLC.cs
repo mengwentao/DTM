@@ -153,6 +153,7 @@ namespace TestPLC
 
                  string str = convert(data2[9], data2[10]).ToString();
                 showMsg(stringdata + "=="+ str + "\r\n");
+                //测试
             }
         }
        
