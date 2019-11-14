@@ -1274,10 +1274,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x6f, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x6e, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1287,10 +1287,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x6e, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x6f, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1300,15 +1300,15 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x73, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x71, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x70, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x72, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1318,16 +1318,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x70, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x72, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x73, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x71, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1337,15 +1337,15 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x73, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x71, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x70, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x72, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1355,16 +1355,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x70, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x72, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x73, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x71, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1374,10 +1374,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x75, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x74, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1387,10 +1387,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x74, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x75, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1400,10 +1400,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x85, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x84, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
 
         }
@@ -1414,10 +1414,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x84, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x85, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1427,10 +1427,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x87, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x86, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1440,10 +1440,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x86, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x87, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1453,10 +1453,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x89, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x88, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1466,10 +1466,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x88, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x89, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1479,10 +1479,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8b, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8a, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1492,10 +1492,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8a, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8b, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1505,10 +1505,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8d, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8c, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1518,10 +1518,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8c, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x8d, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1531,17 +1531,17 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9f, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa1, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa0, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9e, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1551,16 +1551,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa0, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9e, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9f, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa1, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1570,16 +1570,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9f, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa1, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa0, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9e, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1589,16 +1589,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa0, 0x00, 0x00 };
-                newclient1.Send(data);                
+                newclient2.Send(data);                
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9e, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0x9f, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa1, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1608,10 +1608,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa3, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa2, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1621,10 +1621,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa2, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa3, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1634,10 +1634,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa5, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa4, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1647,10 +1647,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa4, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa5, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1660,16 +1660,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa7, 0x00, 0x00 };
-                newclient1.Send(data);               
+                newclient2.Send(data);               
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa9, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa8, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa6, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1679,16 +1679,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa8, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa6, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa7, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa9, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1698,16 +1698,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa7, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa9, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa8, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa6, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1717,16 +1717,16 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa8, 0x00, 0x00 };
-                newclient1.Send(data);               
+                newclient2.Send(data);               
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa6, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa7, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xa9, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1749,10 +1749,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xaa, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xab, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1762,10 +1762,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc5, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc4, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1775,10 +1775,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc4, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc5, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1788,10 +1788,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc7, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc6, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1801,10 +1801,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc6, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc7, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1814,10 +1814,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc9, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc8, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1827,10 +1827,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc8, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x08, 0xc9, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1840,10 +1840,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x17, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x16, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1853,10 +1853,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x16, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x17, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1866,10 +1866,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x1b, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x1a, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
 
@@ -1879,10 +1879,10 @@ namespace DTM
             if (res.ToString() == "OK")
             {
                 byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x1a, 0x00, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
                 Thread.Sleep(5);
                 data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x1b, 0xff, 0x00 };
-                newclient1.Send(data);
+                newclient2.Send(data);
             }
         }
         
