@@ -158,6 +158,7 @@
             this.label77 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
+            this.ucTrackBar = new HZH_Controls.Controls.UCTrackBar();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1512,11 +1513,29 @@
             this.label79.TabIndex = 12;
             this.label79.Text = "label79";
             // 
+            // ucTrackBar
+            // 
+            this.ucTrackBar.DcimalDigits = 1;
+            this.ucTrackBar.IsShowTips = true;
+            this.ucTrackBar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
+            this.ucTrackBar.LineWidth = 10F;
+            this.ucTrackBar.Location = new System.Drawing.Point(704, 616);
+            this.ucTrackBar.MaxValue = 100F;
+            this.ucTrackBar.MinValue = 0F;
+            this.ucTrackBar.Name = "ucTrackBar";
+            this.ucTrackBar.Size = new System.Drawing.Size(250, 30);
+            this.ucTrackBar.TabIndex = 62;
+            this.ucTrackBar.Text = "ucTrackBar1";
+            this.ucTrackBar.TipsFormat = "0";
+            this.ucTrackBar.Value = 40F;
+            this.ucTrackBar.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            // 
             // TestPLC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 751);
+            this.Controls.Add(this.ucTrackBar);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.textBox14);
             this.Controls.Add(this.textBox15);
@@ -1714,6 +1733,7 @@
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Label label69;
+        private HZH_Controls.Controls.UCTrackBar ucTrackBar;
     }
 }
 

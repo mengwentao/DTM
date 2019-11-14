@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
+using HZH_Controls;
 
 //modbus格式说明
 //https://blog.csdn.net/weixin_33788244/article/details/86003757
@@ -374,7 +375,8 @@ namespace TestPLC
          static int i = 0;
         private void button2_Click(object sender, EventArgs e)
         {
-            i++;
+            //i++;
+            i =Convert.ToInt16(ucTrackBar.Value);
             
             byte low = Convert.ToByte(i & 0xff);  // 低8位
             byte high = Convert.ToByte((i >> 8) & 0xff); // 高8位

@@ -28,81 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ucTrackBar1 = new HZH_Controls.Controls.UCTrackBar();
-            this.ucTrackBar2 = new HZH_Controls.Controls.UCTrackBar();
-            this.ucTrackBar3 = new HZH_Controls.Controls.UCTrackBar();
-            this.ucTrackBar4 = new HZH_Controls.Controls.UCTrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.ucTrackBar4 = new HZH_Controls.Controls.UCTrackBar();
+            this.ucTrackBar3 = new HZH_Controls.Controls.UCTrackBar();
+            this.ucTrackBar2 = new HZH_Controls.Controls.UCTrackBar();
+            this.ucTrackBar1 = new HZH_Controls.Controls.UCTrackBar();
             this.SuspendLayout();
-            // 
-            // ucTrackBar1
-            // 
-            this.ucTrackBar1.DcimalDigits = 1;
-            this.ucTrackBar1.IsShowTips = false;
-            this.ucTrackBar1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.ucTrackBar1.LineWidth = 10F;
-            this.ucTrackBar1.Location = new System.Drawing.Point(19, 26);
-            this.ucTrackBar1.MaxValue = 100F;
-            this.ucTrackBar1.MinValue = 0F;
-            this.ucTrackBar1.Name = "ucTrackBar1";
-            this.ucTrackBar1.Size = new System.Drawing.Size(250, 30);
-            this.ucTrackBar1.TabIndex = 13;
-            this.ucTrackBar1.Text = "ucTrackBar1";
-            this.ucTrackBar1.TipsFormat = "0.0摄氏度";
-            this.ucTrackBar1.Value = 40F;
-            this.ucTrackBar1.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            // 
-            // ucTrackBar2
-            // 
-            this.ucTrackBar2.DcimalDigits = 1;
-            this.ucTrackBar2.IsShowTips = false;
-            this.ucTrackBar2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.ucTrackBar2.LineWidth = 10F;
-            this.ucTrackBar2.Location = new System.Drawing.Point(19, 81);
-            this.ucTrackBar2.MaxValue = 100F;
-            this.ucTrackBar2.MinValue = 0F;
-            this.ucTrackBar2.Name = "ucTrackBar2";
-            this.ucTrackBar2.Size = new System.Drawing.Size(250, 30);
-            this.ucTrackBar2.TabIndex = 13;
-            this.ucTrackBar2.Text = "ucTrackBar1";
-            this.ucTrackBar2.TipsFormat = "0.0摄氏度";
-            this.ucTrackBar2.Value = 40F;
-            this.ucTrackBar2.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            // 
-            // ucTrackBar3
-            // 
-            this.ucTrackBar3.DcimalDigits = 1;
-            this.ucTrackBar3.IsShowTips = true;
-            this.ucTrackBar3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.ucTrackBar3.LineWidth = 10F;
-            this.ucTrackBar3.Location = new System.Drawing.Point(359, 26);
-            this.ucTrackBar3.MaxValue = 100F;
-            this.ucTrackBar3.MinValue = 0F;
-            this.ucTrackBar3.Name = "ucTrackBar3";
-            this.ucTrackBar3.Size = new System.Drawing.Size(250, 30);
-            this.ucTrackBar3.TabIndex = 13;
-            this.ucTrackBar3.Text = "ucTrackBar1";
-            this.ucTrackBar3.TipsFormat = "0.0摄氏度";
-            this.ucTrackBar3.Value = 40F;
-            this.ucTrackBar3.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            // 
-            // ucTrackBar4
-            // 
-            this.ucTrackBar4.DcimalDigits = 1;
-            this.ucTrackBar4.IsShowTips = true;
-            this.ucTrackBar4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.ucTrackBar4.LineWidth = 10F;
-            this.ucTrackBar4.Location = new System.Drawing.Point(359, 81);
-            this.ucTrackBar4.MaxValue = 100F;
-            this.ucTrackBar4.MinValue = 0F;
-            this.ucTrackBar4.Name = "ucTrackBar4";
-            this.ucTrackBar4.Size = new System.Drawing.Size(250, 30);
-            this.ucTrackBar4.TabIndex = 13;
-            this.ucTrackBar4.Text = "ucTrackBar1";
-            this.ucTrackBar4.TipsFormat = "0.0摄氏度";
-            this.ucTrackBar4.Value = 40F;
-            this.ucTrackBar4.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             // 
             // label1
             // 
@@ -121,6 +53,75 @@
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 14;
             this.label2.Text = "滑动时有值提示";
+            // 
+            // ucTrackBar4
+            // 
+            this.ucTrackBar4.DcimalDigits = 1;
+            this.ucTrackBar4.IsShowTips = true;
+            this.ucTrackBar4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
+            this.ucTrackBar4.LineWidth = 10F;
+            this.ucTrackBar4.Location = new System.Drawing.Point(359, 81);
+            this.ucTrackBar4.MaxValue = 100F;
+            this.ucTrackBar4.MinValue = 0F;
+            this.ucTrackBar4.Name = "ucTrackBar4";
+            this.ucTrackBar4.Size = new System.Drawing.Size(250, 30);
+            this.ucTrackBar4.TabIndex = 13;
+            this.ucTrackBar4.Text = "ucTrackBar1";
+            this.ucTrackBar4.TipsFormat = "0.0摄氏度";
+            this.ucTrackBar4.UseWaitCursor = true;
+            this.ucTrackBar4.Value = 40F;
+            this.ucTrackBar4.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            // 
+            // ucTrackBar3
+            // 
+            this.ucTrackBar3.DcimalDigits = 1;
+            this.ucTrackBar3.IsShowTips = true;
+            this.ucTrackBar3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
+            this.ucTrackBar3.LineWidth = 10F;
+            this.ucTrackBar3.Location = new System.Drawing.Point(359, 26);
+            this.ucTrackBar3.MaxValue = 100F;
+            this.ucTrackBar3.MinValue = 0F;
+            this.ucTrackBar3.Name = "ucTrackBar3";
+            this.ucTrackBar3.Size = new System.Drawing.Size(250, 30);
+            this.ucTrackBar3.TabIndex = 13;
+            this.ucTrackBar3.Text = "ucTrackBar1";
+            this.ucTrackBar3.TipsFormat = "0.0摄氏度";
+            this.ucTrackBar3.Value = 40F;
+            this.ucTrackBar3.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
+            // 
+            // ucTrackBar2
+            // 
+            this.ucTrackBar2.DcimalDigits = 1;
+            this.ucTrackBar2.IsShowTips = false;
+            this.ucTrackBar2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
+            this.ucTrackBar2.LineWidth = 10F;
+            this.ucTrackBar2.Location = new System.Drawing.Point(19, 81);
+            this.ucTrackBar2.MaxValue = 100F;
+            this.ucTrackBar2.MinValue = 0F;
+            this.ucTrackBar2.Name = "ucTrackBar2";
+            this.ucTrackBar2.Size = new System.Drawing.Size(250, 30);
+            this.ucTrackBar2.TabIndex = 13;
+            this.ucTrackBar2.Text = "ucTrackBar1";
+            this.ucTrackBar2.TipsFormat = "0.0摄氏度";
+            this.ucTrackBar2.Value = 40F;
+            this.ucTrackBar2.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            // 
+            // ucTrackBar1
+            // 
+            this.ucTrackBar1.DcimalDigits = 1;
+            this.ucTrackBar1.IsShowTips = false;
+            this.ucTrackBar1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
+            this.ucTrackBar1.LineWidth = 10F;
+            this.ucTrackBar1.Location = new System.Drawing.Point(19, 26);
+            this.ucTrackBar1.MaxValue = 100F;
+            this.ucTrackBar1.MinValue = 0F;
+            this.ucTrackBar1.Name = "ucTrackBar1";
+            this.ucTrackBar1.Size = new System.Drawing.Size(250, 30);
+            this.ucTrackBar1.TabIndex = 13;
+            this.ucTrackBar1.Text = "ucTrackBar1";
+            this.ucTrackBar1.TipsFormat = "0.0摄氏度";
+            this.ucTrackBar1.Value = 40F;
+            this.ucTrackBar1.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
             // 
             // UCTestTrackbar
             // 
