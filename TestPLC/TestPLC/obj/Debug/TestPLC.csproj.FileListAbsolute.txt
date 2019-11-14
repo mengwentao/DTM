@@ -43,3 +43,9 @@ C:\Users\TD\Desktop\DTM软件相关1113最新\TestPLC\TestPLC\obj\Debug\TestPLC.
 C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
 C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.exe
 C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\bin\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\bin\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.csprojResolveAssemblyReference.cache
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.TestPLC.resources
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.Properties.Resources.resources
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.csproj.GenerateResource.Cache

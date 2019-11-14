@@ -1,0 +1,557 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53CCD007-AA85-4CCF-AE81-BBB8B1CBEB1F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>log.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOKCancel1Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOKCancel1Test.Designer.cs">
+      <DependentUpon>FrmOKCancel1Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOKCancel2Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOKCancel2Test.Designer.cs">
+      <DependentUpon>FrmOKCancel2Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTestFrmBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTestFrmBack.Designer.cs">
+      <DependentUpon>FrmTestFrmBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTestLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTestLoading.Designer.cs">
+      <DependentUpon>FrmTestLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWithTitleTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWithTitleTest.Designer.cs">
+      <DependentUpon>FrmWithTitleTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestGridModel.cs" />
+    <Compile Include="UC\UCTestArrow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestArrow.Designer.cs">
+      <DependentUpon>UCTestArrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestBarcharts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestBarcharts.Designer.cs">
+      <DependentUpon>UCTestBarcharts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestBlower.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestBlower.Designer.cs">
+      <DependentUpon>UCTestBlower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestColors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestColors.Designer.cs">
+      <DependentUpon>UCTestColors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestConduit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestConduit.Designer.cs">
+      <DependentUpon>UCTestConduit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestConveyor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestConveyor.Designer.cs">
+      <DependentUpon>UCTestConveyor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestCurveChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestCurveChart.Designer.cs">
+      <DependentUpon>UCTestCurveChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestFunnelChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestFunnelChart.Designer.cs">
+      <DependentUpon>UCTestFunnelChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestGraphicalOverlay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestGraphicalOverlay.Designer.cs">
+      <DependentUpon>UCTestGraphicalOverlay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestIcon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestIcon.Designer.cs">
+      <DependentUpon>UCTestIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestLED.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestLED.Designer.cs">
+      <DependentUpon>UCTestLED.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestMeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestMeter.Designer.cs">
+      <DependentUpon>UCTestMeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestMindMapping.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestMindMapping.Designer.cs">
+      <DependentUpon>UCTestMindMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestNavigation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestNavigation.Designer.cs">
+      <DependentUpon>UCTestNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestBtns.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestBtns.Designer.cs">
+      <DependentUpon>UCTestBtns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestForms.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestForms.Designer.cs">
+      <DependentUpon>UCTestForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestGridTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestGridTable.Designer.cs">
+      <DependentUpon>UCTestGridTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestHorizontalList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestHorizontalList.Designer.cs">
+      <DependentUpon>UCTestHorizontalList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestList.Designer.cs">
+      <DependentUpon>UCTestList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestListView.Designer.cs">
+      <DependentUpon>UCTestListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestMenu.Designer.cs">
+      <DependentUpon>UCTestMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestNavigationMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestNavigationMenu.Designer.cs">
+      <DependentUpon>UCTestNavigationMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestPage.Designer.cs">
+      <DependentUpon>UCTestPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestPanelTitle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestPanelTitle.Designer.cs">
+      <DependentUpon>UCTestPanelTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestPieCharts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestPieCharts.Designer.cs">
+      <DependentUpon>UCTestPieCharts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestProcess.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestProcess.Designer.cs">
+      <DependentUpon>UCTestProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestRadarChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestRadarChart.Designer.cs">
+      <DependentUpon>UCTestRadarChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestRollText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestRollText.Designer.cs">
+      <DependentUpon>UCTestRollText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestSampling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestSampling.Designer.cs">
+      <DependentUpon>UCTestSampling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestScrollbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestScrollbar.Designer.cs">
+      <DependentUpon>UCTestScrollbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestShadow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestShadow.Designer.cs">
+      <DependentUpon>UCTestShadow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestSignalLamp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestSignalLamp.Designer.cs">
+      <DependentUpon>UCTestSignalLamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestSplitLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestSplitLabel.Designer.cs">
+      <DependentUpon>UCTestSplitLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestStep.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestStep.Designer.cs">
+      <DependentUpon>UCTestStep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestTab.Designer.cs">
+      <DependentUpon>UCTestTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestThermometer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestThermometer.Designer.cs">
+      <DependentUpon>UCTestThermometer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestTimeLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestTimeLine.Designer.cs">
+      <DependentUpon>UCTestTimeLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestTips.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestTips.Designer.cs">
+      <DependentUpon>UCTestTips.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestTrackbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestTrackbar.Designer.cs">
+      <DependentUpon>UCTestTrackbar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestTransfer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestTransfer.Designer.cs">
+      <DependentUpon>UCTestTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestTreeGridTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestTreeGridTable.Designer.cs">
+      <DependentUpon>UCTestTreeGridTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestTreeview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestTreeview.Designer.cs">
+      <DependentUpon>UCTestTreeview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestValve.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestValve.Designer.cs">
+      <DependentUpon>UCTestValve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestVerification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestVerification.Designer.cs">
+      <DependentUpon>UCTestVerification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestWave.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestWave.Designer.cs">
+      <DependentUpon>UCTestWave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCTestWaveChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCTestWaveChart.Designer.cs">
+      <DependentUpon>UCTestWaveChart.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOKCancel1Test.resx">
+      <DependentUpon>FrmOKCancel1Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOKCancel2Test.resx">
+      <DependentUpon>FrmOKCancel2Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTestFrmBack.resx">
+      <DependentUpon>FrmTestFrmBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTestLoading.resx">
+      <DependentUpon>FrmTestLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWithTitleTest.resx">
+      <DependentUpon>FrmWithTitleTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UC\UCTestArrow.resx">
+      <DependentUpon>UCTestArrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestBarcharts.resx">
+      <DependentUpon>UCTestBarcharts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestBlower.resx">
+      <DependentUpon>UCTestBlower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestBtns.resx">
+      <DependentUpon>UCTestBtns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestColors.resx">
+      <DependentUpon>UCTestColors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestConduit.resx">
+      <DependentUpon>UCTestConduit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestConveyor.resx">
+      <DependentUpon>UCTestConveyor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestCurveChart.resx">
+      <DependentUpon>UCTestCurveChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestForms.resx">
+      <DependentUpon>UCTestForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestFunnelChart.resx">
+      <DependentUpon>UCTestFunnelChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestGraphicalOverlay.resx">
+      <DependentUpon>UCTestGraphicalOverlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestGridTable.resx">
+      <DependentUpon>UCTestGridTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestHorizontalList.resx">
+      <DependentUpon>UCTestHorizontalList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestIcon.resx">
+      <DependentUpon>UCTestIcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestLED.resx">
+      <DependentUpon>UCTestLED.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestList.resx">
+      <DependentUpon>UCTestList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestListView.resx">
+      <DependentUpon>UCTestListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestMenu.resx">
+      <DependentUpon>UCTestMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestMeter.resx">
+      <DependentUpon>UCTestMeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestMindMapping.resx">
+      <DependentUpon>UCTestMindMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestNavigation.resx">
+      <DependentUpon>UCTestNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestNavigationMenu.resx">
+      <DependentUpon>UCTestNavigationMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestPage.resx">
+      <DependentUpon>UCTestPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestPanelTitle.resx">
+      <DependentUpon>UCTestPanelTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestPieCharts.resx">
+      <DependentUpon>UCTestPieCharts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestProcess.resx">
+      <DependentUpon>UCTestProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestRadarChart.resx">
+      <DependentUpon>UCTestRadarChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestRollText.resx">
+      <DependentUpon>UCTestRollText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestSampling.resx">
+      <DependentUpon>UCTestSampling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestScrollbar.resx">
+      <DependentUpon>UCTestScrollbar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestShadow.resx">
+      <DependentUpon>UCTestShadow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestSignalLamp.resx">
+      <DependentUpon>UCTestSignalLamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestSplitLabel.resx">
+      <DependentUpon>UCTestSplitLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestStep.resx">
+      <DependentUpon>UCTestStep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestTab.resx">
+      <DependentUpon>UCTestTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestThermometer.resx">
+      <DependentUpon>UCTestThermometer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestTimeLine.resx">
+      <DependentUpon>UCTestTimeLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestTips.resx">
+      <DependentUpon>UCTestTips.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestTrackbar.resx">
+      <DependentUpon>UCTestTrackbar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestTransfer.resx">
+      <DependentUpon>UCTestTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestTreeGridTable.resx">
+      <DependentUpon>UCTestTreeGridTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestTreeview.resx">
+      <DependentUpon>UCTestTreeview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestValve.resx">
+      <DependentUpon>UCTestValve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestVerification.resx">
+      <DependentUpon>UCTestVerification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestWave.resx">
+      <DependentUpon>UCTestWave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCTestWaveChart.resx">
+      <DependentUpon>UCTestWaveChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HZH_Controls\HZH_Controls.csproj">
+      <Project>{AF32E163-C577-4CBC-A072-0DC1CE0E1DA3}</Project>
+      <Name>HZH_Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -30,6 +30,7 @@ namespace TestPLC
         List<Label> La1 = new List<Label>();
         List<Label> La2 = new List<Label>();
         List<Label> La3 = new List<Label>();
+        List<Label> dt_data = new List<Label>();
         static int[] DT_data = new int[256];
         public TestPLC()
         {
@@ -39,6 +40,18 @@ namespace TestPLC
         private void button1_Click(object sender, EventArgs e)
         {
             Connect();
+        }
+        public void DT_lable()
+        {
+            dt_data.Add(label73); dt_data.Add(label72); dt_data.Add(label71); dt_data.Add(label70); dt_data.Add(label69);
+            dt_data.Add(label74); dt_data.Add(label75); dt_data.Add(label76); dt_data.Add(label77); dt_data.Add(label78);
+        }
+        public void show_dt_data(List<Label> lable_list, int[] data,int len)
+        {
+            for (int i = 0;i < len; i++)
+            {
+                lable_list[i].Text = data[i].ToString();
+            }
         }
         public void Connect()
         {
@@ -67,7 +80,7 @@ namespace TestPLC
                 link_btn.Enabled = false;//使连接按钮变成虚的，无法点击
                 closebtn.Enabled = true;//断开的按钮，可以点击
                 testButton.Enabled = true;
-
+                dt_shuju.Enabled = true;
                 Connected = true;
 
             }
@@ -128,8 +141,10 @@ namespace TestPLC
                     showGuangdian(str3, La3);
 
                 }
-                string s = convert(data[9], data[10]).ToString();
-                showMsg(stringdata + "==" + s + "\r\n");
+                DT_data[0] = convert(data[9], data[10]);
+                DT_data[1] = convert(data[11], data[12]);
+                show_dt_data(dt_data,DT_data,2);
+                showMsg(stringdata + "==" + DT_data[0] + "////"+DT_data[1] + "\r\n");
             }
         }
         public void ReceiveMsg2()
@@ -243,6 +258,7 @@ namespace TestPLC
             dianjiLableInit();
             closebtn.Enabled = false;//使断开的按钮，无法点击
             testButton.Enabled = false;
+            DT_lable();
         }
 
        
@@ -265,11 +281,12 @@ namespace TestPLC
             newclient2.Close();//连接关闭
             link_btn.Enabled = true;
             testButton.Enabled = false;
+            dt_shuju.Enabled = false;
         }
 
         private void receiveBox_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void testButton_Click(object sender, EventArgs e)
@@ -349,7 +366,10 @@ namespace TestPLC
 
         private void timerdianji_Tick(object sender, EventArgs e)
         {
-            //
+            int isecond = 50;//以毫秒为单位
+            dt_shuju.Interval = isecond;//50ms触发一次
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x00, 0x00, 0x02 };
+            newclient1.Send(data);
         }
          static int i = 0;
         private void button2_Click(object sender, EventArgs e)
