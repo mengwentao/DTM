@@ -47,11 +47,8 @@ namespace TestPLC
             dt_data.Add(label73); dt_data.Add(label72); dt_data.Add(label71); dt_data.Add(label70); dt_data.Add(label69);
             dt_data.Add(label74); dt_data.Add(label75); dt_data.Add(label76); dt_data.Add(label77); dt_data.Add(label78);
         }
-        int[] showdata = new int[256];
-        public void show_dt_data(List<Label> lable_list,int [] data,int len)
+        public void show_dt_data(List<Label> lable_list, int[] data,int len)
         {
-           
-          
             for (int i = 0;i < len; i++)
             {
                 lable_list[i].Text = data[i].ToString();
@@ -78,8 +75,8 @@ namespace TestPLC
             try
             {
                 newclient1.Connect(ie1);
-                MessageBox.Show("链接第一个成功");
-                newclient2.Connect(ie2);
+               // MessageBox.Show("链接第一个成功");
+                //newclient2.Connect(ie2);
                 MessageBox.Show("链接第二个成功");
                 link_btn.Enabled = false;//使连接按钮变成虚的，无法点击
                 closebtn.Enabled = true;//断开的按钮，可以点击
@@ -98,15 +95,14 @@ namespace TestPLC
             myThread = new Thread(myThreaddelegate);
             myThread.Start();
 
-            ThreadStart myThreaddelegate2 = new ThreadStart(ReceiveMsg2);
+            /*ThreadStart myThreaddelegate2 = new ThreadStart(ReceiveMsg2);
             myThread2 = new Thread(myThreaddelegate2);
-            myThread2.Start();
+            myThread2.Start();*/
             //   timersend.Enabled = true;//定时任务开
 
         }
         //消息显示
         int j = 0;
-        int m = 0;
         public void ReceiveMsg()
         {
             while (true)
@@ -146,7 +142,7 @@ namespace TestPLC
                     showGuangdian(str3, La3);
 
                 }
-                /*DT_data[0] = convert(data[9], data[10]);
+                DT_data[0] = convert(data[9], data[10]);
                 DT_data[1] = convert(data[11], data[12]);
                 DT_data[2] = convert(data[13], data[14]);
                 DT_data[3] = convert(data[15], data[16]);
@@ -155,30 +151,16 @@ namespace TestPLC
                 DT_data[6] = convert(data[21], data[22]);
                 DT_data[7] = convert(data[23], data[24]);
                 DT_data[8] = convert(data[25], data[26]);
-                DT_data[9] = convert(data[27], data[28]);*/
-                
-                for (int j = 0;j < 10;j++)
-                {
-                    DT_data[j] = convert(data[9 + m], data[10 + m]);
-                    m = m + 2;
-
-                }
-                m = 0;
-                show_dt_data(dt_data, DT_data, 10);
-                label79.Text =  avg(DT_data, 10).ToString();
+                DT_data[9] = convert(data[27], data[28]);
+                DT_data[10] = convert(data[29], data[30]);
+                DT_data[11] = convert(data[31], data[32]);
+                show_dt_data(dt_data,DT_data,10);
                 showMsg(stringdata + "==" + DT_data[0] + "////"+DT_data[1] + "\r\n");
             }
         }
-        public int avg(int []arr,int len)
+        public void conver_arr()
         {
-            int res = 0;
-            int sum = 0;
-            for (int i = 0;i < len;i++)
-            {
-                sum += arr[i];
-            }
-            res = sum / len;
-            return res;
+
         }
         public void ReceiveMsg2()
         {
@@ -200,7 +182,7 @@ namespace TestPLC
                 if (data[7] == 0x0F) { showMsg0F(stringdata + "\r\n"); };
                 if (data[7] == 0x10) { showMsg10(stringdata + "\r\n"); };*/
 
-                string str = convert(data2[9], data2[10]).ToString();
+                 string str = convert(data2[9], data2[10]).ToString();
                 showMsg(stringdata + "=="+ str + "\r\n");
                 //测试
             }
@@ -401,7 +383,7 @@ namespace TestPLC
         {
             int isecond = 50;//以毫秒为单位
             dt_shuju.Interval = isecond;//50ms触发一次
-            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x00, 0x00, 0x10 };
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x18, 0x00, 0x10 };
             newclient1.Send(data);
         }
          static int i = 0;
