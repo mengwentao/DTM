@@ -48,18 +48,13 @@ namespace TestPLC
             dt_data.Add(label74); dt_data.Add(label75); dt_data.Add(label76); dt_data.Add(label77); dt_data.Add(label78);
         }
         int[] showdata = new int[256];
-        public void show_dt_data(List<Label> lable_list,byte [] recdata,int len)
+        public void show_dt_data(List<Label> lable_list,int [] data,int len)
         {
            
-            for (int i = 0;i <= len;)
-            {
-                showdata[i/2] = convert(recdata[ i + 9], recdata[i + 10]);
-                i += 2;
-            }
-
+          
             for (int i = 0;i < len; i++)
             {
-                lable_list[i].Text = showdata[i].ToString();
+                lable_list[i].Text = data[i].ToString();
             }
         }
         public void Connect()
@@ -150,9 +145,18 @@ namespace TestPLC
                     showGuangdian(str3, La3);
 
                 }
-                //DT_data[0] = convert(data[9], data[10]);
-                //DT_data[1] = convert(data[11], data[12]);
-                show_dt_data(dt_data,data,4);
+                DT_data[0] = convert(data[9], data[10]);
+                DT_data[1] = convert(data[11], data[12]);
+                DT_data[2] = convert(data[13], data[14]);
+                DT_data[3] = convert(data[15], data[16]);
+                DT_data[4] = convert(data[17], data[18]);
+                DT_data[5] = convert(data[19], data[20]);
+                DT_data[6] = convert(data[21], data[22]);
+                DT_data[7] = convert(data[23], data[24]);
+                DT_data[8] = convert(data[25], data[26]);
+                DT_data[9] = convert(data[27], data[28]);
+               
+                show_dt_data(dt_data, DT_data, 10);
                 showMsg(stringdata + "==" + DT_data[0] + "////"+DT_data[1] + "\r\n");
             }
         }
@@ -176,7 +180,7 @@ namespace TestPLC
                 if (data[7] == 0x0F) { showMsg0F(stringdata + "\r\n"); };
                 if (data[7] == 0x10) { showMsg10(stringdata + "\r\n"); };*/
 
-                 string str = convert(data2[9], data2[10]).ToString();
+                string str = convert(data2[9], data2[10]).ToString();
                 showMsg(stringdata + "=="+ str + "\r\n");
                 //测试
             }
@@ -377,7 +381,7 @@ namespace TestPLC
         {
             int isecond = 50;//以毫秒为单位
             dt_shuju.Interval = isecond;//50ms触发一次
-            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x00, 0x00, 0x02 };
+            byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x00, 0x00, 0x10 };
             newclient1.Send(data);
         }
          static int i = 0;
