@@ -1,0 +1,51 @@
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\bin\Debug\TestPLC.exe
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\bin\Debug\TestPLC.pdb
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\obj\Debug\TestPLC.csprojResolveAssemblyReference.cache
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\obj\Debug\TestPLC.TestPLC.resources
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\obj\Debug\TestPLC.Properties.Resources.resources
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\obj\Debug\TestPLC.csproj.GenerateResource.Cache
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+c:\users\mengwentao\documents\visual studio 2015\Projects\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\bin\Debug\TestPLC.exe
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\bin\Debug\TestPLC.pdb
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\obj\Debug\TestPLC.csprojResolveAssemblyReference.cache
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\obj\Debug\TestPLC.TestPLC.resources
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\obj\Debug\TestPLC.Properties.Resources.resources
+C:\Users\mengwentao\Desktop\DTM相关\TestPLC\TestPLC\obj\Debug\TestPLC.csproj.GenerateResource.Cache
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\bin\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\bin\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\obj\Debug\TestPLC.csprojResolveAssemblyReference.cache
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\obj\Debug\TestPLC.TestPLC.resources
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\obj\Debug\TestPLC.Properties.Resources.resources
+C:\Users\TD\Desktop\DTM软件相关1111\TestPLC\TestPLC\obj\Debug\TestPLC.csproj.GenerateResource.Cache
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\bin\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\bin\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\obj\Debug\TestPLC.csprojResolveAssemblyReference.cache
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\obj\Debug\TestPLC.TestPLC.resources
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\obj\Debug\TestPLC.Properties.Resources.resources
+C:\Users\TD\Desktop\DTM软件相关1112\TestPLC\TestPLC\obj\Debug\TestPLC.csproj.GenerateResource.Cache
+C:\Users\TD\Desktop\DTM软件相关1113\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+C:\Users\TD\Desktop\DTM软件相关1113\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM软件相关1113\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM软件相关1113最新\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+C:\Users\TD\Desktop\DTM软件相关1113最新\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM软件相关1113最新\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\bin\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\bin\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.csprojResolveAssemblyReference.cache
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.TestPLC.resources
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.Properties.Resources.resources
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.csproj.GenerateResource.Cache

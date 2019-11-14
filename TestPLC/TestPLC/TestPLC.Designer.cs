@@ -147,17 +147,17 @@
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label79 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label73 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
             this.label75 = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.label77 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
             this.ucTrackBar = new HZH_Controls.Controls.UCTrackBar();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -187,7 +187,7 @@
             // serverIP
             // 
             this.serverIP.Location = new System.Drawing.Point(42, 18);
-            this.serverIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.serverIP.Margin = new System.Windows.Forms.Padding(2);
             this.serverIP.Name = "serverIP";
             this.serverIP.Size = new System.Drawing.Size(125, 21);
             this.serverIP.TabIndex = 1;
@@ -196,7 +196,7 @@
             // serverPort
             // 
             this.serverPort.Location = new System.Drawing.Point(222, 39);
-            this.serverPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.serverPort.Margin = new System.Windows.Forms.Padding(2);
             this.serverPort.Name = "serverPort";
             this.serverPort.Size = new System.Drawing.Size(68, 21);
             this.serverPort.TabIndex = 2;
@@ -215,7 +215,7 @@
             // link_btn
             // 
             this.link_btn.Location = new System.Drawing.Point(306, 38);
-            this.link_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.link_btn.Margin = new System.Windows.Forms.Padding(2);
             this.link_btn.Name = "link_btn";
             this.link_btn.Size = new System.Drawing.Size(53, 20);
             this.link_btn.TabIndex = 4;
@@ -234,9 +234,9 @@
             this.groupBox1.Controls.Add(this.serverIP);
             this.groupBox1.Controls.Add(this.serverPort);
             this.groupBox1.Location = new System.Drawing.Point(30, 19);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(451, 87);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
@@ -255,7 +255,7 @@
             // textBox13
             // 
             this.textBox13.Location = new System.Drawing.Point(42, 46);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(2);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(125, 21);
             this.textBox13.TabIndex = 9;
@@ -264,7 +264,7 @@
             // closebtn
             // 
             this.closebtn.Location = new System.Drawing.Point(377, 39);
-            this.closebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closebtn.Margin = new System.Windows.Forms.Padding(2);
             this.closebtn.Name = "closebtn";
             this.closebtn.Size = new System.Drawing.Size(64, 19);
             this.closebtn.TabIndex = 8;
@@ -275,7 +275,7 @@
             // receiveBox
             // 
             this.receiveBox.Location = new System.Drawing.Point(30, 483);
-            this.receiveBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.receiveBox.Margin = new System.Windows.Forms.Padding(2);
             this.receiveBox.Name = "receiveBox";
             this.receiveBox.Size = new System.Drawing.Size(453, 163);
             this.receiveBox.TabIndex = 6;
@@ -293,7 +293,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(19, 57);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(396, 35);
             this.panel1.TabIndex = 9;
@@ -389,7 +389,7 @@
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Location = new System.Drawing.Point(19, 145);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(396, 35);
             this.panel2.TabIndex = 10;
@@ -485,9 +485,9 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Location = new System.Drawing.Point(30, 109);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(451, 370);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
@@ -504,7 +504,7 @@
             this.panel7.Controls.Add(this.label57);
             this.panel7.Controls.Add(this.label58);
             this.panel7.Location = new System.Drawing.Point(19, 323);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(396, 35);
             this.panel7.TabIndex = 14;
@@ -600,7 +600,7 @@
             this.panel5.Controls.Add(this.label41);
             this.panel5.Controls.Add(this.label42);
             this.panel5.Location = new System.Drawing.Point(19, 194);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(396, 35);
             this.panel5.TabIndex = 13;
@@ -696,7 +696,7 @@
             this.panel8.Controls.Add(this.label65);
             this.panel8.Controls.Add(this.label66);
             this.panel8.Location = new System.Drawing.Point(19, 284);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(396, 35);
             this.panel8.TabIndex = 15;
@@ -792,7 +792,7 @@
             this.panel6.Controls.Add(this.label49);
             this.panel6.Controls.Add(this.label50);
             this.panel6.Location = new System.Drawing.Point(19, 233);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(396, 35);
             this.panel6.TabIndex = 12;
@@ -888,7 +888,7 @@
             this.panel4.Controls.Add(this.label33);
             this.panel4.Controls.Add(this.label34);
             this.panel4.Location = new System.Drawing.Point(19, 107);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(396, 35);
             this.panel4.TabIndex = 11;
@@ -984,7 +984,7 @@
             this.panel3.Controls.Add(this.label25);
             this.panel3.Controls.Add(this.label26);
             this.panel3.Location = new System.Drawing.Point(19, 19);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(396, 35);
             this.panel3.TabIndex = 10;
@@ -1076,7 +1076,7 @@
             // textBox12
             // 
             this.textBox12.Location = new System.Drawing.Point(856, 241);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(68, 21);
             this.textBox12.TabIndex = 44;
@@ -1085,7 +1085,7 @@
             // textBox11
             // 
             this.textBox11.Location = new System.Drawing.Point(785, 241);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(68, 21);
             this.textBox11.TabIndex = 43;
@@ -1094,7 +1094,7 @@
             // textBox10
             // 
             this.textBox10.Location = new System.Drawing.Point(713, 241);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(68, 21);
             this.textBox10.TabIndex = 42;
@@ -1103,7 +1103,7 @@
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(573, 241);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(68, 21);
             this.textBox8.TabIndex = 40;
@@ -1112,7 +1112,7 @@
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(502, 241);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(68, 21);
             this.textBox7.TabIndex = 39;
@@ -1121,7 +1121,7 @@
             // textBox9
             // 
             this.textBox9.Location = new System.Drawing.Point(644, 241);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(68, 21);
             this.textBox9.TabIndex = 41;
@@ -1130,7 +1130,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(856, 216);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(68, 21);
             this.textBox6.TabIndex = 38;
@@ -1139,7 +1139,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(785, 216);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(68, 21);
             this.textBox5.TabIndex = 37;
@@ -1148,7 +1148,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(713, 216);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(68, 21);
             this.textBox4.TabIndex = 36;
@@ -1157,7 +1157,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(644, 216);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(68, 21);
             this.textBox3.TabIndex = 35;
@@ -1166,7 +1166,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(574, 216);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(68, 21);
             this.textBox2.TabIndex = 34;
@@ -1175,7 +1175,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(502, 216);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(68, 21);
             this.textBox1.TabIndex = 33;
@@ -1184,7 +1184,7 @@
             // testButton
             // 
             this.testButton.Location = new System.Drawing.Point(956, 229);
-            this.testButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.testButton.Margin = new System.Windows.Forms.Padding(2);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(70, 35);
             this.testButton.TabIndex = 32;
@@ -1196,9 +1196,9 @@
             // 
             this.groupBox3.Controls.Add(this.timestatebtn);
             this.groupBox3.Location = new System.Drawing.Point(505, 19);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(415, 87);
             this.groupBox3.TabIndex = 45;
             this.groupBox3.TabStop = false;
@@ -1207,7 +1207,7 @@
             // timestatebtn
             // 
             this.timestatebtn.Location = new System.Drawing.Point(31, 38);
-            this.timestatebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timestatebtn.Margin = new System.Windows.Forms.Padding(2);
             this.timestatebtn.Name = "timestatebtn";
             this.timestatebtn.Size = new System.Drawing.Size(79, 20);
             this.timestatebtn.TabIndex = 46;
@@ -1220,9 +1220,9 @@
             this.groupBox4.Controls.Add(this.label67);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Location = new System.Drawing.Point(501, 121);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(595, 86);
             this.groupBox4.TabIndex = 46;
             this.groupBox4.TabStop = false;
@@ -1241,7 +1241,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(29, 35);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(71, 23);
             this.button1.TabIndex = 0;
@@ -1256,7 +1256,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(783, 662);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(70, 35);
             this.button2.TabIndex = 47;
@@ -1267,7 +1267,7 @@
             // textBox14
             // 
             this.textBox14.Location = new System.Drawing.Point(856, 369);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(2);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(68, 21);
             this.textBox14.TabIndex = 60;
@@ -1276,7 +1276,7 @@
             // textBox15
             // 
             this.textBox15.Location = new System.Drawing.Point(785, 369);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(2);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(68, 21);
             this.textBox15.TabIndex = 59;
@@ -1285,7 +1285,7 @@
             // textBox16
             // 
             this.textBox16.Location = new System.Drawing.Point(713, 369);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(2);
             this.textBox16.Name = "textBox16";
             this.textBox16.Size = new System.Drawing.Size(68, 21);
             this.textBox16.TabIndex = 58;
@@ -1294,7 +1294,7 @@
             // textBox17
             // 
             this.textBox17.Location = new System.Drawing.Point(573, 369);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(2);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(68, 21);
             this.textBox17.TabIndex = 56;
@@ -1303,7 +1303,7 @@
             // textBox18
             // 
             this.textBox18.Location = new System.Drawing.Point(502, 369);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox18.Margin = new System.Windows.Forms.Padding(2);
             this.textBox18.Name = "textBox18";
             this.textBox18.Size = new System.Drawing.Size(68, 21);
             this.textBox18.TabIndex = 55;
@@ -1312,7 +1312,7 @@
             // textBox19
             // 
             this.textBox19.Location = new System.Drawing.Point(644, 369);
-            this.textBox19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox19.Margin = new System.Windows.Forms.Padding(2);
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(68, 21);
             this.textBox19.TabIndex = 57;
@@ -1321,7 +1321,7 @@
             // textBox20
             // 
             this.textBox20.Location = new System.Drawing.Point(856, 344);
-            this.textBox20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox20.Margin = new System.Windows.Forms.Padding(2);
             this.textBox20.Name = "textBox20";
             this.textBox20.Size = new System.Drawing.Size(68, 21);
             this.textBox20.TabIndex = 54;
@@ -1330,7 +1330,7 @@
             // textBox21
             // 
             this.textBox21.Location = new System.Drawing.Point(785, 344);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox21.Margin = new System.Windows.Forms.Padding(2);
             this.textBox21.Name = "textBox21";
             this.textBox21.Size = new System.Drawing.Size(68, 21);
             this.textBox21.TabIndex = 53;
@@ -1339,7 +1339,7 @@
             // textBox22
             // 
             this.textBox22.Location = new System.Drawing.Point(713, 344);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox22.Margin = new System.Windows.Forms.Padding(2);
             this.textBox22.Name = "textBox22";
             this.textBox22.Size = new System.Drawing.Size(68, 21);
             this.textBox22.TabIndex = 52;
@@ -1348,7 +1348,7 @@
             // textBox23
             // 
             this.textBox23.Location = new System.Drawing.Point(644, 344);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox23.Margin = new System.Windows.Forms.Padding(2);
             this.textBox23.Name = "textBox23";
             this.textBox23.Size = new System.Drawing.Size(68, 21);
             this.textBox23.TabIndex = 51;
@@ -1357,7 +1357,7 @@
             // textBox24
             // 
             this.textBox24.Location = new System.Drawing.Point(574, 344);
-            this.textBox24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox24.Margin = new System.Windows.Forms.Padding(2);
             this.textBox24.Name = "textBox24";
             this.textBox24.Size = new System.Drawing.Size(68, 21);
             this.textBox24.TabIndex = 50;
@@ -1366,7 +1366,7 @@
             // textBox25
             // 
             this.textBox25.Location = new System.Drawing.Point(502, 344);
-            this.textBox25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox25.Margin = new System.Windows.Forms.Padding(2);
             this.textBox25.Name = "textBox25";
             this.textBox25.Size = new System.Drawing.Size(68, 21);
             this.textBox25.TabIndex = 49;
@@ -1375,7 +1375,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(956, 346);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(70, 35);
             this.button3.TabIndex = 48;
@@ -1403,15 +1403,55 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
-            // label79
+            // label69
             // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(310, 102);
-            this.label79.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(47, 12);
-            this.label79.TabIndex = 12;
-            this.label79.Text = "label79";
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(287, 37);
+            this.label69.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(47, 12);
+            this.label69.TabIndex = 2;
+            this.label69.Text = "label69";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(217, 37);
+            this.label70.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(47, 12);
+            this.label70.TabIndex = 3;
+            this.label70.Text = "label70";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(153, 37);
+            this.label71.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(47, 12);
+            this.label71.TabIndex = 4;
+            this.label71.Text = "label71";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(91, 37);
+            this.label72.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(47, 12);
+            this.label72.TabIndex = 5;
+            this.label72.Text = "label72";
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(31, 37);
+            this.label73.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(47, 12);
+            this.label73.TabIndex = 6;
+            this.label73.Text = "label73";
             // 
             // label74
             // 
@@ -1463,55 +1503,15 @@
             this.label78.TabIndex = 7;
             this.label78.Text = "label78";
             // 
-            // label73
+            // label79
             // 
-            this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(31, 37);
-            this.label73.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(47, 12);
-            this.label73.TabIndex = 6;
-            this.label73.Text = "label73";
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(91, 37);
-            this.label72.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(47, 12);
-            this.label72.TabIndex = 5;
-            this.label72.Text = "label72";
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(153, 37);
-            this.label71.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(47, 12);
-            this.label71.TabIndex = 4;
-            this.label71.Text = "label71";
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(217, 37);
-            this.label70.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(47, 12);
-            this.label70.TabIndex = 3;
-            this.label70.Text = "label70";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(287, 37);
-            this.label69.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(47, 12);
-            this.label69.TabIndex = 2;
-            this.label69.Text = "label69";
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(310, 102);
+            this.label79.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(47, 12);
+            this.label79.TabIndex = 12;
+            this.label79.Text = "label79";
             // 
             // ucTrackBar
             // 
@@ -1569,7 +1569,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.receiveBox);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TestPLC";
             this.Text = "PLC调试软件";
             this.Load += new System.EventHandler(this.TestPLC_Load);
