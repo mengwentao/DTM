@@ -40,3 +40,6 @@ C:\Users\TD\Desktop\DTM软件相关1113\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
 C:\Users\TD\Desktop\DTM软件相关1113最新\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
 C:\Users\TD\Desktop\DTM软件相关1113最新\TestPLC\TestPLC\obj\Debug\TestPLC.exe
 C:\Users\TD\Desktop\DTM软件相关1113最新\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\bin\Debug\TestPLC.exe.config
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.exe
+C:\Users\TD\Desktop\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.pdb
