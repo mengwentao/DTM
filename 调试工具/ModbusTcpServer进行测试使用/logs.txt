@@ -3770,3 +3770,33 @@
 错误方法：Int32 EndReceive(System.IAsyncResult)
 /=================================================[    Exception    ]================================================/
 >>>>>>> 35bfe868011ca238e3a9b0da892137228126b1a9
+
+[信息] 2019-11-15 10:21:54.109 thread:[01] ModbusTcpServer[502] : 启动引擎
+[调试] 2019-11-15 10:23:34.951 thread:[04] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:50948 ] 上线
+[调试] 2019-11-15 10:23:47.250 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:50948 ] 下线
+[调试] 2019-11-15 10:23:56.912 thread:[09] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51085 ] 上线
+[致命] 2019-11-15 10:24:15.683 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51085 ] 下线 : 错误信息：远程主机强迫关闭了一个现有的连接。
+错误源：System
+错误堆栈：   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 HslCommunication.ModBus.ModbusTcpServer.ModbusHeadReveiveCallback(IAsyncResult ar) 位置 I:\HslProjects\HslCommunication\HslCommunication_Net45\ModBus\ModbusTcp\ModbusTcpServer.cs:行号 1000
+错误类型：System.Net.Sockets.SocketException
+错误方法：Int32 EndReceive(System.IAsyncResult)
+/=================================================[    Exception    ]================================================/
+[调试] 2019-11-15 10:25:36.722 thread:[09] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51179 ] 上线
+[致命] 2019-11-15 10:25:41.874 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51179 ] 下线 : 错误信息：远程主机强迫关闭了一个现有的连接。
+错误源：System
+错误堆栈：   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 HslCommunication.ModBus.ModbusTcpServer.ModbusHeadReveiveCallback(IAsyncResult ar) 位置 I:\HslProjects\HslCommunication\HslCommunication_Net45\ModBus\ModbusTcp\ModbusTcpServer.cs:行号 1000
+错误类型：System.Net.Sockets.SocketException
+错误方法：Int32 EndReceive(System.IAsyncResult)
+/=================================================[    Exception    ]================================================/
+[调试] 2019-11-15 10:26:26.557 thread:[06] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51295 ] 上线
+[致命] 2019-11-15 10:26:31.741 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51295 ] 下线 : 错误信息：远程主机强迫关闭了一个现有的连接。
+错误源：System
+错误堆栈：   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 HslCommunication.ModBus.ModbusTcpServer.ModbusHeadReveiveCallback(IAsyncResult ar) 位置 I:\HslProjects\HslCommunication\HslCommunication_Net45\ModBus\ModbusTcp\ModbusTcpServer.cs:行号 1000
+错误类型：System.Net.Sockets.SocketException
+错误方法：Int32 EndReceive(System.IAsyncResult)
+/=================================================[    Exception    ]================================================/
+[调试] 2019-11-15 10:26:50.167 thread:[06] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51387 ] 上线
+[调试] 2019-11-15 10:26:56.622 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.168.201:51387 ] 下线

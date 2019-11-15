@@ -189,7 +189,7 @@
             this.serverIP.Name = "serverIP";
             this.serverIP.Size = new System.Drawing.Size(186, 28);
             this.serverIP.TabIndex = 1;
-            this.serverIP.Text = "192.168.1.6";
+            this.serverIP.Text = "10.177.168.201";
             // 
             // serverPort
             // 
@@ -250,7 +250,7 @@
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(186, 28);
             this.textBox13.TabIndex = 9;
-            this.textBox13.Text = "10.177.11.208";
+            this.textBox13.Text = "10.177.168.201";
             // 
             // closebtn
             // 
@@ -1278,9 +1278,9 @@
             this.groupBox5.Controls.Add(this.label70);
             this.groupBox5.Controls.Add(this.label69);
             this.groupBox5.Location = new System.Drawing.Point(916, 674);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(1068, 219);
             this.groupBox5.TabIndex = 61;
             this.groupBox5.TabStop = false;
@@ -1392,7 +1392,7 @@
             this.ucTrackBar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
             this.ucTrackBar.LineWidth = 10F;
             this.ucTrackBar.Location = new System.Drawing.Point(1056, 924);
-            this.ucTrackBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ucTrackBar.Margin = new System.Windows.Forms.Padding(4);
             this.ucTrackBar.MaxValue = 100F;
             this.ucTrackBar.MinValue = 0F;
             this.ucTrackBar.Name = "ucTrackBar";
