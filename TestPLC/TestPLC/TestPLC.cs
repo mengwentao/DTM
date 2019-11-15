@@ -316,7 +316,7 @@ namespace TestPLC
                 }
                 label127.Text = test_max.ToString();//显示最大值
                 label129.Text = test_min.ToString();//显示最小值
-                show_dt_data(test_per_list, one_arr, test_per_len);
+                show_dt_data(test_per_list, one_arr, test_per_len);//将label的text和测量数据绑定一起
                 one_sum_res = 0;
                 for (int i = 0; i < test_per_len; i++)
                 {
