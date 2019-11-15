@@ -30,7 +30,7 @@ namespace TestPLC
         public Thread myThread4;
         public Thread myThread5;
         public Thread myThread6;
-        static int per_len = 4;//整盒测量时，每个盘片获取数据量，范围是1-25
+        static int per_len = 10;//整盒测量时，每个盘片获取数据量，范围是1-25
         int total_len = 5 * per_len;
         int test_per_len = 10;//测试单片时，盘片获取的数据量，范围是1-20；
         public delegate void MyInvoke(string str);
