@@ -30,8 +30,9 @@ namespace TestPLC
         public Thread myThread4;
         public Thread myThread5;
         public Thread myThread6;
-        static int per_len = 25;
+        static int per_len = 4;//整盒测量时，每个盘片获取数据量，范围是1-25
         int total_len = 5 * per_len;
+        int test_per_len = 10;//测试单片时，盘片获取的数据量，范围是1-20；
         public delegate void MyInvoke(string str);
         List<Label> La = new List<Label>();
         List<Label> La1 = new List<Label>();
@@ -43,12 +44,14 @@ namespace TestPLC
         List<Label> dt_data_list_3 = new List<Label>();
         List<Label> dt_data_list_4 = new List<Label>();
         List<Label> dt_data_list_5 = new List<Label>();
+        List<Label> test_per_list = new List<Label>();
         static int[] DT_data1 = new int[125];
         static int[] DT_data2 = new int[125];
         static int[] DT_data3 = new int[125];
         static int[] DT_data4 = new int[125];
         static int[] DT_data5 = new int[125];
-        static int[] cal_data = new int[25];//储存25片数据
+        static int[] one_arr = new int[20];//测试一个盘片的厚度
+        static int[] cal_data = new int[25];//储存25片最终的数据数据
         public TestPLC()
         {
             InitializeComponent();
@@ -65,6 +68,11 @@ namespace TestPLC
             dt_data_list_3.Add(label80); dt_data_list_3.Add(label81); dt_data_list_3.Add(label82); dt_data_list_3.Add(label90); dt_data_list_3.Add(label91);
             dt_data_list_4.Add(label92); dt_data_list_4.Add(label93); dt_data_list_4.Add(label94); dt_data_list_4.Add(label85); dt_data_list_4.Add(label86);
             dt_data_list_5.Add(label87); dt_data_list_5.Add(label88); dt_data_list_5.Add(label89); dt_data_list_5.Add(label83); dt_data_list_5.Add(label84);
+
+            test_per_list.Add(label95); test_per_list.Add(label96); test_per_list.Add(label97); test_per_list.Add(label98); test_per_list.Add(label99);
+            test_per_list.Add(label100); test_per_list.Add(label101); test_per_list.Add(label102); test_per_list.Add(label103); test_per_list.Add(label104);
+            test_per_list.Add(label105); test_per_list.Add(label106); test_per_list.Add(label107); test_per_list.Add(label108); test_per_list.Add(label109);
+            test_per_list.Add(label110); test_per_list.Add(label111); test_per_list.Add(label112); test_per_list.Add(label113); test_per_list.Add(label114);
         }
         /// <summary>
         /// 
@@ -106,11 +114,7 @@ namespace TestPLC
                 link_btn.Enabled = false;//使连接按钮变成虚的，无法点击
                 closebtn.Enabled = true;//断开的按钮，可以点击
                 testButton.Enabled = true;
-                dt1.Enabled = true;
-                dt2.Enabled = true;
-                dt3.Enabled = true;
-                dt4.Enabled = true;
-                dt5.Enabled = true;
+                
 
                 timer1.Enabled = true;
                 Connected = true;
@@ -148,6 +152,10 @@ namespace TestPLC
         int j = 0;
         int m = 0;
         int flag = 0;
+        int one_sum_res = 0;
+        int one_arr_res = 0;
+        int test_min = 65535;
+        int test_max = 0;
         public void ReceiveMsg()
         {
             while (true)
@@ -284,17 +292,54 @@ namespace TestPLC
                 }
                // showNum(data, dt_data_list_1, DT_data1, 0x01, 1);
                 Console.WriteLine();
+                int[] temp = cal_25_item(cal_data); //求解一盒盘片的最大值、最小值、平均值以及正负误差
+                label120.Text = temp[0].ToString();//显示最大值
+                label122.Text = temp[1].ToString();//显示最小值
+                label126.Text = temp[2].ToString();//显示偏差
+                label124.Text = temp[3].ToString();//显示平均値
+               
+                //以下内容是测量一片的调试内容
+                //todu 每一片的最大值和最小值
+               
+                if (data[0] == 0x06)//读取测试一片数据的返回结果
+                {
+                    int n = 0;
+                    for (int j = 0; j < test_per_len; j++)
+                    {
+                        //
+                        one_arr[j] = convert(data[9 + n], data[10 + n]);
+                        test_max = Math.Max(test_max, one_arr[j]);
+                        test_min = Math.Min(test_min, one_arr[j]);
+                        n += 2;
+                    }
+                    n = 0;
+                }
+                label127.Text = test_max.ToString();//显示最大值
+                label129.Text = test_min.ToString();//显示最小值
+                show_dt_data(test_per_list, one_arr, test_per_len);
+                one_sum_res = 0;
+                for (int i = 0; i < test_per_len; i++)
+                {
+                   // Console.Write(one_arr[i] + "  ");
+                    one_sum_res += one_arr[i];
+                }
+                one_arr_res = (one_sum_res - test_min - test_max) / (test_per_len - 2);
+                label116.Text = one_arr_res .ToString();//平均値
+                Console.Write(one_arr_res);
+                label117.Text = test_per_len.ToString();
+
             }
         }
 
         public void showNum(byte []data,List<Label> lable_list,int [] arr,byte mes,int start)
         {
+            
             if (data[0] == mes)
             {
                 int m = 0;
                 for (int j = 0; j < total_len; j++)
                 {
-                    arr[j] = convert(data[9 + m], data[10 + m]);
+                    arr[j] = convert(data[9 + m], data[10 + m]);//获取寄存器中的数据
                     m += 2;
                 }
                 m = 0;
@@ -304,21 +349,45 @@ namespace TestPLC
                   //  Console.Write(arr[j] + " ");
                 }
                 Console.WriteLine();
-                int[] arr_avg_res = avg_res(arr);
+                int[] arr_avg_res = avg_res(arr);//计算出这个五片的数据
                 for (int i = 0; i < 5; i++)
                 {
                     cal_data[start * 5 + i - 5] = arr_avg_res[i];
                 }
                 show_dt_data(lable_list, arr_avg_res, 5);
-            
+               
+               
+
+
 
             }
+        }
+        public int [] cal_25_item(int []arr)
+        {
+            int max = 0;
+            int min = 65535;
+            int[] res = new int[4];
+            int sum = 0;
+            for (int i = 0;i < arr.Length;i++)
+            {
+                max = Math.Max(max,arr[i]);
+                min = Math.Min(min,arr[i]);
+                sum += arr[i];
+
+            }
+            Console.WriteLine(sum);
+            res[0] = max;
+            res[1] = min;
+            res[2] = max - min;
+            res[3] =( sum  - res[2])/ 23;
+            return res;
+
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="arr">寄存器的全部数值的长度</param>       
-        /// <returns>返回25片的计算结果计算</returns>
+        /// <returns>返回5片的计算结果计算</returns>
         public int[] avg_res(int []arr)
         {
             int []res = new int[5];//返回平均値计算结果
@@ -329,20 +398,27 @@ namespace TestPLC
             return res;
 
         }
+        
         /// <summary>
-        /// 统计寄存器中每一片的平均値
+        /// 统计寄存器中每一片的平均値。去除一个最大值和一个最小值
         /// </summary>
         /// <param name="arr">寄存器的全部数值的长度</param>
         /// <param name="start">每次计算的起始位置</param>
         /// <returns>返回平均値计算结果</returns>
+        
         public int cal_arr_avg(int [] arr,int start)
         {
             int res = 0;
+            int max = 0;
+            int min = 65536;
             for (int i = start; i < start + per_len; i++)
             {
                 res += arr[i];
+                max = Math.Max(max, arr[i]);
+                min = Math.Min(min,arr[i]);
             }
-            return res/per_len;
+            res = res - max - min;//去掉最大值和最小值
+            return (res/(per_len-2));//取平均值
         }
         public void ReceiveMsg2()
         {
@@ -679,6 +755,50 @@ namespace TestPLC
             timer1.Interval = isecond;//50ms触发一次
             byte[] data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x00, 0x00, 0x01 };
             newclient1.Send(data);
+        }
+
+        private void celiang_yihe_timer2_Tick(object sender, EventArgs e)
+        {
+            byte low = Convert.ToByte(test_per_len & 0xff);  // 低8位
+            byte high = Convert.ToByte((test_per_len >> 8) & 0xff); // 高8位
+
+            int isecond = 100;//以毫秒为单位
+            celiang_yihe_timer2.Interval = isecond;//50ms触发一次
+            byte[] data = new byte[] { 0x06, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x03, 0xe8, high, low };
+            newclient1.Send(data);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            celiang_yihe_timer2.Enabled = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            celiang_yihe_timer2.Enabled = false;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dt1.Enabled = true;
+            dt2.Enabled = true;
+            dt3.Enabled = true;
+            dt4.Enabled = true;
+            dt5.Enabled = true;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dt1.Enabled = false;
+            dt2.Enabled = false;
+            dt3.Enabled = false;
+            dt4.Enabled = false;
+            dt5.Enabled = false;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+           test_per_len = Convert.ToInt16( ucTrackBar1.Value);
         }
     }
 }
