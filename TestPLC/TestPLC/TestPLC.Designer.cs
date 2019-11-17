@@ -147,6 +147,16 @@
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label125 = new System.Windows.Forms.Label();
+            this.label126 = new System.Windows.Forms.Label();
+            this.label123 = new System.Windows.Forms.Label();
+            this.label124 = new System.Windows.Forms.Label();
+            this.label121 = new System.Windows.Forms.Label();
+            this.label122 = new System.Windows.Forms.Label();
+            this.label119 = new System.Windows.Forms.Label();
+            this.label120 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.ucTrackBar = new HZH_Controls.Controls.UCTrackBar();
             this.label83 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
@@ -180,49 +190,57 @@
             this.dt5 = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label96 = new System.Windows.Forms.Label();
-            this.label97 = new System.Windows.Forms.Label();
-            this.label98 = new System.Windows.Forms.Label();
-            this.label99 = new System.Windows.Forms.Label();
-            this.label100 = new System.Windows.Forms.Label();
-            this.label101 = new System.Windows.Forms.Label();
-            this.label102 = new System.Windows.Forms.Label();
-            this.label103 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.label105 = new System.Windows.Forms.Label();
-            this.label106 = new System.Windows.Forms.Label();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label108 = new System.Windows.Forms.Label();
-            this.label109 = new System.Windows.Forms.Label();
+            this.label129 = new System.Windows.Forms.Label();
+            this.label130 = new System.Windows.Forms.Label();
+            this.label127 = new System.Windows.Forms.Label();
+            this.label128 = new System.Windows.Forms.Label();
+            this.label117 = new System.Windows.Forms.Label();
+            this.label118 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.ucTrackBar1 = new HZH_Controls.Controls.UCTrackBar();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label116 = new System.Windows.Forms.Label();
+            this.label115 = new System.Windows.Forms.Label();
             this.label110 = new System.Windows.Forms.Label();
             this.label111 = new System.Windows.Forms.Label();
             this.label112 = new System.Windows.Forms.Label();
             this.label113 = new System.Windows.Forms.Label();
             this.label114 = new System.Windows.Forms.Label();
-            this.label115 = new System.Windows.Forms.Label();
-            this.label116 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.label105 = new System.Windows.Forms.Label();
+            this.label106 = new System.Windows.Forms.Label();
+            this.label107 = new System.Windows.Forms.Label();
+            this.label108 = new System.Windows.Forms.Label();
+            this.label109 = new System.Windows.Forms.Label();
+            this.label100 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.label102 = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label96 = new System.Windows.Forms.Label();
+            this.label99 = new System.Windows.Forms.Label();
+            this.label97 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
             this.celiang_yihe_timer2 = new System.Windows.Forms.Timer(this.components);
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.ucTrackBar1 = new HZH_Controls.Controls.UCTrackBar();
-            this.button8 = new System.Windows.Forms.Button();
-            this.label117 = new System.Windows.Forms.Label();
-            this.label118 = new System.Windows.Forms.Label();
-            this.label119 = new System.Windows.Forms.Label();
-            this.label120 = new System.Windows.Forms.Label();
-            this.label121 = new System.Windows.Forms.Label();
-            this.label122 = new System.Windows.Forms.Label();
-            this.label123 = new System.Windows.Forms.Label();
-            this.label124 = new System.Windows.Forms.Label();
-            this.label125 = new System.Windows.Forms.Label();
-            this.label126 = new System.Windows.Forms.Label();
-            this.label127 = new System.Windows.Forms.Label();
-            this.label128 = new System.Windows.Forms.Label();
-            this.label129 = new System.Windows.Forms.Label();
-            this.label130 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label131 = new System.Windows.Forms.Label();
+            this.label132 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -237,6 +255,14 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -329,9 +355,9 @@
             // 
             // receiveBox
             // 
-            this.receiveBox.Location = new System.Drawing.Point(23, 773);
+            this.receiveBox.Location = new System.Drawing.Point(23, 1196);
             this.receiveBox.Name = "receiveBox";
-            this.receiveBox.Size = new System.Drawing.Size(678, 242);
+            this.receiveBox.Size = new System.Drawing.Size(678, 72);
             this.receiveBox.TabIndex = 6;
             this.receiveBox.Text = "";
             this.receiveBox.TextChanged += new System.EventHandler(this.receiveBox_TextChanged);
@@ -1369,14 +1395,106 @@
             this.groupBox5.Controls.Add(this.label71);
             this.groupBox5.Controls.Add(this.label70);
             this.groupBox5.Controls.Add(this.label69);
-            this.groupBox5.Location = new System.Drawing.Point(727, 765);
+            this.groupBox5.Location = new System.Drawing.Point(42, 350);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Size = new System.Drawing.Size(1408, 338);
+            this.groupBox5.Size = new System.Drawing.Size(1341, 338);
             this.groupBox5.TabIndex = 61;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "25盘片平均値";
+            // 
+            // label125
+            // 
+            this.label125.AutoSize = true;
+            this.label125.Location = new System.Drawing.Point(326, 271);
+            this.label125.Name = "label125";
+            this.label125.Size = new System.Drawing.Size(44, 18);
+            this.label125.TabIndex = 96;
+            this.label125.Text = "偏差";
+            // 
+            // label126
+            // 
+            this.label126.AutoSize = true;
+            this.label126.Location = new System.Drawing.Point(416, 271);
+            this.label126.Name = "label126";
+            this.label126.Size = new System.Drawing.Size(80, 18);
+            this.label126.TabIndex = 95;
+            this.label126.Text = "label126";
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.Location = new System.Drawing.Point(326, 232);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(80, 18);
+            this.label123.TabIndex = 94;
+            this.label123.Text = "平均値：";
+            // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.Location = new System.Drawing.Point(416, 232);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(80, 18);
+            this.label124.TabIndex = 93;
+            this.label124.Text = "label124";
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.Location = new System.Drawing.Point(79, 271);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(80, 18);
+            this.label121.TabIndex = 92;
+            this.label121.Text = "最小值：";
+            // 
+            // label122
+            // 
+            this.label122.AutoSize = true;
+            this.label122.Location = new System.Drawing.Point(169, 271);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(80, 18);
+            this.label122.TabIndex = 91;
+            this.label122.Text = "label122";
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Location = new System.Drawing.Point(79, 232);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(80, 18);
+            this.label119.TabIndex = 90;
+            this.label119.Text = "最大值：";
+            // 
+            // label120
+            // 
+            this.label120.AutoSize = true;
+            this.label120.Location = new System.Drawing.Point(169, 232);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(80, 18);
+            this.label120.TabIndex = 89;
+            this.label120.Text = "label120";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(1097, 170);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(113, 48);
+            this.button6.TabIndex = 88;
+            this.button6.Text = "停止测量";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(956, 170);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(113, 48);
+            this.button7.TabIndex = 87;
+            this.button7.Text = "开始测量";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // ucTrackBar
             // 
@@ -1684,147 +1802,132 @@
             this.groupBox6.Controls.Add(this.label99);
             this.groupBox6.Controls.Add(this.label97);
             this.groupBox6.Controls.Add(this.label98);
-            this.groupBox6.Location = new System.Drawing.Point(738, 477);
+            this.groupBox6.Location = new System.Drawing.Point(63, 47);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(1225, 271);
             this.groupBox6.TabIndex = 62;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "一盒盘片的平均値";
             // 
-            // label95
+            // label129
             // 
-            this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(43, 48);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(71, 18);
-            this.label95.TabIndex = 67;
-            this.label95.Text = "label95";
+            this.label129.AutoSize = true;
+            this.label129.Location = new System.Drawing.Point(362, 221);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(80, 18);
+            this.label129.TabIndex = 94;
+            this.label129.Text = "label129";
             // 
-            // label96
+            // label130
             // 
-            this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(133, 48);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(71, 18);
-            this.label96.TabIndex = 66;
-            this.label96.Text = "label96";
+            this.label130.AutoSize = true;
+            this.label130.Location = new System.Drawing.Point(276, 221);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(80, 18);
+            this.label130.TabIndex = 93;
+            this.label130.Text = "最小値：";
             // 
-            // label97
+            // label127
             // 
-            this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(227, 48);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(71, 18);
-            this.label97.TabIndex = 65;
-            this.label97.Text = "label97";
+            this.label127.AutoSize = true;
+            this.label127.Location = new System.Drawing.Point(141, 221);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(80, 18);
+            this.label127.TabIndex = 92;
+            this.label127.Text = "label127";
             // 
-            // label98
+            // label128
             // 
-            this.label98.AutoSize = true;
-            this.label98.Location = new System.Drawing.Point(323, 48);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(71, 18);
-            this.label98.TabIndex = 64;
-            this.label98.Text = "label98";
+            this.label128.AutoSize = true;
+            this.label128.Location = new System.Drawing.Point(55, 221);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(80, 18);
+            this.label128.TabIndex = 91;
+            this.label128.Text = "最大値：";
             // 
-            // label99
+            // label117
             // 
-            this.label99.AutoSize = true;
-            this.label99.Location = new System.Drawing.Point(427, 48);
-            this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(71, 18);
-            this.label99.TabIndex = 63;
-            this.label99.Text = "label99";
+            this.label117.AutoSize = true;
+            this.label117.Location = new System.Drawing.Point(888, 224);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(80, 18);
+            this.label117.TabIndex = 90;
+            this.label117.Text = "label117";
             // 
-            // label100
+            // label118
             // 
-            this.label100.AutoSize = true;
-            this.label100.Location = new System.Drawing.Point(534, 48);
-            this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(80, 18);
-            this.label100.TabIndex = 72;
-            this.label100.Text = "label100";
+            this.label118.AutoSize = true;
+            this.label118.Location = new System.Drawing.Point(729, 224);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(152, 18);
+            this.label118.TabIndex = 89;
+            this.label118.Text = "每片获取数据数：";
             // 
-            // label101
+            // button8
             // 
-            this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(624, 48);
-            this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(80, 18);
-            this.label101.TabIndex = 71;
-            this.label101.Text = "label101";
+            this.button8.Location = new System.Drawing.Point(1034, 171);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(113, 48);
+            this.button8.TabIndex = 88;
+            this.button8.Text = "修改个数";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // label102
+            // ucTrackBar1
             // 
-            this.label102.AutoSize = true;
-            this.label102.Location = new System.Drawing.Point(718, 48);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(80, 18);
-            this.label102.TabIndex = 70;
-            this.label102.Text = "label102";
+            this.ucTrackBar1.DcimalDigits = 1;
+            this.ucTrackBar1.IsShowTips = true;
+            this.ucTrackBar1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
+            this.ucTrackBar1.LineWidth = 10F;
+            this.ucTrackBar1.Location = new System.Drawing.Point(652, 174);
+            this.ucTrackBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.ucTrackBar1.MaxValue = 20F;
+            this.ucTrackBar1.MinValue = 1F;
+            this.ucTrackBar1.Name = "ucTrackBar1";
+            this.ucTrackBar1.Size = new System.Drawing.Size(375, 45);
+            this.ucTrackBar1.TabIndex = 87;
+            this.ucTrackBar1.Text = "ucTrackBar1";
+            this.ucTrackBar1.TipsFormat = "0";
+            this.ucTrackBar1.Value = 12F;
+            this.ucTrackBar1.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             // 
-            // label103
+            // button5
             // 
-            this.label103.AutoSize = true;
-            this.label103.Location = new System.Drawing.Point(814, 48);
-            this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(80, 18);
-            this.label103.TabIndex = 69;
-            this.label103.Text = "label103";
+            this.button5.Location = new System.Drawing.Point(279, 151);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(113, 48);
+            this.button5.TabIndex = 86;
+            this.button5.Text = "停止测量";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // label104
+            // button4
             // 
-            this.label104.AutoSize = true;
-            this.label104.Location = new System.Drawing.Point(918, 48);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(80, 18);
-            this.label104.TabIndex = 68;
-            this.label104.Text = "label104";
+            this.button4.Location = new System.Drawing.Point(138, 151);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(113, 48);
+            this.button4.TabIndex = 85;
+            this.button4.Text = "开始测量";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // label105
+            // label116
             // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(43, 114);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(80, 18);
-            this.label105.TabIndex = 77;
-            this.label105.Text = "label105";
+            this.label116.AutoSize = true;
+            this.label116.Location = new System.Drawing.Point(523, 174);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(80, 18);
+            this.label116.TabIndex = 84;
+            this.label116.Text = "label116";
             // 
-            // label106
+            // label115
             // 
-            this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(133, 114);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(80, 18);
-            this.label106.TabIndex = 76;
-            this.label106.Text = "label106";
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(227, 114);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(80, 18);
-            this.label107.TabIndex = 75;
-            this.label107.Text = "label107";
-            // 
-            // label108
-            // 
-            this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(323, 114);
-            this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(80, 18);
-            this.label108.TabIndex = 74;
-            this.label108.Text = "label108";
-            // 
-            // label109
-            // 
-            this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(427, 114);
-            this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(80, 18);
-            this.label109.TabIndex = 73;
-            this.label109.Text = "label109";
+            this.label115.AutoSize = true;
+            this.label115.Location = new System.Drawing.Point(427, 174);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(80, 18);
+            this.label115.TabIndex = 83;
+            this.label115.Text = "平均値：";
             // 
             // label110
             // 
@@ -1871,229 +1974,334 @@
             this.label114.TabIndex = 78;
             this.label114.Text = "label114";
             // 
-            // label115
+            // label105
             // 
-            this.label115.AutoSize = true;
-            this.label115.Location = new System.Drawing.Point(427, 174);
-            this.label115.Name = "label115";
-            this.label115.Size = new System.Drawing.Size(80, 18);
-            this.label115.TabIndex = 83;
-            this.label115.Text = "平均値：";
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(43, 114);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(80, 18);
+            this.label105.TabIndex = 77;
+            this.label105.Text = "label105";
             // 
-            // label116
+            // label106
             // 
-            this.label116.AutoSize = true;
-            this.label116.Location = new System.Drawing.Point(523, 174);
-            this.label116.Name = "label116";
-            this.label116.Size = new System.Drawing.Size(80, 18);
-            this.label116.TabIndex = 84;
-            this.label116.Text = "label116";
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(133, 114);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(80, 18);
+            this.label106.TabIndex = 76;
+            this.label106.Text = "label106";
             // 
-            // button4
+            // label107
             // 
-            this.button4.Location = new System.Drawing.Point(138, 151);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 48);
-            this.button4.TabIndex = 85;
-            this.button4.Text = "开始测量";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(227, 114);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(80, 18);
+            this.label107.TabIndex = 75;
+            this.label107.Text = "label107";
             // 
-            // button5
+            // label108
             // 
-            this.button5.Location = new System.Drawing.Point(279, 151);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(113, 48);
-            this.button5.TabIndex = 86;
-            this.button5.Text = "停止测量";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(323, 114);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(80, 18);
+            this.label108.TabIndex = 74;
+            this.label108.Text = "label108";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Location = new System.Drawing.Point(427, 114);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(80, 18);
+            this.label109.TabIndex = 73;
+            this.label109.Text = "label109";
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Location = new System.Drawing.Point(534, 48);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(80, 18);
+            this.label100.TabIndex = 72;
+            this.label100.Text = "label100";
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(624, 48);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(80, 18);
+            this.label101.TabIndex = 71;
+            this.label101.Text = "label101";
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(718, 48);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(80, 18);
+            this.label102.TabIndex = 70;
+            this.label102.Text = "label102";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(814, 48);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(80, 18);
+            this.label103.TabIndex = 69;
+            this.label103.Text = "label103";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(918, 48);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(80, 18);
+            this.label104.TabIndex = 68;
+            this.label104.Text = "label104";
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(43, 48);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(71, 18);
+            this.label95.TabIndex = 67;
+            this.label95.Text = "label95";
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(133, 48);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(71, 18);
+            this.label96.TabIndex = 66;
+            this.label96.Text = "label96";
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(427, 48);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(71, 18);
+            this.label99.TabIndex = 63;
+            this.label99.Text = "label99";
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(227, 48);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(71, 18);
+            this.label97.TabIndex = 65;
+            this.label97.Text = "label97";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(323, 48);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(71, 18);
+            this.label98.TabIndex = 64;
+            this.label98.Text = "label98";
             // 
             // celiang_yihe_timer2
             // 
             this.celiang_yihe_timer2.Tick += new System.EventHandler(this.celiang_yihe_timer2_Tick);
             // 
-            // button6
+            // button9
             // 
-            this.button6.Location = new System.Drawing.Point(1097, 170);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(113, 48);
-            this.button6.TabIndex = 88;
-            this.button6.Text = "停止测量";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button9.Location = new System.Drawing.Point(47, 39);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(151, 54);
+            this.button9.TabIndex = 63;
+            this.button9.Text = "连接";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // button7
+            // tabControl1
             // 
-            this.button7.Location = new System.Drawing.Point(956, 170);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(113, 48);
-            this.button7.TabIndex = 87;
-            this.button7.Text = "开始测量";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(758, 494);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1377, 745);
+            this.tabControl1.TabIndex = 64;
             // 
-            // ucTrackBar1
+            // tabPage1
             // 
-            this.ucTrackBar1.DcimalDigits = 1;
-            this.ucTrackBar1.IsShowTips = true;
-            this.ucTrackBar1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(231)))), ((int)(((byte)(237)))));
-            this.ucTrackBar1.LineWidth = 10F;
-            this.ucTrackBar1.Location = new System.Drawing.Point(652, 174);
-            this.ucTrackBar1.Margin = new System.Windows.Forms.Padding(4);
-            this.ucTrackBar1.MaxValue = 20F;
-            this.ucTrackBar1.MinValue = 1F;
-            this.ucTrackBar1.Name = "ucTrackBar1";
-            this.ucTrackBar1.Size = new System.Drawing.Size(375, 45);
-            this.ucTrackBar1.TabIndex = 87;
-            this.ucTrackBar1.Text = "ucTrackBar1";
-            this.ucTrackBar1.TipsFormat = "0";
-            this.ucTrackBar1.Value = 12F;
-            this.ucTrackBar1.ValueColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.tabPage1.Controls.Add(this.groupBox5);
+            this.tabPage1.Controls.Add(this.groupBox6);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1441, 713);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "测量测试";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // tabPage2
             // 
-            this.button8.Location = new System.Drawing.Point(1034, 171);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(113, 48);
-            this.button8.TabIndex = 88;
-            this.button8.Text = "修改个数";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.tabPage2.Controls.Add(this.tabControl2);
+            this.tabPage2.Controls.Add(this.button9);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1369, 713);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "数据库测试";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label117
+            // button10
             // 
-            this.label117.AutoSize = true;
-            this.label117.Location = new System.Drawing.Point(888, 224);
-            this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(80, 18);
-            this.label117.TabIndex = 90;
-            this.label117.Text = "label117";
+            this.button10.Location = new System.Drawing.Point(53, 21);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(129, 54);
+            this.button10.TabIndex = 65;
+            this.button10.Text = "确定";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // label118
+            // button11
             // 
-            this.label118.AutoSize = true;
-            this.label118.Location = new System.Drawing.Point(729, 224);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(152, 18);
-            this.label118.TabIndex = 89;
-            this.label118.Text = "每片获取数据数：";
+            this.button11.Location = new System.Drawing.Point(53, 21);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(129, 54);
+            this.button11.TabIndex = 66;
+            this.button11.Text = "确定";
+            this.button11.UseVisualStyleBackColor = true;
             // 
-            // label119
+            // button12
             // 
-            this.label119.AutoSize = true;
-            this.label119.Location = new System.Drawing.Point(79, 232);
-            this.label119.Name = "label119";
-            this.label119.Size = new System.Drawing.Size(80, 18);
-            this.label119.TabIndex = 90;
-            this.label119.Text = "最大值：";
+            this.button12.Location = new System.Drawing.Point(53, 21);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(129, 54);
+            this.button12.TabIndex = 67;
+            this.button12.Text = "确定";
+            this.button12.UseVisualStyleBackColor = true;
             // 
-            // label120
+            // button13
             // 
-            this.label120.AutoSize = true;
-            this.label120.Location = new System.Drawing.Point(169, 232);
-            this.label120.Name = "label120";
-            this.label120.Size = new System.Drawing.Size(80, 18);
-            this.label120.TabIndex = 89;
-            this.label120.Text = "label120";
+            this.button13.Location = new System.Drawing.Point(53, 21);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(129, 54);
+            this.button13.TabIndex = 68;
+            this.button13.Text = "确定";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // label121
+            // richTextBox1
             // 
-            this.label121.AutoSize = true;
-            this.label121.Location = new System.Drawing.Point(79, 271);
-            this.label121.Name = "label121";
-            this.label121.Size = new System.Drawing.Size(80, 18);
-            this.label121.TabIndex = 92;
-            this.label121.Text = "最小值：";
+            this.richTextBox1.Location = new System.Drawing.Point(43, 739);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(678, 425);
+            this.richTextBox1.TabIndex = 65;
+            this.richTextBox1.Text = "";
             // 
-            // label122
+            // tabControl2
             // 
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(169, 271);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(80, 18);
-            this.label122.TabIndex = 91;
-            this.label122.Text = "label122";
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Location = new System.Drawing.Point(42, 99);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1225, 584);
+            this.tabControl2.TabIndex = 69;
             // 
-            // label123
+            // tabPage3
             // 
-            this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(326, 232);
-            this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(80, 18);
-            this.label123.TabIndex = 94;
-            this.label123.Text = "平均値：";
+            this.tabPage3.Controls.Add(this.button10);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1217, 552);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "增";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label124
+            // tabPage4
             // 
-            this.label124.AutoSize = true;
-            this.label124.Location = new System.Drawing.Point(416, 232);
-            this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(80, 18);
-            this.label124.TabIndex = 93;
-            this.label124.Text = "label124";
+            this.tabPage4.Controls.Add(this.button11);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1217, 552);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "删";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label125
+            // tabPage5
             // 
-            this.label125.AutoSize = true;
-            this.label125.Location = new System.Drawing.Point(326, 271);
-            this.label125.Name = "label125";
-            this.label125.Size = new System.Drawing.Size(44, 18);
-            this.label125.TabIndex = 96;
-            this.label125.Text = "偏差";
+            this.tabPage5.Controls.Add(this.button12);
+            this.tabPage5.Location = new System.Drawing.Point(4, 28);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1217, 552);
+            this.tabPage5.TabIndex = 2;
+            this.tabPage5.Text = "改";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label126
+            // tabPage6
             // 
-            this.label126.AutoSize = true;
-            this.label126.Location = new System.Drawing.Point(416, 271);
-            this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(80, 18);
-            this.label126.TabIndex = 95;
-            this.label126.Text = "label126";
+            this.tabPage6.Controls.Add(this.label132);
+            this.tabPage6.Controls.Add(this.label131);
+            this.tabPage6.Controls.Add(this.textBox27);
+            this.tabPage6.Controls.Add(this.textBox26);
+            this.tabPage6.Controls.Add(this.button13);
+            this.tabPage6.Location = new System.Drawing.Point(4, 28);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1217, 552);
+            this.tabPage6.TabIndex = 3;
+            this.tabPage6.Text = "查";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label127
+            // textBox26
             // 
-            this.label127.AutoSize = true;
-            this.label127.Location = new System.Drawing.Point(141, 221);
-            this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(80, 18);
-            this.label127.TabIndex = 92;
-            this.label127.Text = "label127";
+            this.textBox26.Location = new System.Drawing.Point(158, 108);
+            this.textBox26.Multiline = true;
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(109, 42);
+            this.textBox26.TabIndex = 69;
             // 
-            // label128
+            // textBox27
             // 
-            this.label128.AutoSize = true;
-            this.label128.Location = new System.Drawing.Point(55, 221);
-            this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(80, 18);
-            this.label128.TabIndex = 91;
-            this.label128.Text = "最大値：";
+            this.textBox27.Location = new System.Drawing.Point(158, 201);
+            this.textBox27.Multiline = true;
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(109, 42);
+            this.textBox27.TabIndex = 70;
             // 
-            // label129
+            // label131
             // 
-            this.label129.AutoSize = true;
-            this.label129.Location = new System.Drawing.Point(362, 221);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(80, 18);
-            this.label129.TabIndex = 94;
-            this.label129.Text = "label129";
+            this.label131.AutoSize = true;
+            this.label131.Location = new System.Drawing.Point(107, 120);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(26, 18);
+            this.label131.TabIndex = 8;
+            this.label131.Text = "id";
             // 
-            // label130
+            // label132
             // 
-            this.label130.AutoSize = true;
-            this.label130.Location = new System.Drawing.Point(276, 221);
-            this.label130.Name = "label130";
-            this.label130.Size = new System.Drawing.Size(80, 18);
-            this.label130.TabIndex = 93;
-            this.label130.Text = "最小値：";
+            this.label132.AutoSize = true;
+            this.label132.Location = new System.Drawing.Point(109, 213);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(44, 18);
+            this.label132.TabIndex = 71;
+            this.label132.Text = "name";
             // 
             // TestPLC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2193, 1220);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
+            this.ClientSize = new System.Drawing.Size(2154, 1280);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox14);
             this.Controls.Add(this.textBox15);
             this.Controls.Add(this.textBox16);
@@ -2154,6 +2362,15 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2355,6 +2572,24 @@
         private System.Windows.Forms.Label label130;
         private System.Windows.Forms.Label label127;
         private System.Windows.Forms.Label label128;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Label label132;
+        private System.Windows.Forms.Label label131;
+        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox textBox26;
     }
 }
 

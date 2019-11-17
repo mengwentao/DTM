@@ -37,6 +37,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\HZH_Controls.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>dll\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

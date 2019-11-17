@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Net;
 using HZH_Controls;
+using MySql.Data.MySqlClient;
 
 //modbus格式说明
 //https://blog.csdn.net/weixin_33788244/article/details/86003757
@@ -33,6 +34,8 @@ namespace TestPLC
         static int per_len = 10;//整盒测量时，每个盘片获取数据量，范围是1-25
         int total_len = 5 * per_len;
         int test_per_len = 10;//测试单片时，盘片获取的数据量，范围是1-20；
+        static string connetStr = "server=106.12.3.103;port=3501;user=root;password=MysqlPassword; database=DTM;MultipleActiveResultSets=True";
+        MySqlConnection conn = new MySqlConnection(connetStr);
         public delegate void MyInvoke(string str);
         List<Label> La = new List<Label>();
         List<Label> La1 = new List<Label>();
@@ -60,6 +63,27 @@ namespace TestPLC
         private void button1_Click(object sender, EventArgs e)
         {
             Connect();
+        }
+        /// <summary>
+        /// 测试远程mysql连接
+        /// </summary>
+        public void Mysql_init()
+        {
+            try
+            {
+                conn.Open();//打开通道，建立连接，可能出现异常,使用try catch语句
+               
+                richTextBox1.AppendText("数据库已经建立连接" + "\r\n");
+            }           
+            catch(MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                conn.Close();
+            }
+            finally
+            {
+                //
+            }
         }
         public void DT_lable()
         {
@@ -799,6 +823,65 @@ namespace TestPLC
         private void button8_Click(object sender, EventArgs e)
         {
            test_per_len = Convert.ToInt16( ucTrackBar1.Value);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Mysql_init();
+        }
+
+        /// <summary>
+        /// mysql增加行
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string id = "2";
+            string name = "Jack";
+            string sql =String.Format( "insert into test_table(id,name) values('{0}','{1}');",id,name);
+            
+            richTextBox1.AppendText(sql + "\r\n");
+            try
+            {
+                MySqlCommand sqlInsert = new MySqlCommand(sql, conn);
+                int result = sqlInsert.ExecuteNonQuery();//3.执行插入、删除、更改语句。执行成功返回受影响的数据的行数，返回1可做true判断。执行失败不返回任何数据，报错，
+                if (result == 1)
+                {
+                   richTextBox1.AppendText("增加成功" + "\r\n");
+                }
+            }
+            catch(MySqlException ex)
+            {
+                richTextBox1.AppendText(ex.Message + "\r\n");
+            }
+           
+            
+        }
+
+        /// <summary>
+        /// mysql查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string id = textBox26.Text;
+            string name = textBox27.Text;
+            
+            //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
+            string sql = "select * from test_table where id= @para1 and name = @para2";//在sql语句中定义parameter，然后再给parameter赋值
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("para1", id);
+            cmd.Parameters.AddWithValue("para2", name);
+
+            MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+            while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
+            {                
+               richTextBox1.AppendText(reader.GetString("id") + "    "+reader.GetString("name") + "\r\n");
+            }
+            
         }
     }
 }
