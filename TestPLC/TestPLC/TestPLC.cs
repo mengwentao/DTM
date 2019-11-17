@@ -34,8 +34,8 @@ namespace TestPLC
         static int per_len = 10;//整盒测量时，每个盘片获取数据量，范围是1-25
         int total_len = 5 * per_len;
         int test_per_len = 10;//测试单片时，盘片获取的数据量，范围是1-20；
-        static string connetStr = "server=106.12.3.103;port=3501;user=root;password=MysqlPassword; database=DTM;MultipleActiveResultSets=True";
-        MySqlConnection conn = new MySqlConnection(connetStr);
+        static string connetStr = "server=106.12.3.103;port=3501;user=root;password=MysqlPassword; database=DTM";
+        MySqlConnection conn =null;
         public delegate void MyInvoke(string str);
         List<Label> La = new List<Label>();
         List<Label> La1 = new List<Label>();
@@ -71,9 +71,14 @@ namespace TestPLC
         {
             try
             {
-                conn.Open();//打开通道，建立连接，可能出现异常,使用try catch语句
+                if (conn == null)
+                {
+                    conn = new MySqlConnection(connetStr);
+                    conn.Open();//打开通道，建立连接，可能出现异常,使用try catch语句
+
+                    richTextBox1.AppendText("数据库已经建立连接" + "\r\n");
+                }
                
-                richTextBox1.AppendText("数据库已经建立连接" + "\r\n");
             }           
             catch(MySqlException ex)
             {
@@ -868,19 +873,35 @@ namespace TestPLC
         {
             string id = textBox26.Text;
             string name = textBox27.Text;
-            
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
             //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
             string sql = "select * from test_table where id= @para1 and name = @para2";//在sql语句中定义parameter，然后再给parameter赋值
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-            cmd.Parameters.AddWithValue("para1", id);
-            cmd.Parameters.AddWithValue("para2", name);
-
-            MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
-            while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
-            {                
-               richTextBox1.AppendText(reader.GetString("id") + "    "+reader.GetString("name") + "\r\n");
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("para1", id);
+                cmd.Parameters.AddWithValue("para2", name);
+                MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+                while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
+                {
+                    richTextBox1.AppendText(reader.GetString("id") + "    " + reader.GetString("name") + "\r\n");
+                }
+               
             }
+            if (conn != null || conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+                
+            }
+           
+           
+            
             
         }
     }
