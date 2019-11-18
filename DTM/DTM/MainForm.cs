@@ -338,7 +338,7 @@ namespace DTM
             }
         }
         private void Run()
-        {
+        {   //向数据库保存当前所有盒子的信息
             while (true)
             {   
                 List<BoxState> list = BoxState.list;
