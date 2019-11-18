@@ -31,7 +31,7 @@ namespace DTM
             public bool measureState = false;//盒子测量通过状态
             public bool pastmeasureState = false;//盒子是否换料过
             public static int boxCount=0;//盒子抽检数目
-            public bool chooseFlag = false;//是否需要抽检
+            public bool chooseFlag = false;//是否被抽检到
             public int boxId;//盒子id
             public int barCode;//条形码
             public int standard_pan_thickness;//盘片厚度（标准）
@@ -140,7 +140,7 @@ namespace DTM
                 Thread.Sleep(100);
                 registerBuffer = master.ReadHoldingRegisters(slaveAddress, startAddress, numberOfPoints);
                 int temp = 0;                
-                //todo 得到的数组转化为float
+               
                 measure_pan_thickness[i] = temp;
                 if (temp < standard_pan_thickness * 0.9 || temp > standard_pan_thickness * 1.1)//+-10%误差
                 {
