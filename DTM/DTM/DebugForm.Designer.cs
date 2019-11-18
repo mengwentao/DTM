@@ -221,6 +221,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.debugControl1 = new DTM.UC.DebugControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.groupBox74 = new System.Windows.Forms.GroupBox();
@@ -965,7 +966,6 @@
             this.plc_cunzaihezguzhang_timer1 = new System.Windows.Forms.Timer(this.components);
             this.plc2_zhuangtai_timer1 = new System.Windows.Forms.Timer(this.components);
             this.plc2_cunzaiheguzhangtimer1 = new System.Windows.Forms.Timer(this.components);
-            this.debugControl1 = new DTM.UC.DebugControl();
             this.pictureBox319 = new System.Windows.Forms.PictureBox();
             this.pictureBox320 = new System.Windows.Forms.PictureBox();
             this.button158 = new System.Windows.Forms.Button();
@@ -3700,6 +3700,7 @@
             this.GD1.Size = new System.Drawing.Size(25, 22);
             this.GD1.TabIndex = 9;
             this.GD1.TabStop = false;
+            this.GD1.Click += new System.EventHandler(this.GD1_Click);
             // 
             // GD9
             // 
@@ -3782,6 +3783,14 @@
             this.label11.Size = new System.Drawing.Size(43, 22);
             this.label11.TabIndex = 50;
             this.label11.Text = "GD1";
+            // 
+            // debugControl1
+            // 
+            this.debugControl1.Location = new System.Drawing.Point(360, 161);
+            this.debugControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.debugControl1.Name = "debugControl1";
+            this.debugControl1.Size = new System.Drawing.Size(5, 5);
+            this.debugControl1.TabIndex = 5;
             // 
             // tabPage2
             // 
@@ -5010,7 +5019,7 @@
             this.groupBox18.Controls.Add(this.pictureBox9);
             this.groupBox18.Controls.Add(this.pictureBox10);
             this.groupBox18.Controls.Add(this.pictureBox11);
-            this.groupBox18.Location = new System.Drawing.Point(23, -9691);
+            this.groupBox18.Location = new System.Drawing.Point(23, -9949);
             this.groupBox18.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Padding = new System.Windows.Forms.Padding(2);
@@ -6534,7 +6543,7 @@
             this.groupBox26.Controls.Add(this.label87);
             this.groupBox26.Controls.Add(this.pictureBox66);
             this.groupBox26.Controls.Add(this.pictureBox69);
-            this.groupBox26.Location = new System.Drawing.Point(15, -9683);
+            this.groupBox26.Location = new System.Drawing.Point(15, -9941);
             this.groupBox26.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox26.Name = "groupBox26";
             this.groupBox26.Padding = new System.Windows.Forms.Padding(2);
@@ -8037,7 +8046,7 @@
             this.groupBox41.Controls.Add(this.label99);
             this.groupBox41.Controls.Add(this.pictureBox92);
             this.groupBox41.Controls.Add(this.pictureBox93);
-            this.groupBox41.Location = new System.Drawing.Point(17, -9673);
+            this.groupBox41.Location = new System.Drawing.Point(17, -9931);
             this.groupBox41.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox41.Name = "groupBox41";
             this.groupBox41.Padding = new System.Windows.Forms.Padding(2);
@@ -9316,7 +9325,7 @@
             this.groupBox51.Controls.Add(this.pictureBox115);
             this.groupBox51.Controls.Add(this.pictureBox118);
             this.groupBox51.Controls.Add(this.pictureBox119);
-            this.groupBox51.Location = new System.Drawing.Point(23, -9679);
+            this.groupBox51.Location = new System.Drawing.Point(23, -9937);
             this.groupBox51.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox51.Name = "groupBox51";
             this.groupBox51.Padding = new System.Windows.Forms.Padding(2);
@@ -11155,7 +11164,7 @@
             this.groupBox61.Controls.Add(this.label149);
             this.groupBox61.Controls.Add(this.pictureBox144);
             this.groupBox61.Controls.Add(this.pictureBox145);
-            this.groupBox61.Location = new System.Drawing.Point(23, -9679);
+            this.groupBox61.Location = new System.Drawing.Point(23, -9937);
             this.groupBox61.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox61.Name = "groupBox61";
             this.groupBox61.Padding = new System.Windows.Forms.Padding(2);
@@ -12795,14 +12804,6 @@
             // plc2_cunzaiheguzhangtimer1
             // 
             this.plc2_cunzaiheguzhangtimer1.Tick += new System.EventHandler(this.plc2_cunzaiheguzhangtimer1_Tick);
-            // 
-            // debugControl1
-            // 
-            this.debugControl1.Location = new System.Drawing.Point(360, 161);
-            this.debugControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.debugControl1.Name = "debugControl1";
-            this.debugControl1.Size = new System.Drawing.Size(5, 5);
-            this.debugControl1.TabIndex = 5;
             // 
             // pictureBox319
             // 

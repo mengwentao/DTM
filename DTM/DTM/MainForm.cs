@@ -7,9 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using CCWin;
 using System.IO;
 using HZH_Controls.Controls;
+using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace DTM
 {
@@ -19,6 +22,11 @@ namespace DTM
         DataTable dt = new DataTable();
         int q = 0;//定义合格产品数量
         int uq = 0;//定义不合格产品数数量
+        public static int boxId = 0;//盒子id
+        public int barCode = 0;//条形码
+        public int standard_pan_thickness = 0;//盘片厚度（标准） 
+        string connStr = ConfigurationManager.ConnectionStrings["str"].ConnectionString;
+        bool flag = false;
         
 
         public MainForm()
@@ -248,6 +256,169 @@ namespace DTM
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ucBtnExt17_BtnClick(object sender, EventArgs e)
+        {   //故障后重新运行            
+            using (MySqlConnection con = new MySqlConnection(connStr))
+            {
+                int number = 0;
+                string sql = "SELECT Count(*) As MyCount FROM preventdisaster";
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                {
+                    //打开数据库
+                    con.Open();
+                    //使用 SqlDataReader 来 读取数据库
+                    using (MySqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        if (sdr.Read()) //如果读取账户成功(文本框中的用户名在数据库中存在)
+                        {
+                            //SqlDataReader 在数据库中为 从第1条数据开始 一条一条往下读                       
+                             number = sdr.GetInt16(0);
+                        }
+                    }
+                }               
+                if (number != 0)
+                {
+                    sql = "select * from preventdisaster";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        //打开数据库
+                        con.Open();
+                        //使用 SqlDataReader 来 读取数据库
+                        using (MySqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            while (sdr.Read()) //如果读取账户成功(文本框中的用户名在数据库中存在)
+                            {
+                                BoxState boxState = new BoxState(sdr.GetInt16("positionState"), sdr.GetInt16("barCode"), sdr.GetInt16("boxId"));
+                                int testFlag = sdr.GetInt16("measureState");
+                                boxState.measureState = testFlag == 0 ? false : true;
+                                BoxState.boxCount = sdr.GetInt16("boxCount");
+                                testFlag= sdr.GetInt16("chooseFlag");
+                                boxState.chooseFlag = testFlag == 0 ? false : true;
+                                boxState.standard_pan_thickness = sdr.GetInt16("standardpanthickness");
+                                String teststring;
+                                if (!sdr.IsDBNull(8))
+                                {
+                                     teststring = sdr.GetString("InList");                                   
+                                    for(int i = 0; i < teststring.Length; i++)
+                                    {
+                                        BoxState.InList.Add(teststring.Substring(i, 1) == "0" ? 0 : 1);
+                                    }
+                                }
+                                teststring = sdr.GetString("measurepanthicknessflag");
+                                for (int i = 0; i < teststring.Length; i++)
+                                {
+                                    boxState.measure_pan_thickness_flag[i]=(teststring.Substring(i, 1) == "0" ? false : true);
+                                }
+                                teststring= sdr.GetString("measurepanthickness");
+                                string[] teststrings = teststring.Split(',');
+                                for(int i = 0; i < teststring.Length; i++)
+                                {
+                                    boxState.measure_pan_thickness[i]= Convert.ToInt16(teststrings[i]); 
+                                }
+                                new Thread(boxState.Run).Start();
+                                Thread.Sleep(10);
+                            }
+                        }
+                    }
+                }
+            }
+            Thread.Sleep(100);
+            new Thread(Run).Start();
+            while (true)
+            {
+                while (!flag) { }
+                //扫码枪扫码完成(获得条形码和标准盘片数据)
+                boxId = BoxState.InList.Last()+1;
+                boxId = boxId > 50 ? 0 : boxId;//50保证了运行在系统上的盒子ID是不重复的
+                new Thread(new BoxState(this.standard_pan_thickness, this.barCode, boxId).Run).Start();
+                boxId++;
+                flag = false;
+            }
+        }
+        private void Run()
+        {
+            while (true)
+            {   
+                List<BoxState> list = BoxState.list;
+                int count = list.Count();
+                if (count != 0)
+                {
+                     using (MySqlConnection con = new MySqlConnection(connStr))
+                    {
+                        con.Open();
+                        MySqlTransaction transaction = con.BeginTransaction();
+                        MySqlCommand cmd = new MySqlCommand();
+                        cmd.Connection = con;
+                        cmd.Transaction = transaction;                        
+                        try
+                        {   string sql = "delete from preventdisaster";
+                            cmd.CommandText = sql;
+                            cmd.ExecuteNonQuery();
+                            foreach (BoxState box_state in list)
+                            {   String value = "";
+                                String value1 = "";
+                                String value2 = "";
+                                for (int i=0;i< box_state.measure_pan_thickness.Length-1; i++)
+                                {
+                                    value += "" + box_state.measure_pan_thickness[i] + ",";
+                                }
+                                value += "" + box_state.measure_pan_thickness[24];
+                                for (int i = 0; i < box_state.measure_pan_thickness_flag.Length; i++)
+                                {
+                                    value1 += "" + (box_state.measure_pan_thickness_flag[i]==false?0:1);
+                                }
+                                for (int i = 0; i < BoxState.InList.Count; i++)
+                                {
+                                    value2 += "" + BoxState.InList[i];
+                                }
+                                sql = string.Format("insert into preventdisaster(positionState, measureState, boxCount,chooseFlag,boxId,barCode,measurepanthickness,measurepanthicknessflag,InList,standardpanthickness)values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", box_state.positionState, box_state.measureState==false?0:1, BoxState.boxCount, box_state.chooseFlag==false?0:1, box_state.boxId, box_state.barCode,value,value1,value2,box_state.standard_pan_thickness);
+                                cmd.CommandText = sql;
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            transaction.Rollback();//事务ExecuteNonQuery()执行失败报错，username被设置unique
+                            con.Close();
+                        }
+                        finally
+                        {
+                            if (con.State != ConnectionState.Closed)
+                            {
+                                transaction.Commit();//事务要么回滚要么提交，即Rollback()与Commit()只能执行一个
+                                con.Close();
+                            }
+                        }
+                    }
+                }               
+                    foreach (BoxState box_state in list)
+                {
+                    if (box_state.positionState == 1)
+                    {
+                        //todo得到数据填充到前端界面
+                    }
+                    if (box_state.positionState == 2)
+                    {
+                        //todo得到数据填充到前端界面
+                    }
+                    if (box_state.positionState == 3)
+                    {
+                        //todo得到数据填充到前端界面
+                    }
+                }
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {    //扫码枪触发事件
+            flag = true;
         }
     }
 }

@@ -117,6 +117,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.button27 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -138,11 +139,11 @@
             this.ucledNums2.Font = new System.Drawing.Font("楷体", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ucledNums2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
             this.ucledNums2.LineWidth = 5;
-            this.ucledNums2.Location = new System.Drawing.Point(132, 131);
-            this.ucledNums2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ucledNums2.Location = new System.Drawing.Point(176, 164);
+            this.ucledNums2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucledNums2.Name = "ucledNums2";
             this.ucledNums2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ucledNums2.Size = new System.Drawing.Size(184, 39);
+            this.ucledNums2.Size = new System.Drawing.Size(245, 49);
             this.ucledNums2.TabIndex = 47;
             this.ucledNums2.Value = "1.722";
             // 
@@ -150,10 +151,9 @@
             // 
             this.cur_measure_lable.AutoSize = true;
             this.cur_measure_lable.Font = new System.Drawing.Font("宋体", 18F);
-            this.cur_measure_lable.Location = new System.Drawing.Point(24, 146);
-            this.cur_measure_lable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.cur_measure_lable.Location = new System.Drawing.Point(32, 182);
             this.cur_measure_lable.Name = "cur_measure_lable";
-            this.cur_measure_lable.Size = new System.Drawing.Size(106, 24);
+            this.cur_measure_lable.Size = new System.Drawing.Size(133, 30);
             this.cur_measure_lable.TabIndex = 0;
             this.cur_measure_lable.Text = "测量值：";
             // 
@@ -172,26 +172,27 @@
             this.ucBtnExt17.IsRadius = true;
             this.ucBtnExt17.IsShowRect = false;
             this.ucBtnExt17.IsShowTips = false;
-            this.ucBtnExt17.Location = new System.Drawing.Point(22, 81);
+            this.ucBtnExt17.Location = new System.Drawing.Point(29, 101);
             this.ucBtnExt17.Margin = new System.Windows.Forms.Padding(0);
             this.ucBtnExt17.Name = "ucBtnExt17";
             this.ucBtnExt17.RectColor = System.Drawing.Color.Gainsboro;
             this.ucBtnExt17.RectWidth = 1;
-            this.ucBtnExt17.Size = new System.Drawing.Size(106, 43);
+            this.ucBtnExt17.Size = new System.Drawing.Size(141, 54);
             this.ucBtnExt17.TabIndex = 18;
             this.ucBtnExt17.TabStop = false;
             this.ucBtnExt17.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
             this.ucBtnExt17.TipsText = "";
+            this.ucBtnExt17.BtnClick += new System.EventHandler(this.ucBtnExt17_BtnClick);
             // 
             // ucCurve1
             // 
             this.ucCurve1.ColorDashLines = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
             this.ucCurve1.IntervalAbscissaText = -1;
             this.ucCurve1.IsAbscissaStrech = true;
-            this.ucCurve1.Location = new System.Drawing.Point(43, 31);
-            this.ucCurve1.Margin = new System.Windows.Forms.Padding(2);
+            this.ucCurve1.Location = new System.Drawing.Point(57, 39);
+            this.ucCurve1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucCurve1.Name = "ucCurve1";
-            this.ucCurve1.Size = new System.Drawing.Size(1087, 386);
+            this.ucCurve1.Size = new System.Drawing.Size(1449, 482);
             this.ucCurve1.StrechDataCountMax = 25;
             this.ucCurve1.TabIndex = 19;
             this.ucCurve1.Title = "当前盒数据";
@@ -210,11 +211,11 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.ucBarChart3);
             this.groupBox2.Controls.Add(this.ucPieChart1);
-            this.groupBox2.Location = new System.Drawing.Point(14, 23);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(19, 29);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(1320, 393);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(1760, 491);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
@@ -222,60 +223,54 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(143, 179);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(191, 224);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 22);
+            this.label10.Size = new System.Drawing.Size(96, 27);
             this.label10.TabIndex = 9;
             this.label10.Text = "******";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(75, 179);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(100, 224);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 22);
+            this.label11.Size = new System.Drawing.Size(80, 27);
             this.label11.TabIndex = 8;
             this.label11.Text = "工号:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(143, 144);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(191, 180);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 22);
+            this.label8.Size = new System.Drawing.Size(96, 27);
             this.label8.TabIndex = 7;
             this.label8.Text = "******";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(54, 144);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(72, 180);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 22);
+            this.label9.Size = new System.Drawing.Size(107, 27);
             this.label9.TabIndex = 6;
             this.label9.Text = "操作员:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(143, 89);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(191, 111);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 22);
+            this.label7.Size = new System.Drawing.Size(96, 27);
             this.label7.TabIndex = 5;
             this.label7.Text = "******";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 89);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(100, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 22);
+            this.label2.Size = new System.Drawing.Size(80, 27);
             this.label2.TabIndex = 4;
             this.label2.Text = "班组:";
             // 
@@ -294,14 +289,14 @@
             this.ucBarChart3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
             this.ucBarChart3.IsRadius = false;
             this.ucBarChart3.IsShowRect = false;
-            this.ucBarChart3.Location = new System.Drawing.Point(611, 78);
-            this.ucBarChart3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ucBarChart3.Location = new System.Drawing.Point(815, 98);
+            this.ucBarChart3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.ucBarChart3.Name = "ucBarChart3";
             this.ucBarChart3.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.ucBarChart3.RectWidth = 1;
             this.ucBarChart3.ShowBarValueFormat = "{0}";
             this.ucBarChart3.ShowChartItemName = false;
-            this.ucBarChart3.Size = new System.Drawing.Size(669, 245);
+            this.ucBarChart3.Size = new System.Drawing.Size(892, 306);
             this.ucBarChart3.TabIndex = 3;
             this.ucBarChart3.Text = "ucBarChart1";
             this.ucBarChart3.Title = "测量数据分布";
@@ -321,10 +316,10 @@
         pieItem1,
         pieItem2};
             this.ucPieChart1.IsRenderPercent = true;
-            this.ucPieChart1.Location = new System.Drawing.Point(250, 89);
-            this.ucPieChart1.Margin = new System.Windows.Forms.Padding(2);
+            this.ucPieChart1.Location = new System.Drawing.Point(333, 111);
+            this.ucPieChart1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ucPieChart1.Name = "ucPieChart1";
-            this.ucPieChart1.Size = new System.Drawing.Size(355, 223);
+            this.ucPieChart1.Size = new System.Drawing.Size(473, 279);
             this.ucPieChart1.TabIndex = 2;
             this.ucPieChart1.TiTle = null;
             this.ucPieChart1.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
@@ -345,12 +340,12 @@
             this.ucBtnExt1.IsRadius = true;
             this.ucBtnExt1.IsShowRect = false;
             this.ucBtnExt1.IsShowTips = false;
-            this.ucBtnExt1.Location = new System.Drawing.Point(267, 81);
+            this.ucBtnExt1.Location = new System.Drawing.Point(356, 101);
             this.ucBtnExt1.Margin = new System.Windows.Forms.Padding(0);
             this.ucBtnExt1.Name = "ucBtnExt1";
             this.ucBtnExt1.RectColor = System.Drawing.Color.Gainsboro;
             this.ucBtnExt1.RectWidth = 1;
-            this.ucBtnExt1.Size = new System.Drawing.Size(106, 43);
+            this.ucBtnExt1.Size = new System.Drawing.Size(141, 54);
             this.ucBtnExt1.TabIndex = 19;
             this.ucBtnExt1.TabStop = false;
             this.ucBtnExt1.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
@@ -363,22 +358,22 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Font = new System.Drawing.Font("宋体", 16F);
-            this.tabControl1.Location = new System.Drawing.Point(8, 398);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl1.Location = new System.Drawing.Point(8, 500);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1429, 457);
+            this.tabControl1.Size = new System.Drawing.Size(1904, 571);
             this.tabControl1.TabIndex = 21;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Controls.Add(this.ucCurve1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 37);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(1421, 422);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1896, 530);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "测量数据";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -389,9 +384,11 @@
             this.groupBox8.Controls.Add(this.label19);
             this.groupBox8.Controls.Add(this.label18);
             this.groupBox8.Controls.Add(this.label1);
-            this.groupBox8.Location = new System.Drawing.Point(1150, 39);
+            this.groupBox8.Location = new System.Drawing.Point(1533, 49);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(244, 319);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox8.Size = new System.Drawing.Size(325, 399);
             this.groupBox8.TabIndex = 20;
             this.groupBox8.TabStop = false;
             // 
@@ -399,10 +396,9 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("宋体", 18F);
-            this.label21.Location = new System.Drawing.Point(17, 108);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Location = new System.Drawing.Point(23, 135);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(202, 24);
+            this.label21.Size = new System.Drawing.Size(253, 30);
             this.label21.TabIndex = 4;
             this.label21.Text = "已完成测量:200盒";
             // 
@@ -410,10 +406,9 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("宋体", 18F);
-            this.label19.Location = new System.Drawing.Point(43, 249);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Location = new System.Drawing.Point(57, 311);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(142, 24);
+            this.label19.Size = new System.Drawing.Size(178, 30);
             this.label19.TabIndex = 3;
             this.label19.Text = "合格率：99%";
             // 
@@ -421,10 +416,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("宋体", 18F);
-            this.label18.Location = new System.Drawing.Point(43, 201);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Location = new System.Drawing.Point(57, 251);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(130, 24);
+            this.label18.Size = new System.Drawing.Size(163, 30);
             this.label18.TabIndex = 2;
             this.label18.Text = "方差：0.12";
             // 
@@ -432,10 +426,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 18F);
-            this.label1.Location = new System.Drawing.Point(32, 153);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(43, 191);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 24);
+            this.label1.Size = new System.Drawing.Size(193, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "平均值:1.721";
             // 
@@ -446,18 +439,19 @@
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox6);
             this.tabPage3.Controls.Add(this.groupBox5);
-            this.tabPage3.Location = new System.Drawing.Point(4, 31);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 37);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1421, 422);
+            this.tabPage3.Size = new System.Drawing.Size(1896, 530);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "补料";
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(1062, 83);
+            this.button26.Location = new System.Drawing.Point(1416, 104);
+            this.button26.Margin = new System.Windows.Forms.Padding(4);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(126, 52);
+            this.button26.Size = new System.Drawing.Size(168, 65);
             this.button26.TabIndex = 103;
             this.button26.Text = "补料完成";
             this.button26.UseVisualStyleBackColor = true;
@@ -466,9 +460,11 @@
             // 
             this.groupBox7.Controls.Add(this.label4);
             this.groupBox7.Font = new System.Drawing.Font("宋体", 16F);
-            this.groupBox7.Location = new System.Drawing.Point(476, 28);
+            this.groupBox7.Location = new System.Drawing.Point(635, 35);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(347, 157);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox7.Size = new System.Drawing.Size(463, 196);
             this.groupBox7.TabIndex = 55;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "需要补料的盘片编号";
@@ -477,10 +473,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 18F);
-            this.label4.Location = new System.Drawing.Point(95, 72);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(127, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 24);
+            this.label4.Size = new System.Drawing.Size(178, 30);
             this.label4.TabIndex = 77;
             this.label4.Text = "1、5、8、10";
             // 
@@ -490,9 +485,11 @@
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Font = new System.Drawing.Font("宋体", 16F);
-            this.groupBox6.Location = new System.Drawing.Point(24, 28);
+            this.groupBox6.Location = new System.Drawing.Point(32, 35);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(394, 157);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(525, 196);
             this.groupBox6.TabIndex = 53;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "当前盒信息";
@@ -501,10 +498,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 18F);
-            this.label13.Location = new System.Drawing.Point(62, 100);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(83, 125);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(118, 24);
+            this.label13.Size = new System.Drawing.Size(148, 30);
             this.label13.TabIndex = 54;
             this.label13.Text = "**:******";
             // 
@@ -512,10 +508,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("宋体", 18F);
-            this.label16.Location = new System.Drawing.Point(62, 68);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Location = new System.Drawing.Point(83, 85);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(118, 24);
+            this.label16.Size = new System.Drawing.Size(148, 30);
             this.label16.TabIndex = 53;
             this.label16.Text = "**:******";
             // 
@@ -523,19 +518,20 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("宋体", 18F);
-            this.label17.Location = new System.Drawing.Point(38, 28);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Location = new System.Drawing.Point(51, 35);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(142, 24);
+            this.label17.Size = new System.Drawing.Size(178, 30);
             this.label17.TabIndex = 52;
             this.label17.Text = "编号:******";
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.panel1);
-            this.groupBox5.Location = new System.Drawing.Point(24, 191);
+            this.groupBox5.Location = new System.Drawing.Point(32, 239);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1381, 208);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(1841, 260);
             this.groupBox5.TabIndex = 93;
             this.groupBox5.TabStop = false;
             // 
@@ -566,34 +562,38 @@
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button10);
-            this.panel1.Location = new System.Drawing.Point(78, 50);
+            this.panel1.Location = new System.Drawing.Point(104, 62);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1230, 152);
+            this.panel1.Size = new System.Drawing.Size(1640, 190);
             this.panel1.TabIndex = 55;
             // 
             // button22
             // 
-            this.button22.Location = new System.Drawing.Point(1077, 69);
+            this.button22.Location = new System.Drawing.Point(1436, 86);
+            this.button22.Margin = new System.Windows.Forms.Padding(4);
             this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(87, 52);
+            this.button22.Size = new System.Drawing.Size(116, 65);
             this.button22.TabIndex = 102;
             this.button22.Text = "25";
             this.button22.UseVisualStyleBackColor = true;
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(148, 69);
+            this.button14.Location = new System.Drawing.Point(197, 86);
+            this.button14.Margin = new System.Windows.Forms.Padding(4);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(87, 52);
+            this.button14.Size = new System.Drawing.Size(116, 65);
             this.button14.TabIndex = 87;
             this.button14.Text = "15";
             this.button14.UseVisualStyleBackColor = true;
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(984, 69);
+            this.button23.Location = new System.Drawing.Point(1312, 86);
+            this.button23.Margin = new System.Windows.Forms.Padding(4);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(87, 52);
+            this.button23.Size = new System.Drawing.Size(116, 65);
             this.button23.TabIndex = 101;
             this.button23.Text = "24";
             this.button23.UseVisualStyleBackColor = true;
@@ -601,9 +601,10 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(8, 11);
+            this.button1.Location = new System.Drawing.Point(11, 14);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 52);
+            this.button1.Size = new System.Drawing.Size(116, 65);
             this.button1.TabIndex = 78;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = false;
@@ -611,99 +612,110 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(891, 69);
+            this.button24.Location = new System.Drawing.Point(1188, 86);
+            this.button24.Margin = new System.Windows.Forms.Padding(4);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(87, 52);
+            this.button24.Size = new System.Drawing.Size(116, 65);
             this.button24.TabIndex = 100;
             this.button24.Text = "23";
             this.button24.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(101, 11);
+            this.button2.Location = new System.Drawing.Point(135, 14);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 52);
+            this.button2.Size = new System.Drawing.Size(116, 65);
             this.button2.TabIndex = 79;
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button25
             // 
-            this.button25.Location = new System.Drawing.Point(798, 69);
+            this.button25.Location = new System.Drawing.Point(1064, 86);
+            this.button25.Margin = new System.Windows.Forms.Padding(4);
             this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(87, 52);
+            this.button25.Size = new System.Drawing.Size(116, 65);
             this.button25.TabIndex = 99;
             this.button25.Text = "22";
             this.button25.UseVisualStyleBackColor = true;
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(55, 69);
+            this.button15.Location = new System.Drawing.Point(73, 86);
+            this.button15.Margin = new System.Windows.Forms.Padding(4);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(87, 52);
+            this.button15.Size = new System.Drawing.Size(116, 65);
             this.button15.TabIndex = 86;
             this.button15.Text = "14";
             this.button15.UseVisualStyleBackColor = true;
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(706, 69);
+            this.button18.Location = new System.Drawing.Point(941, 86);
+            this.button18.Margin = new System.Windows.Forms.Padding(4);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(87, 52);
+            this.button18.Size = new System.Drawing.Size(116, 65);
             this.button18.TabIndex = 98;
             this.button18.Text = "21";
             this.button18.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(194, 11);
+            this.button4.Location = new System.Drawing.Point(259, 14);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 52);
+            this.button4.Size = new System.Drawing.Size(116, 65);
             this.button4.TabIndex = 80;
             this.button4.Text = "3";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(613, 69);
+            this.button19.Location = new System.Drawing.Point(817, 86);
+            this.button19.Margin = new System.Windows.Forms.Padding(4);
             this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(87, 52);
+            this.button19.Size = new System.Drawing.Size(116, 65);
             this.button19.TabIndex = 97;
             this.button19.Text = "20";
             this.button19.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(287, 11);
+            this.button3.Location = new System.Drawing.Point(383, 14);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 52);
+            this.button3.Size = new System.Drawing.Size(116, 65);
             this.button3.TabIndex = 81;
             this.button3.Text = "4";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(520, 69);
+            this.button20.Location = new System.Drawing.Point(693, 86);
+            this.button20.Margin = new System.Windows.Forms.Padding(4);
             this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(87, 52);
+            this.button20.Size = new System.Drawing.Size(116, 65);
             this.button20.TabIndex = 96;
             this.button20.Text = "19";
             this.button20.UseVisualStyleBackColor = true;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(1125, 11);
+            this.button13.Location = new System.Drawing.Point(1500, 14);
+            this.button13.Margin = new System.Windows.Forms.Padding(4);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(87, 52);
+            this.button13.Size = new System.Drawing.Size(116, 65);
             this.button13.TabIndex = 88;
             this.button13.Text = "13";
             this.button13.UseVisualStyleBackColor = true;
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(427, 69);
+            this.button21.Location = new System.Drawing.Point(569, 86);
+            this.button21.Margin = new System.Windows.Forms.Padding(4);
             this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(87, 52);
+            this.button21.Size = new System.Drawing.Size(116, 65);
             this.button21.TabIndex = 95;
             this.button21.Text = "18";
             this.button21.UseVisualStyleBackColor = true;
@@ -711,45 +723,50 @@
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.Red;
-            this.button8.Location = new System.Drawing.Point(380, 11);
+            this.button8.Location = new System.Drawing.Point(507, 14);
+            this.button8.Margin = new System.Windows.Forms.Padding(4);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(87, 52);
+            this.button8.Size = new System.Drawing.Size(116, 65);
             this.button8.TabIndex = 82;
             this.button8.Text = "5";
             this.button8.UseVisualStyleBackColor = false;
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(334, 69);
+            this.button16.Location = new System.Drawing.Point(445, 86);
+            this.button16.Margin = new System.Windows.Forms.Padding(4);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(87, 52);
+            this.button16.Size = new System.Drawing.Size(116, 65);
             this.button16.TabIndex = 94;
             this.button16.Text = "17";
             this.button16.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(1032, 11);
+            this.button12.Location = new System.Drawing.Point(1376, 14);
+            this.button12.Margin = new System.Windows.Forms.Padding(4);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(87, 52);
+            this.button12.Size = new System.Drawing.Size(116, 65);
             this.button12.TabIndex = 89;
             this.button12.Text = "12";
             this.button12.UseVisualStyleBackColor = true;
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(241, 69);
+            this.button17.Location = new System.Drawing.Point(321, 86);
+            this.button17.Margin = new System.Windows.Forms.Padding(4);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(87, 52);
+            this.button17.Size = new System.Drawing.Size(116, 65);
             this.button17.TabIndex = 93;
             this.button17.Text = "16";
             this.button17.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(473, 11);
+            this.button7.Location = new System.Drawing.Point(631, 14);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(87, 52);
+            this.button7.Size = new System.Drawing.Size(116, 65);
             this.button7.TabIndex = 83;
             this.button7.Text = "6";
             this.button7.UseVisualStyleBackColor = true;
@@ -757,36 +774,40 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(659, 11);
+            this.button5.Location = new System.Drawing.Point(879, 14);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(87, 52);
+            this.button5.Size = new System.Drawing.Size(116, 65);
             this.button5.TabIndex = 85;
             this.button5.Text = "8";
             this.button5.UseVisualStyleBackColor = false;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(753, 11);
+            this.button11.Location = new System.Drawing.Point(1004, 14);
+            this.button11.Margin = new System.Windows.Forms.Padding(4);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(87, 52);
+            this.button11.Size = new System.Drawing.Size(116, 65);
             this.button11.TabIndex = 90;
             this.button11.Text = "9";
             this.button11.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(939, 11);
+            this.button9.Location = new System.Drawing.Point(1252, 14);
+            this.button9.Margin = new System.Windows.Forms.Padding(4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(87, 52);
+            this.button9.Size = new System.Drawing.Size(116, 65);
             this.button9.TabIndex = 92;
             this.button9.Text = "11";
             this.button9.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(566, 11);
+            this.button6.Location = new System.Drawing.Point(755, 14);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(87, 52);
+            this.button6.Size = new System.Drawing.Size(116, 65);
             this.button6.TabIndex = 84;
             this.button6.Text = "7";
             this.button6.UseVisualStyleBackColor = true;
@@ -794,9 +815,10 @@
             // button10
             // 
             this.button10.BackColor = System.Drawing.Color.Red;
-            this.button10.Location = new System.Drawing.Point(846, 11);
+            this.button10.Location = new System.Drawing.Point(1128, 14);
+            this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(87, 52);
+            this.button10.Size = new System.Drawing.Size(116, 65);
             this.button10.TabIndex = 91;
             this.button10.Text = "10";
             this.button10.UseVisualStyleBackColor = false;
@@ -804,11 +826,11 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 37);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(1421, 422);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(1896, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "今日测量统计";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -825,10 +847,10 @@
             this.toolStripMenuItem2,
             this.帮助ToolStripMenuItem,
             this.帮助ToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(5, 31);
+            this.menuStrip1.Location = new System.Drawing.Point(7, 39);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1429, 47);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1905, 59);
             this.menuStrip1.TabIndex = 49;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -841,26 +863,26 @@
             this.退出ToolStripMenuItem});
             this.toolStripMenuItem3.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F);
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(62, 45);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(74, 57);
             this.toolStripMenuItem3.Text = "文件";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // 查看文件ToolStripMenuItem
             // 
             this.查看文件ToolStripMenuItem.Name = "查看文件ToolStripMenuItem";
-            this.查看文件ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.查看文件ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.查看文件ToolStripMenuItem.Text = "查看文件";
             // 
             // 保存文件ToolStripMenuItem
             // 
             this.保存文件ToolStripMenuItem.Name = "保存文件ToolStripMenuItem";
-            this.保存文件ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.保存文件ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.保存文件ToolStripMenuItem.Text = "保存文件";
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.退出ToolStripMenuItem.Text = "退出";
             // 
             // toolStripMenuItem1
@@ -872,34 +894,34 @@
             this.测量设置ToolStripMenuItem});
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(62, 45);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(74, 57);
             this.toolStripMenuItem1.Text = "设置";
             // 
             // 抽检设置ToolStripMenuItem
             // 
             this.抽检设置ToolStripMenuItem.Name = "抽检设置ToolStripMenuItem";
-            this.抽检设置ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.抽检设置ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.抽检设置ToolStripMenuItem.Text = "抽检设置";
             this.抽检设置ToolStripMenuItem.Click += new System.EventHandler(this.抽检设置ToolStripMenuItem_Click);
             // 
             // 用户管理ToolStripMenuItem
             // 
             this.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem";
-            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.用户管理ToolStripMenuItem.Text = "用户管理";
             this.用户管理ToolStripMenuItem.Click += new System.EventHandler(this.用户管理ToolStripMenuItem_Click);
             // 
             // 通讯设置ToolStripMenuItem
             // 
             this.通讯设置ToolStripMenuItem.Name = "通讯设置ToolStripMenuItem";
-            this.通讯设置ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.通讯设置ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.通讯设置ToolStripMenuItem.Text = "通讯设置";
             this.通讯设置ToolStripMenuItem.Click += new System.EventHandler(this.通讯设置ToolStripMenuItem_Click);
             // 
             // 测量设置ToolStripMenuItem
             // 
             this.测量设置ToolStripMenuItem.Name = "测量设置ToolStripMenuItem";
-            this.测量设置ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.测量设置ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.测量设置ToolStripMenuItem.Text = "测量设置";
             this.测量设置ToolStripMenuItem.Click += new System.EventHandler(this.测量设置ToolStripMenuItem_Click);
             // 
@@ -907,7 +929,7 @@
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F);
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(62, 45);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(74, 57);
             this.toolStripMenuItem2.Text = "调试";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
@@ -919,25 +941,25 @@
             this.电缸ToolStripMenuItem});
             this.帮助ToolStripMenuItem.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F);
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(100, 45);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(122, 57);
             this.帮助ToolStripMenuItem.Text = "故障检测";
             // 
             // 检测通讯ToolStripMenuItem
             // 
             this.检测通讯ToolStripMenuItem.Name = "检测通讯ToolStripMenuItem";
-            this.检测通讯ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.检测通讯ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.检测通讯ToolStripMenuItem.Text = "检测通讯";
             // 
             // 电机检查ToolStripMenuItem
             // 
             this.电机检查ToolStripMenuItem.Name = "电机检查ToolStripMenuItem";
-            this.电机检查ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.电机检查ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.电机检查ToolStripMenuItem.Text = "电机检查";
             // 
             // 电缸ToolStripMenuItem
             // 
             this.电缸ToolStripMenuItem.Name = "电缸ToolStripMenuItem";
-            this.电缸ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.电缸ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.电缸ToolStripMenuItem.Text = "电缸检查";
             this.电缸ToolStripMenuItem.Click += new System.EventHandler(this.电缸ToolStripMenuItem_Click);
             // 
@@ -948,19 +970,19 @@
             this.联系我们ToolStripMenuItem});
             this.帮助ToolStripMenuItem1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F);
             this.帮助ToolStripMenuItem1.Name = "帮助ToolStripMenuItem1";
-            this.帮助ToolStripMenuItem1.Size = new System.Drawing.Size(62, 45);
+            this.帮助ToolStripMenuItem1.Size = new System.Drawing.Size(74, 57);
             this.帮助ToolStripMenuItem1.Text = "帮助";
             // 
             // 使用文档ToolStripMenuItem
             // 
             this.使用文档ToolStripMenuItem.Name = "使用文档ToolStripMenuItem";
-            this.使用文档ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.使用文档ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.使用文档ToolStripMenuItem.Text = "使用文档";
             // 
             // 联系我们ToolStripMenuItem
             // 
             this.联系我们ToolStripMenuItem.Name = "联系我们ToolStripMenuItem";
-            this.联系我们ToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.联系我们ToolStripMenuItem.Size = new System.Drawing.Size(190, 36);
             this.联系我们ToolStripMenuItem.Text = "联系我们";
             // 
             // ucBtnExt2
@@ -978,12 +1000,12 @@
             this.ucBtnExt2.IsRadius = true;
             this.ucBtnExt2.IsShowRect = false;
             this.ucBtnExt2.IsShowTips = false;
-            this.ucBtnExt2.Location = new System.Drawing.Point(140, 81);
+            this.ucBtnExt2.Location = new System.Drawing.Point(187, 101);
             this.ucBtnExt2.Margin = new System.Windows.Forms.Padding(0);
             this.ucBtnExt2.Name = "ucBtnExt2";
             this.ucBtnExt2.RectColor = System.Drawing.Color.Gainsboro;
             this.ucBtnExt2.RectWidth = 1;
-            this.ucBtnExt2.Size = new System.Drawing.Size(106, 43);
+            this.ucBtnExt2.Size = new System.Drawing.Size(141, 54);
             this.ucBtnExt2.TabIndex = 19;
             this.ucBtnExt2.TabStop = false;
             this.ucBtnExt2.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
@@ -993,10 +1015,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 18F);
-            this.label5.Location = new System.Drawing.Point(1226, 39);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(1635, 49);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 24);
+            this.label5.Size = new System.Drawing.Size(148, 30);
             this.label5.TabIndex = 50;
             this.label5.Text = "欢迎：***";
             // 
@@ -1006,23 +1027,26 @@
             this.groupBox1.Controls.Add(this.cur_measure_lable);
             this.groupBox1.Controls.Add(this.ucledNums2);
             this.groupBox1.Font = new System.Drawing.Font("宋体", 16F);
-            this.groupBox1.Location = new System.Drawing.Point(8, 139);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(11, 174);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1038, 288);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(1384, 360);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "测量信息";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(492, 21);
+            this.groupBox3.Location = new System.Drawing.Point(656, 26);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(440, 223);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(587, 279);
             this.groupBox3.TabIndex = 50;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "当前盒信息";
@@ -1031,10 +1055,9 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("宋体", 18F);
-            this.label12.Location = new System.Drawing.Point(111, 116);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(148, 145);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(118, 24);
+            this.label12.Size = new System.Drawing.Size(148, 30);
             this.label12.TabIndex = 51;
             this.label12.Text = "**:******";
             // 
@@ -1042,10 +1065,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 18F);
-            this.label3.Location = new System.Drawing.Point(111, 84);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(148, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 24);
+            this.label3.Size = new System.Drawing.Size(148, 30);
             this.label3.TabIndex = 50;
             this.label3.Text = "**:******";
             // 
@@ -1053,10 +1075,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 18F);
-            this.label6.Location = new System.Drawing.Point(87, 44);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(116, 55);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(142, 24);
+            this.label6.Size = new System.Drawing.Size(178, 30);
             this.label6.TabIndex = 49;
             this.label6.Text = "编号:******";
             // 
@@ -1066,9 +1087,11 @@
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Font = new System.Drawing.Font("宋体", 16F);
-            this.groupBox4.Location = new System.Drawing.Point(1079, 147);
+            this.groupBox4.Location = new System.Drawing.Point(1439, 184);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(327, 288);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(436, 360);
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测量设定值";
@@ -1077,10 +1100,9 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("宋体", 18F);
-            this.label20.Location = new System.Drawing.Point(73, 158);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Location = new System.Drawing.Point(97, 198);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(166, 24);
+            this.label20.Size = new System.Drawing.Size(208, 30);
             this.label20.TabIndex = 51;
             this.label20.Text = "抽检间隔：***";
             // 
@@ -1088,10 +1110,9 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 18F);
-            this.label14.Location = new System.Drawing.Point(121, 114);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(161, 142);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(118, 24);
+            this.label14.Size = new System.Drawing.Size(148, 30);
             this.label14.TabIndex = 50;
             this.label14.Text = "偏差：***";
             // 
@@ -1099,23 +1120,33 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("宋体", 18F);
-            this.label15.Location = new System.Drawing.Point(121, 68);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(161, 85);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(142, 24);
+            this.label15.Size = new System.Drawing.Size(178, 30);
             this.label15.TabIndex = 49;
             this.label15.Text = "基准:******";
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(527, 102);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(150, 53);
+            this.button27.TabIndex = 53;
+            this.button27.Text = "模拟扫码枪";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackPalace = global::DTM.Properties.Resources._19588ac08489c03c9cc6aefde7693819;
             this.BackShade = false;
             this.CaptionBackColorBottom = System.Drawing.Color.White;
             this.CaptionBackColorTop = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1445, 863);
+            this.ClientSize = new System.Drawing.Size(1920, 1079);
+            this.Controls.Add(this.button27);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
@@ -1128,7 +1159,7 @@
             this.EffectWidth = 3;
             this.HelpButton = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.RoundStyle = CCWin.SkinClass.RoundStyle.All;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -1249,6 +1280,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button27;
     }
 }
 

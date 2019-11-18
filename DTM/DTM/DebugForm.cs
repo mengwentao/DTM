@@ -3075,5 +3075,10 @@ namespace DTM
             data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x06, 0x00, 0x05, 0x09, 0x1e, 0xff, 0x00 };
             newclient2.Send(data);
         }
+
+        private void GD1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
