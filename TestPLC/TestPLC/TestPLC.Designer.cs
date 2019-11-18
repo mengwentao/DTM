@@ -227,20 +227,23 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button11 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button12 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.label131 = new System.Windows.Forms.Label();
             this.label132 = new System.Windows.Forms.Label();
+            this.label131 = new System.Windows.Forms.Label();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -263,6 +266,7 @@
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -280,7 +284,7 @@
             this.serverIP.Name = "serverIP";
             this.serverIP.Size = new System.Drawing.Size(186, 28);
             this.serverIP.TabIndex = 1;
-            this.serverIP.Text = "10.177.129.210";
+            this.serverIP.Text = "192.168.1.5";
             // 
             // serverPort
             // 
@@ -355,7 +359,7 @@
             // 
             // receiveBox
             // 
-            this.receiveBox.Location = new System.Drawing.Point(23, 1196);
+            this.receiveBox.Location = new System.Drawing.Point(43, 1196);
             this.receiveBox.Name = "receiveBox";
             this.receiveBox.Size = new System.Drawing.Size(678, 72);
             this.receiveBox.TabIndex = 6;
@@ -2127,6 +2131,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(758, 494);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2140,7 +2145,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1441, 713);
+            this.tabPage1.Size = new System.Drawing.Size(1369, 713);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "测量测试";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2156,52 +2161,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "数据库测试";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(53, 21);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(129, 54);
-            this.button10.TabIndex = 65;
-            this.button10.Text = "确定";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(53, 21);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(129, 54);
-            this.button11.TabIndex = 66;
-            this.button11.Text = "确定";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(53, 21);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(129, 54);
-            this.button12.TabIndex = 67;
-            this.button12.Text = "确定";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(53, 21);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(129, 54);
-            this.button13.TabIndex = 68;
-            this.button13.Text = "确定";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(43, 739);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(678, 425);
-            this.richTextBox1.TabIndex = 65;
-            this.richTextBox1.Text = "";
             // 
             // tabControl2
             // 
@@ -2226,6 +2185,16 @@
             this.tabPage3.Text = "增";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(53, 21);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(129, 54);
+            this.button10.TabIndex = 65;
+            this.button10.Text = "确定";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.button11);
@@ -2237,6 +2206,15 @@
             this.tabPage4.Text = "删";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(53, 21);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(129, 54);
+            this.button11.TabIndex = 66;
+            this.button11.Text = "确定";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.button12);
@@ -2246,6 +2224,15 @@
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "改";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(53, 21);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(129, 54);
+            this.button12.TabIndex = 67;
+            this.button12.Text = "确定";
+            this.button12.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
@@ -2261,21 +2248,14 @@
             this.tabPage6.Text = "查";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // textBox26
+            // label132
             // 
-            this.textBox26.Location = new System.Drawing.Point(158, 108);
-            this.textBox26.Multiline = true;
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(109, 42);
-            this.textBox26.TabIndex = 69;
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new System.Drawing.Point(158, 201);
-            this.textBox27.Multiline = true;
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(109, 42);
-            this.textBox27.TabIndex = 70;
+            this.label132.AutoSize = true;
+            this.label132.Location = new System.Drawing.Point(109, 213);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(44, 18);
+            this.label132.TabIndex = 71;
+            this.label132.Text = "name";
             // 
             // label131
             // 
@@ -2286,14 +2266,70 @@
             this.label131.TabIndex = 8;
             this.label131.Text = "id";
             // 
-            // label132
+            // textBox27
             // 
-            this.label132.AutoSize = true;
-            this.label132.Location = new System.Drawing.Point(109, 213);
-            this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(44, 18);
-            this.label132.TabIndex = 71;
-            this.label132.Text = "name";
+            this.textBox27.Location = new System.Drawing.Point(158, 201);
+            this.textBox27.Multiline = true;
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(109, 42);
+            this.textBox27.TabIndex = 70;
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(158, 108);
+            this.textBox26.Multiline = true;
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(109, 42);
+            this.textBox26.TabIndex = 69;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(53, 21);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(129, 54);
+            this.button13.TabIndex = 68;
+            this.button13.Text = "确定";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(43, 739);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(678, 425);
+            this.richTextBox1.TabIndex = 65;
+            this.richTextBox1.Text = "";
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.button14);
+            this.tabPage7.Controls.Add(this.button15);
+            this.tabPage7.Location = new System.Drawing.Point(4, 28);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(1369, 713);
+            this.tabPage7.TabIndex = 2;
+            this.tabPage7.Text = "json测试";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(39, 41);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(121, 48);
+            this.button15.TabIndex = 1;
+            this.button15.Text = "获取json";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(204, 41);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(121, 48);
+            this.button14.TabIndex = 2;
+            this.button14.Text = "访问数据";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // TestPLC
             // 
@@ -2371,6 +2407,7 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2590,6 +2627,9 @@
         private System.Windows.Forms.Label label131;
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button14;
     }
 }
 

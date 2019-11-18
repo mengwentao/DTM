@@ -33,12 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HttpCodeLib">
+      <HintPath>dll\HttpCodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="HZH_Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\HZH_Controls.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
       <HintPath>dll\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>dll\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,6 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetData.cs" />
+    <Compile Include="TestHttpAPI.cs" />
+    <Compile Include="TestJson2Domain.cs" />
     <Compile Include="TestPLC.cs">
       <SubType>Form</SubType>
     </Compile>

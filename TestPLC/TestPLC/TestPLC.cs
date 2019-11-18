@@ -13,6 +13,7 @@ using System.Threading;
 using System.Net;
 using HZH_Controls;
 using MySql.Data.MySqlClient;
+using System.Net.Http;
 
 //modbus格式说明
 //https://blog.csdn.net/weixin_33788244/article/details/86003757
@@ -285,7 +286,7 @@ namespace TestPLC
                     
 
                 }
-
+                flag = 1;
                 if (flag <= 25 && flag >=21)
                   {
                       showNum(data, dt_data_list_5, DT_data5, 0x05, 5);
@@ -317,10 +318,10 @@ namespace TestPLC
                
                 for (int i =0; i < 25;i++)
                 {
-                    Console.Write(cal_data[i] + "  ");
+                  //  Console.Write(cal_data[i] + "  ");
                 }
                // showNum(data, dt_data_list_1, DT_data1, 0x01, 1);
-                Console.WriteLine();
+               // Console.WriteLine();
                 int[] temp = cal_25_item(cal_data); //求解一盒盘片的最大值、最小值、平均值以及正负误差
                 label120.Text = temp[0].ToString();//显示最大值
                 label122.Text = temp[1].ToString();//显示最小值
@@ -352,8 +353,9 @@ namespace TestPLC
                    // Console.Write(one_arr[i] + "  ");
                     one_sum_res += one_arr[i];
                 }
-                one_arr_res = (one_sum_res - test_min - test_max) / (test_per_len - 2);
-                label116.Text = one_arr_res .ToString();//平均値
+                // one_arr_res = (one_sum_res - test_min - test_max) / (test_per_len - 2);//todu
+                one_arr_res = one_sum_res / test_per_len;
+                 label116.Text = one_arr_res .ToString();//平均値
                 Console.Write(one_arr_res);
                 label117.Text = test_per_len.ToString();
 
@@ -370,7 +372,9 @@ namespace TestPLC
                 {
                     arr[j] = convert(data[9 + m], data[10 + m]);//获取寄存器中的数据
                     m += 2;
+                    Console.Write(arr[j] + "====" );
                 }
+                Console.WriteLine();
                 m = 0;
 
                 for (int j = 0; j < total_len; j++)
@@ -404,7 +408,7 @@ namespace TestPLC
                 sum += arr[i];
 
             }
-            Console.WriteLine(sum);
+         //   Console.WriteLine(sum);
             res[0] = max;
             res[1] = min;
             res[2] = max - min;
@@ -446,8 +450,8 @@ namespace TestPLC
                 max = Math.Max(max, arr[i]);
                 min = Math.Min(min,arr[i]);
             }
-            res = res - max - min;//去掉最大值和最小值
-            return (res/(per_len-2));//取平均值
+            //去掉最大值和最小值
+            return (res/(per_len));//取平均值//todu
         }
         public void ReceiveMsg2()
         {
@@ -673,7 +677,7 @@ namespace TestPLC
         }
         //plc读取寄存器
         /// <summary>
-        /// 读取1-5，寄存器地址1-125
+        /// 读取1-5，寄存器地址1001-1125
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -682,9 +686,9 @@ namespace TestPLC
             byte low = Convert.ToByte(total_len & 0xff);  // 低8位
             byte high = Convert.ToByte((total_len >> 8) & 0xff); // 高8位
 
-            int isecond = 500;//以毫秒为单位
+            int isecond = 100;//以毫秒为单位
             dt1.Interval = isecond;//50ms触发一次
-            byte[] data = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x01, high, low };
+            byte[] data = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x03, 0xe9, high, low };
             newclient1.Send(data);
           
         }
@@ -737,7 +741,7 @@ namespace TestPLC
 
             int isecond = 100;//以毫秒为单位
             dt2.Interval = isecond;//50ms触发一次
-            byte[] data = new byte[] { 0x02, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0x7e, high, low };
+            byte[] data = new byte[] { 0x02, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x04, 0x66, high, low };
             newclient1.Send(data);
         }
 
@@ -748,7 +752,7 @@ namespace TestPLC
 
             int isecond = 100;//以毫秒为单位
             dt3.Interval = isecond;//50ms触发一次
-            byte[] data = new byte[] { 0x03, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x00, 0xfb, high, low };
+            byte[] data = new byte[] { 0x03, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x04, 0xe3, high, low };
             newclient1.Send(data);
         }
 
@@ -759,7 +763,7 @@ namespace TestPLC
 
             int isecond = 100;//以毫秒为单位
             dt4.Interval = isecond;//50ms触发一次
-            byte[] data = new byte[] { 0x04, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x01, 0x78, high, low };
+            byte[] data = new byte[] { 0x04, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x05, 0x60, high, low };
             newclient1.Send(data);
 
         }
@@ -771,10 +775,15 @@ namespace TestPLC
 
             int isecond = 100;//以毫秒为单位
             dt5.Interval = isecond;//50ms触发一次
-            byte[] data = new byte[] { 0x05, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x01, 0xf5, high, low };
+            byte[] data = new byte[] { 0x05, 0x00, 0x00, 0x00, 0x00, 0x06, 0xff, 0x03, 0x05, 0xdd, high, low };
             newclient1.Send(data);
         }
 
+        /// <summary>
+        /// 读取测量进度寄存器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             byte low = Convert.ToByte(total_len & 0xff);  // 低8位
@@ -786,6 +795,11 @@ namespace TestPLC
             newclient1.Send(data);
         }
 
+        /// <summary>
+        /// 读取测试一片数据的寄存器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void celiang_yihe_timer2_Tick(object sender, EventArgs e)
         {
             byte low = Convert.ToByte(test_per_len & 0xff);  // 低8位
@@ -898,11 +912,36 @@ namespace TestPLC
             {
                 conn.Close();
                 
-            }
-           
-           
+            }                     
             
-            
+        }
+        GetData getData = new GetData();
+        TestHttpAPI testAPI = new TestHttpAPI();
+       // TestJson2Domain user = new TestJson2Domain();
+        /// <summary>
+        /// 从webapi获取json数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string url = "http://106.12.3.103:8080/MyProject/user/MyTest.do";
+            //string url = "http://car.autohome.com.cn/javascript/NewSpecCompare.js?20131010";
+            //string res = testAPI.HttpApi(url,"{}","get");
+            string res = testAPI.HttpGetJsonAPI(url);
+            Console.WriteLine(res);
+            TestJson2Domain user = testAPI.GetJson2Item(res);
+
+            richTextBox1.AppendText(user.username);
+
+            /*
+            HttpClient client = new HttpClient(url);
+            string html = client.GetString();*/
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
