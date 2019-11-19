@@ -129,7 +129,15 @@ namespace DTM
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            short []a = busTcpClient1.ReadInt16("0",250).Content;
+            for (int i = 0; i < a.Length;i++)
+            {
+                if (a[i] != 0)
+                {
+                    Console.WriteLine(a[i] + " " + i);
+                }
+               
+            }
         }
     }
     
