@@ -240,10 +240,11 @@
             this.textBox27 = new System.Windows.Forms.TextBox();
             this.textBox26 = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button16 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -2292,16 +2293,9 @@
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(43, 739);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(678, 425);
-            this.richTextBox1.TabIndex = 65;
-            this.richTextBox1.Text = "";
-            // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.button16);
             this.tabPage7.Controls.Add(this.button14);
             this.tabPage7.Controls.Add(this.button15);
             this.tabPage7.Location = new System.Drawing.Point(4, 28);
@@ -2310,6 +2304,16 @@
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "json测试";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(204, 41);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(121, 48);
+            this.button14.TabIndex = 2;
+            this.button14.Text = "访问数据";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button15
             // 
@@ -2321,15 +2325,23 @@
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // button14
+            // richTextBox1
             // 
-            this.button14.Location = new System.Drawing.Point(204, 41);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(121, 48);
-            this.button14.TabIndex = 2;
-            this.button14.Text = "访问数据";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.richTextBox1.Location = new System.Drawing.Point(43, 739);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(678, 425);
+            this.richTextBox1.TabIndex = 65;
+            this.richTextBox1.Text = "";
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(366, 41);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(121, 48);
+            this.button16.TabIndex = 3;
+            this.button16.Text = "提交表单";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // TestPLC
             // 
@@ -2630,6 +2642,7 @@
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button16;
     }
 }
 
