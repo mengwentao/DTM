@@ -326,6 +326,7 @@ namespace DTM
             }
             Thread.Sleep(100);
             new Thread(Run).Start();
+            new Thread(Run1).Start();
             while (true)
             {
                 while (!flag) { }
@@ -340,40 +341,42 @@ namespace DTM
         private void Run()
         {   //向数据库保存当前所有盒子的信息
             while (true)
-            {   
+            {
                 List<BoxState> list = BoxState.list;
                 int count = list.Count();
                 if (count != 0)
                 {
-                     using (MySqlConnection con = new MySqlConnection(connStr))
+                    using (MySqlConnection con = new MySqlConnection(connStr))
                     {
                         con.Open();
                         MySqlTransaction transaction = con.BeginTransaction();
                         MySqlCommand cmd = new MySqlCommand();
                         cmd.Connection = con;
-                        cmd.Transaction = transaction;                        
+                        cmd.Transaction = transaction;
                         try
-                        {   string sql = "delete from preventdisaster";
+                        {
+                            string sql = "delete from preventdisaster";
                             cmd.CommandText = sql;
                             cmd.ExecuteNonQuery();
                             foreach (BoxState box_state in list)
-                            {   String value = "";
+                            {
+                                String value = "";
                                 String value1 = "";
                                 String value2 = "";
-                                for (int i=0;i< box_state.measure_pan_thickness.Length-1; i++)
+                                for (int i = 0; i < box_state.measure_pan_thickness.Length - 1; i++)
                                 {
                                     value += "" + box_state.measure_pan_thickness[i] + ",";
                                 }
                                 value += "" + box_state.measure_pan_thickness[24];
                                 for (int i = 0; i < box_state.measure_pan_thickness_flag.Length; i++)
                                 {
-                                    value1 += "" + (box_state.measure_pan_thickness_flag[i]==false?0:1);
+                                    value1 += "" + (box_state.measure_pan_thickness_flag[i] == false ? 0 : 1);
                                 }
                                 for (int i = 0; i < BoxState.InList.Count; i++)
                                 {
                                     value2 += "" + BoxState.InList[i];
                                 }
-                                sql = string.Format("insert into preventdisaster(positionState, measureState, boxCount,chooseFlag,boxId,barCode,measurepanthickness,measurepanthicknessflag,InList,standardpanthickness)values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", box_state.positionState, box_state.measureState==false?0:1, BoxState.boxCount, box_state.chooseFlag==false?0:1, box_state.boxId, box_state.barCode,value,value1,value2,box_state.standard_pan_thickness);
+                                sql = string.Format("insert into preventdisaster(positionState, measureState, boxCount,chooseFlag,boxId,barCode,measurepanthickness,measurepanthicknessflag,InList,standardpanthickness)values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')", box_state.positionState, box_state.measureState == false ? 0 : 1, BoxState.boxCount, box_state.chooseFlag == false ? 0 : 1, box_state.boxId, box_state.barCode, value, value1, value2, box_state.standard_pan_thickness);
                                 cmd.CommandText = sql;
                                 cmd.ExecuteNonQuery();
                             }
@@ -392,8 +395,14 @@ namespace DTM
                             }
                         }
                     }
-                }               
-                    foreach (BoxState box_state in list)
+                }
+            }
+        }              
+        private void Run1(){
+             while (true)
+                {
+                List<BoxState> list = BoxState.list;
+                foreach (BoxState box_state in list)
                 {
                     if (box_state.positionState == 1)
                     {
@@ -408,6 +417,7 @@ namespace DTM
                         //todo得到数据填充到前端界面
                     }
                 }
+                Thread.Sleep(1000);
             }
         }
 
