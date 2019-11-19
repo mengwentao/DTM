@@ -355,7 +355,7 @@ namespace DTM
                         cmd.Transaction = transaction;
                         try
                         {
-                            string sql = "delete from preventdisaster";
+                            string sql = "delete * from preventdisaster";
                             cmd.CommandText = sql;
                             cmd.ExecuteNonQuery();
                             foreach (BoxState box_state in list)
