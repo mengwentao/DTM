@@ -138,9 +138,10 @@ namespace DTM
                 startAddress = (ushort)i;
                 master.WriteSingleCoil(slaveAddress, startAddress, true);
                 Thread.Sleep(100);
+                numberOfPoints = 10;
                 registerBuffer = master.ReadHoldingRegisters(slaveAddress, startAddress, numberOfPoints);
-                int temp = 0;                
-               
+                int temp = 0;
+                temp = evaluation(registerBuffer);
                 measure_pan_thickness[i] = temp;
                 if (temp < standard_pan_thickness * 0.9 || temp > standard_pan_thickness * 1.1)//+-10%误差
                 {
@@ -160,7 +161,28 @@ namespace DTM
             master.WriteSingleCoil(slaveAddress, startAddress, measureState);
             measureState = false;
         }
-        
+        private int evaluation(ushort[] values)//求得数组舍弃一些差异较大的数据，并且求剩余数据平均值
+        {
+            int sum = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                sum += values[i];
+            }
+            float agv = (sum+0f) / values.Length;          
+            List<float> templist = new List<float>();
+            for (int i = 0; i < values.Length; i++)
+            {
+                templist.Add(values[i]-agv);
+            }
+            templist.Sort();
+            float numberAdd = 0f;
+            for (int i = 0; i < 6; i++)
+            {
+                numberAdd += (templist[i] + agv);
+            }
+            int number = (int)numberAdd / 6;
+            return number;
+        }
         private void waitSign3_1()
         {
             while (true)
