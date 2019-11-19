@@ -398,7 +398,7 @@ namespace DTM
                 }
             }
         }              
-        private void Run1(){
+       private void Run1(){
              while (true)
                 {
                 List<BoxState> list = BoxState.list;
