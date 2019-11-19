@@ -19,3 +19,6 @@ D:\DTM-Software\DTM\DTM\bin\Debug\CSkin.dll
 D:\DTM-Software\DTM\DTM\bin\Debug\HZH_Controls.dll
 D:\DTM-Software\DTM\DTM\obj\Debug\DTM.exe
 D:\DTM-Software\DTM\DTM\obj\Debug\DTM.pdb
+D:\DTM-Software\DTM\DTM\bin\Debug\HslCommunication.dll
+D:\DTM-Software\DTM\DTM\bin\Debug\MySql.Data.dll
+D:\DTM-Software\DTM\DTM\bin\Debug\Newtonsoft.Json.dll
