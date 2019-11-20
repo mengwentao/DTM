@@ -1080,6 +1080,7 @@
             this.label6.Size = new System.Drawing.Size(178, 30);
             this.label6.TabIndex = 49;
             this.label6.Text = "编号:******";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // groupBox4
             // 

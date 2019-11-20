@@ -26,12 +26,13 @@ namespace DTM
         public int barCode = 0;//条形码
         public int standard_pan_thickness = 0;//盘片厚度（标准） 
         string connStr = ConfigurationManager.ConnectionStrings["str"].ConnectionString;
-        bool flag = false;
-        
+        public static bool flag = false;
+        List<BoxState> list = new List<BoxState>();
 
         public MainForm()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
         }
         private Random random = new Random();
         private void MainForm_Load(object sender, EventArgs e)
@@ -257,9 +258,9 @@ namespace DTM
         {
 
         }
-
-        private void ucBtnExt17_BtnClick(object sender, EventArgs e)
-        {   //故障后重新运行            
+        private void Runsystem()
+        {
+            //故障后重新运行            
             using (MySqlConnection con = new MySqlConnection(connStr))
             {
                 int number = 0;
@@ -274,34 +275,34 @@ namespace DTM
                         if (sdr.Read()) //如果读取账户成功(文本框中的用户名在数据库中存在)
                         {
                             //SqlDataReader 在数据库中为 从第1条数据开始 一条一条往下读                       
-                             number = sdr.GetInt16(0);
+                            number = sdr.GetInt16(0);
                         }
                     }
-                }               
+                }
                 if (number != 0)
                 {
                     sql = "select * from preventdisaster";
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
                         //打开数据库
-                        con.Open();
+                        //con.Open();
                         //使用 SqlDataReader 来 读取数据库
                         using (MySqlDataReader sdr = cmd.ExecuteReader())
                         {
                             while (sdr.Read()) //如果读取账户成功(文本框中的用户名在数据库中存在)
                             {
-                                BoxState boxState = new BoxState(sdr.GetInt16("positionState"), sdr.GetInt16("barCode"), sdr.GetInt16("boxId"));
+                                BoxState boxState = new BoxState(list,sdr.GetInt16("positionState"), sdr.GetInt16("barCode"), sdr.GetInt16("boxId"));
                                 int testFlag = sdr.GetInt16("measureState");
                                 boxState.measureState = testFlag == 0 ? false : true;
                                 BoxState.boxCount = sdr.GetInt16("boxCount");
-                                testFlag= sdr.GetInt16("chooseFlag");
+                                testFlag = sdr.GetInt16("chooseFlag");
                                 boxState.chooseFlag = testFlag == 0 ? false : true;
                                 boxState.standard_pan_thickness = sdr.GetInt16("standardpanthickness");
                                 String teststring;
                                 if (!sdr.IsDBNull(8))
                                 {
-                                     teststring = sdr.GetString("InList");                                   
-                                    for(int i = 0; i < teststring.Length; i++)
+                                    teststring = sdr.GetString("InList");
+                                    for (int i = 0; i < teststring.Length; i++)
                                     {
                                         BoxState.InList.Add(teststring.Substring(i, 1) == "0" ? 0 : 1);
                                     }
@@ -309,16 +310,16 @@ namespace DTM
                                 teststring = sdr.GetString("measurepanthicknessflag");
                                 for (int i = 0; i < teststring.Length; i++)
                                 {
-                                    boxState.measure_pan_thickness_flag[i]=(teststring.Substring(i, 1) == "0" ? false : true);
+                                    boxState.measure_pan_thickness_flag[i] = (teststring.Substring(i, 1) == "0" ? false : true);
                                 }
-                                teststring= sdr.GetString("measurepanthickness");
+                                teststring = sdr.GetString("measurepanthickness");
                                 string[] teststrings = teststring.Split(',');
-                                for(int i = 0; i < teststring.Length; i++)
+                                for (int i = 0; i < teststring.Length; i++)
                                 {
-                                    boxState.measure_pan_thickness[i]= Convert.ToInt16(teststrings[i]); 
+                                    boxState.measure_pan_thickness[i] = Convert.ToInt16(teststrings[i]);
                                 }
                                 new Thread(boxState.Run).Start();
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
                             }
                         }
                     }
@@ -329,21 +330,62 @@ namespace DTM
             new Thread(Run1).Start();
             while (true)
             {
-                while (!flag) { }
-                //扫码枪扫码完成(获得条形码和标准盘片数据)
-                boxId = BoxState.InList.Last()+1;
-                boxId = boxId > 50 ? 0 : boxId;//50保证了运行在系统上的盒子ID是不重复的
-                new Thread(new BoxState(this.standard_pan_thickness, this.barCode, boxId).Run).Start();
-                boxId++;
+                if (!flag)
+                {
+                    Thread.Sleep(100);             
+                    continue;
+                }
                 flag = false;
+                //扫码枪扫码完成(获得条形码和标准盘片数据)
+                if (BoxState.InList.Count == 0)
+                {
+                    boxId = 0;
+                }
+                else
+                {
+                    boxId = BoxState.InList.Last() + 1;
+                }
+                boxId = boxId > 50 ? 0 : boxId;//50保证了运行在系统上的盒子ID是不重复的
+                new Thread(new BoxState(list,this.standard_pan_thickness, this.barCode, boxId).Run).Start(); 
             }
-        }
+        }       
+        private void ucBtnExt17_BtnClick(object sender, EventArgs e)
+        {
+            new Thread(Runsystem).Start();               
+        }        
         private void Run()
         {  //向数据库保存当前所有盒子的信息
             while (true)
             {
-                List<BoxState> list = BoxState.list;
+                Thread.Sleep(100);
+                for(int i = 0; i < 3; i++)
+                {
+                 list.Remove(list.Where(p => (p.positionState == 6 || p.positionState == 10)).FirstOrDefault());
+                }              
+                label6.Text = "编号：" + list.Count;                 
+                //List<BoxState> list = list;
                 int count = list.Count();
+                if (count == 0)
+                {
+                    using (MySqlConnection con = new MySqlConnection(connStr))
+                    {
+                        try
+                        {
+                            string sql = "delete from preventdisaster";
+                            MySqlCommand cmd = new MySqlCommand(sql, con);
+                            con.Open();
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            con.Close();
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
+                    }
+                }
                 if (count != 0)
                 {
                     using (MySqlConnection con = new MySqlConnection(connStr))
@@ -355,11 +397,13 @@ namespace DTM
                         cmd.Transaction = transaction;
                         try
                         {
-                            string sql = "delete * from preventdisaster";
+                            string sql = "delete from preventdisaster";
                             cmd.CommandText = sql;
                             cmd.ExecuteNonQuery();
+                           
                             foreach (BoxState box_state in list)
                             {
+                                if (box_state.positionState == 6 || box_state.positionState == 10) continue;
                                 String value = "";
                                 String value1 = "";
                                 String value2 = "";
@@ -401,7 +445,8 @@ namespace DTM
        private void Run1(){
              while (true)
                 {
-                List<BoxState> list = BoxState.list;
+                Thread.Sleep(2000);
+                //List<BoxState> list = BoxState.list;
                 foreach (BoxState box_state in list)
                 {
                     if (box_state.positionState == 1)
@@ -416,8 +461,7 @@ namespace DTM
                     {
                         //todo得到数据填充到前端界面
                     }
-                }
-                Thread.Sleep(1000);
+                }              
             }
         }
 
@@ -429,6 +473,11 @@ namespace DTM
         private void button27_Click(object sender, EventArgs e)
         {    //扫码枪触发事件
             flag = true;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
