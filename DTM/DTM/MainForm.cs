@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using CCWin;
 using System.IO;
 using HZH_Controls.Controls;
+using HslCommunication.ModBus;
+using HslCommunication;
+using System.Threading;
+using HZH_Controls;
 
 namespace DTM
 {
@@ -38,10 +42,6 @@ namespace DTM
             CurveChart_Init();//表格初始化
             pieChar_Init();
             barChar_Init();
-
-
-
-
         }
 
         public void barChar_Init()
