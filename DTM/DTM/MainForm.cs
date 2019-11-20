@@ -451,15 +451,15 @@ namespace DTM
                 {
                     if (box_state.positionState == 1)
                     {
-                        //todo得到数据填充到前端界面
+                        // todo得到数据填充到前端界面
                     }
                     if (box_state.positionState == 2)
                     {
-                        //todo得到数据填充到前端界面
+                        // todo得到数据填充到前端界面
                     }
                     if (box_state.positionState == 3)
                     {
-                        //todo得到数据填充到前端界面
+                        // todo得到数据填充到前端界面
                     }
                 }              
             }
