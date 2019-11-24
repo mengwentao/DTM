@@ -150,7 +150,7 @@ namespace DTM
                
                 else
                 {
-                    label27.Text = "0";//显示当前测量数据
+                    label27.Text = "-1";//显示当前测量数据
                 }
                 label37.Text = flag.ToString();//显示测量的进度
                 Thread.Sleep(20);
@@ -252,7 +252,7 @@ namespace DTM
         public void measure_show(short flag)
         {          
             
-                short[] dt_arr = busTcpClient1.ReadInt16("1001", 250).Content;
+                int[] dt_arr = busTcpClient1.ReadInt32("1", 250).Content;
               /*  for (int i = 0;i < dt_arr.Length;i++)
                 {
                     Console.Write(dt_arr[i] + " ");
@@ -275,7 +275,8 @@ namespace DTM
              //   res_25[i] = (float)Math.Round((double)res_25[i], 4);//四舍五入，小数点后四位
              //   label_list[i].Text = res_25[i].ToString();//将测试结果进行显示
             }
-                    res_25[flag-1] = (float)Math.Round((double)res_25[flag -1], 5);//四舍五入，小数点后四位
+                    res_25[flag-1] = (float)Math.Round((double)res_25[flag -1], 6);//四舍五入，小数点后六位
+
                     Console.WriteLine("第" + flag +"数据"+res_25[flag-1]);
            // MessageBox.Show(flag.ToString());
                     label_list[flag-1].Text = res_25[flag-1].ToString();//将量结果进行显示
@@ -291,7 +292,7 @@ namespace DTM
                     }
                     th = new Thread(curveShow);//表格显示数据线程
                     th.IsBackground = true;
-                  //  th.Start();
+                    th.Start();
                 //    curveShow();                   
             //    }
 
@@ -317,7 +318,7 @@ namespace DTM
              //   Thread.Sleep(10);
            
         }
-        public float [] avg_dt_arr(short []arr)
+        public float [] avg_dt_arr(int []arr)
         {
             float[] res = new float[25];
             for (int i = 0;i < 25;i++)
@@ -326,7 +327,7 @@ namespace DTM
             }
             return res;
         }
-        public float cal_arr_avg(short[] arr, int start)
+        public float cal_arr_avg(int[] arr, int start)
         {
             float res = 0;
             float max_pre = 0;
@@ -354,7 +355,7 @@ namespace DTM
               //  {           
 
                 //ucCurve1.AddMarkText("测量值", count, res_25[count >24 ? 0 : count].ToString());
-                ucCurve1.AddMarkText("测量值", flag,"");
+               // ucCurve1.AddMarkText("测量值", flag,"");
 
          //   }
             
@@ -375,11 +376,12 @@ namespace DTM
         static short count = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 400;
+            timer1.Interval = 800;
             count++;
             if (count > 25)
             {
                 count = 0;
+                timer1.Enabled = false;
             }
             //  curveShow();
             //Console.WriteLine(op_res.Message);
@@ -397,6 +399,40 @@ namespace DTM
         private void button5_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            int[] dt_arr = busTcpClient1.ReadInt32("1", 250).Content;
+            res_25 = avg_dt_arr(dt_arr);
+            for (int i = 0;i < res_25.Length;i++)
+            {
+                Console.Write(res_25[i]+ "  " );
+            }
+            Console.WriteLine();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            busTcpClient1.Write("198",1);
+           // busTcpClient1.Write("3089",true);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            busTcpClient1.Write("198", 2);
+          //  busTcpClient1.Write("3090", true);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            busTcpClient1.Write("198", 3);
+          //  busTcpClient1.Write("3091", true);
         }
     }
     

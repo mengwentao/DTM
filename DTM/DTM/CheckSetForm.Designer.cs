@@ -54,12 +54,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(180, 198);
+            this.button1.Location = new System.Drawing.Point(180, 196);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 50);
             this.button1.TabIndex = 2;
             this.button1.Text = "确定";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CheckSetForm
             // 
@@ -71,6 +72,7 @@
             this.Controls.Add(this.label1);
             this.Name = "CheckSetForm";
             this.Text = "抽检设置";
+            this.Load += new System.EventHandler(this.CheckSetForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

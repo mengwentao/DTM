@@ -6664,3 +6664,76 @@
 [调试] 2019-11-21 21:14:46.225 thread:[12] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:52970 ] 下线
 [调试] 2019-11-21 21:14:53.341 thread:[07] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:53089 ] 上线
 [调试] 2019-11-21 21:15:26.666 thread:[12] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:53089 ] 下线
+[调试] 2019-11-22 09:30:24.700 thread:[09] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:51276 ] 上线
+[致命] 2019-11-22 09:37:08.812 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:51276 ] 下线 : 错误信息：远程主机强迫关闭了一个现有的连接。
+错误源：System
+错误堆栈：   在 System.Net.Sockets.Socket.EndReceive(IAsyncResult asyncResult)
+   在 HslCommunication.ModBus.ModbusTcpServer.ModbusHeadReveiveCallback(IAsyncResult ar) 位置 I:\HslProjects\HslCommunication\HslCommunication_Net45\ModBus\ModbusTcp\ModbusTcpServer.cs:行号 1000
+错误类型：System.Net.Sockets.SocketException
+错误方法：Int32 EndReceive(System.IAsyncResult)
+/=================================================[    Exception    ]================================================/
+[调试] 2019-11-22 09:37:30.195 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59442 ] 上线
+[调试] 2019-11-22 09:37:36.858 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59442 ] 下线
+[调试] 2019-11-22 09:37:43.171 thread:[07] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59540 ] 上线
+[信息] 2019-11-22 09:39:09.774 thread:[01] ModbusTcpServer[502] : 关闭引擎
+
+[信息] 2019-11-22 09:39:10.664 thread:[01] ModbusTcpServer[502] : 启动引擎
+[调试] 2019-11-22 09:39:14.548 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59540 ] 下线
+[调试] 2019-11-22 09:39:14.552 thread:[07] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59557 ] 上线
+[致命] 0001-01-01 00:00:00.000 thread:[00] LogNetSelf : 错误信息：文件“D:\DTM-Software\调试工具\ModbusTcpServer进行测试使用\logs.txt”正由另一进程使用，因此该进程无法访问该文件。
+错误源：mscorlib
+错误堆栈：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 HslCommunication.LogNet.LogNetBase.ThreadPoolSaveFile(Object obj) 位置 I:\HslProjects\HslCommunication\HslCommunication_Net45\LogNet\Core\LogBase.cs:行号 377
+错误类型：System.IO.IOException
+错误方法：Void WinIOError(Int32, System.String)
+/=================================================[    Exception    ]================================================/
+[调试] 2019-11-22 09:39:35.832 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59557 ] 下线
+[调试] 2019-11-22 09:39:39.761 thread:[07] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59641 ] 上线
+[调试] 2019-11-22 09:40:26.884 thread:[04] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59641 ] 下线
+[调试] 2019-11-22 09:41:06.200 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59747 ] 上线
+[调试] 2019-11-22 09:41:44.370 thread:[04] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:59747 ] 下线
+[调试] 2019-11-22 09:48:45.677 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:55445 ] 上线
+[调试] 2019-11-22 09:51:08.453 thread:[06] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:55445 ] 下线
+[调试] 2019-11-22 09:51:59.222 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:55562 ] 上线
+[调试] 2019-11-22 09:52:55.610 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:55562 ] 下线
+[调试] 2019-11-22 10:22:52.753 thread:[09] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56118 ] 上线
+[调试] 2019-11-22 10:26:16.194 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56118 ] 下线
+[调试] 2019-11-22 10:35:09.863 thread:[09] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56444 ] 上线
+[调试] 2019-11-22 10:41:59.533 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56444 ] 下线
+[调试] 2019-11-22 10:54:36.603 thread:[05] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:61948 ] 上线
+[调试] 2019-11-22 10:55:19.721 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:61948 ] 下线
+[调试] 2019-11-22 10:55:38.039 thread:[05] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:62025 ] 上线
+[调试] 2019-11-22 11:05:33.549 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:62025 ] 下线
+[调试] 2019-11-22 11:05:55.996 thread:[05] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:62280 ] 上线
+[调试] 2019-11-22 11:06:37.449 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:62280 ] 下线
+[调试] 2019-11-22 11:06:50.635 thread:[07] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:62408 ] 上线
+[调试] 2019-11-22 11:18:04.810 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:62408 ] 下线
+[调试] 2019-11-22 11:18:37.455 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56900 ] 上线
+[调试] 2019-11-22 11:20:29.626 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56900 ] 下线
+[调试] 2019-11-22 11:20:29.627 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56945 ] 上线
+[调试] 2019-11-22 11:20:29.628 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56945 ] 下线
+[调试] 2019-11-22 11:20:30.004 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56946 ] 上线
+[调试] 2019-11-22 11:20:30.005 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56946 ] 下线
+[调试] 2019-11-22 11:20:30.414 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56947 ] 上线
+[调试] 2019-11-22 11:20:30.424 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56947 ] 下线
+[调试] 2019-11-22 11:20:30.811 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56948 ] 上线
+[调试] 2019-11-22 11:20:30.813 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56948 ] 下线
+[调试] 2019-11-22 11:20:31.222 thread:[05] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56949 ] 上线
+[调试] 2019-11-22 11:20:31.227 thread:[08] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:56949 ] 下线
+[调试] 2019-11-22 11:20:49.615 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:57041 ] 上线
+[调试] 2019-11-22 11:21:31.207 thread:[09] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:57041 ] 下线
+[调试] 2019-11-22 11:22:19.877 thread:[05] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:57118 ] 上线
+[调试] 2019-11-22 11:23:30.355 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:57118 ] 下线
+[调试] 2019-11-22 11:26:14.704 thread:[10] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:54494 ] 上线
+[调试] 2019-11-22 11:30:02.486 thread:[11] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:54494 ] 下线
+[调试] 2019-11-22 11:32:07.350 thread:[06] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:54624 ] 上线
+[调试] 2019-11-22 11:32:56.958 thread:[13] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:54624 ] 下线
+[调试] 2019-11-22 11:33:14.097 thread:[12] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:54759 ] 上线
+[调试] 2019-11-22 11:34:33.338 thread:[04] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:54759 ] 下线
+[调试] 2019-11-22 11:34:51.993 thread:[12] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:52699 ] 上线
+[调试] 2019-11-22 11:40:05.431 thread:[04] ModbusTcpServer[502] : 客户端 [ 10.177.149.155:52699 ] 下线

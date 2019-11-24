@@ -247,5 +247,10 @@ namespace DTM
             }
 
         }
+
+        private void 电机检查ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

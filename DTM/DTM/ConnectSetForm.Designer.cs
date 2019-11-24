@@ -69,7 +69,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(218, 39);
             this.textBox1.TabIndex = 7;
-            this.textBox1.Text = "192.168.1.5";
+            this.textBox1.Text = "192.";
             // 
             // label1
             // 
@@ -90,6 +90,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "确定";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -167,6 +168,7 @@
             this.Controls.Add(this.button1);
             this.Name = "ConnectSetForm";
             this.Text = "连接设置";
+            this.Load += new System.EventHandler(this.ConnectSetForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
