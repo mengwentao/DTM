@@ -22,8 +22,8 @@ namespace DTM
         List<Label> label_list = new List<Label>();
         Thread th = null;
         OperateResult op_res = null;
+        private ModbusTcpNet busTcpClient2 = new ModbusTcpNet("192.168.43.198");
         private ModbusTcpNet busTcpClient1 = new ModbusTcpNet("192.168.1.5");
-        //private ModbusTcpNet busTcpClient2 = new ModbusTcpNet("192.168.43.198");
         DataTable dt = new DataTable();
         public TestForm1()
         {
@@ -117,13 +117,13 @@ namespace DTM
             {
                 busTcpClient1.ConnectTimeOut = 1000;
                 op_res = busTcpClient1.ConnectServer();
+                busTcpClient2.ConnectServer();
                 if (op_res.IsSuccess)
                 {
                     MessageBox.Show("连接成功");
                      pictureBox1.BackColor = Color.Lime;
                    // timer1.Enabled = true;
-                }
-                 // busTcpClient2.ConnectServer();
+                }                
                  th1 = new Thread(watch_measure_flag);//启动监听测量标志位
                 th1.IsBackground = true;
                 th1.Start();
@@ -144,7 +144,11 @@ namespace DTM
                 flag = busTcpClient1.ReadInt16("900").Content;
                 if (flag!=0)
                 {
-                    measure_show(flag);
+                    measure_show(flag);//奇数盘片测量
+                    //偶数盘进行测量tudo
+
+                    //判断是否补料或者抽检
+
                     label27.Text = res_25[flag - 1].ToString();//显示当前测量数据
                 }
                
@@ -155,43 +159,6 @@ namespace DTM
                 label37.Text = flag.ToString();//显示测量的进度
                 Thread.Sleep(20);
             }
-            
-            /* while (true) {
-                 short temp = busTcpClient1.ReadInt16("900").Content;//新的标志位
-                // Console.WriteLine(temp);
-                // flag = busTcpClient1.ReadInt16("900").Content;
-
-                 if (temp != 0 && flag != temp )//如果标志位发生变化
-                 {
-
-                     measure_show();//读取数据                
-
-                 }
-                 else if (flag == 0 || flag == temp && !thread_flag)
-                     {
-                         //th.Abort();
-
-                         thread_flag = true;
-                    // Thread.Sleep(50);
-                 }
-                 flag = busTcpClient1.ReadInt16("900").Content;
-
-                // Console.WriteLine(flag);
-                 if (flag != 0)
-                 {
-                     label27.Text = res_25[flag - 1].ToString();//显示当前测量数据
-
-                 }
-                 else
-                 {
-                     label27.Text = "0";//显示当前测量数据
-                 }
-                 //label27.Text = res_25[flag - 1].ToString();//显示当前测量数据 
-                 label37.Text = flag.ToString();//显示测量的进度
-
-                 //label_list[flag> 24? 24:flag].Text = res_25[flag > 24 ? 24 : flag].ToString();
-                 Thread.Sleep(50);*/
-
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -246,55 +213,46 @@ namespace DTM
         float[] temp = new float[4];
         List<int> huanliao_id = new List<int>();
         List<float> dp_list = new List<float>();
+        int[] dt_arr = new int[250];
+        int m = 0;
         /// <summary>
         /// 数据展示
         /// </summary>
+        ///
         public void measure_show(short flag)
-        {          
-            
-                int[] dt_arr = busTcpClient1.ReadInt32("1", 250).Content;
-              /*  for (int i = 0;i < dt_arr.Length;i++)
+        {
+
+            // int[] dt_arr = busTcpClient1.ReadInt32("1", 250).Content;
+            ushort[] temp_dt = busTcpClient1.ReadUInt16("1001",500).Content;
+            for (int j = 0;j < dt_arr.Length;j++)//进制转换
+            {
+                dt_arr[j] = temp_dt[j * 2] + temp_dt[j * 2 +1] * 65536;
+            }
+                for (int i = 0;i < dt_arr.Length;i++)//打印测试的数据
                 {
                     Console.Write(dt_arr[i] + " ");
                     if (i!=0 && i%10 == 0)
                     {
                         Console.WriteLine();
                     }
-
-                }*/
-                res_25 = avg_dt_arr(dt_arr);//计算出25片的测量数据
-               
-                //float[] res_temp = new List<float>(res_25).GetRange(0, flag + 1).ToArray();//todo数组切割
-                //float[] res_temp = dp_list.ToArray();//todo数组切割
-               // MessageBox.Show(res_temp.Length.ToString());
-                 //onsole.WriteLine();
-            //  for (int i = flag; i <= flag; i++)
-            //  {
-           // for (int i = 0;i < 25;i++)
-            {
-             //   res_25[i] = (float)Math.Round((double)res_25[i], 4);//四舍五入，小数点后四位
-             //   label_list[i].Text = res_25[i].ToString();//将测试结果进行显示
-            }
-                    res_25[flag-1] = (float)Math.Round((double)res_25[flag -1], 6);//四舍五入，小数点后六位
-
-                    Console.WriteLine("第" + flag +"数据"+res_25[flag-1]);
-           // MessageBox.Show(flag.ToString());
-                    label_list[flag-1].Text = res_25[flag-1].ToString();//将量结果进行显示
-                    if (Math.Abs(res_25[flag-1] - float.Parse(textBox1.Text)) > float.Parse(textBox2.Text))//如果不符合标准
-                    {
-                        label_list[flag -1].ForeColor = Color.Red;
-                        if(!huanliao_id.Contains(flag ))
-                            huanliao_id.Add(flag );//记录换料的编号
-                    }
-                    else
-                    {
-                        label_list[flag -1].ForeColor = Color.Black;
-                    }
-                    th = new Thread(curveShow);//表格显示数据线程
-                    th.IsBackground = true;
-                    th.Start();
-                //    curveShow();                   
-            //    }
+                }
+                res_25 = avg_dt_arr(dt_arr);//计算出25片的测量数据           
+                res_25[flag-1] = (float)Math.Round((double)res_25[flag -1], 6);//四舍五入，小数点后六位
+                Console.WriteLine("第" + flag +"数据"+res_25[flag-1]);
+                label_list[flag-1].Text = res_25[flag-1].ToString();//将量结果进行显示
+                if (Math.Abs(res_25[flag-1] - float.Parse(textBox1.Text)) > float.Parse(textBox2.Text))//如果不符合标准
+                {
+                     label_list[flag -1].ForeColor = Color.Red;
+                     if(!huanliao_id.Contains(flag ))
+                          huanliao_id.Add(flag );//记录换料的编号
+                  }
+                else
+                {
+                     label_list[flag -1].ForeColor = Color.Black;
+                  }
+                  th = new Thread(curveShow);//表格显示数据线程
+                  th.IsBackground = true;
+                  th.Start();            
 
                 string str = "";
                 
@@ -313,25 +271,22 @@ namespace DTM
                 label30.Text = temp[1].ToString();
                 label33.Text = temp[2].ToString();
                 label35.Text = temp[3].ToString();
-               
-                
-             //   Thread.Sleep(10);
-           
+              
         }
         public float [] avg_dt_arr(int []arr)
         {
             float[] res = new float[25];
             for (int i = 0;i < 25;i++)
             {
-                res[i] = cal_arr_avg(arr,i)/8/10000;
+                res[i] = cal_arr_avg(arr,i)/8/100000;
             }
             return res;
         }
         public float cal_arr_avg(int[] arr, int start)
         {
-            float res = 0;
-            float max_pre = 0;
-            int min_pre = 65536;
+            long res = 0;
+            long max_pre = 0;
+            long min_pre = 65536 * 8;
             for (int i = start * 10; i < start * 10 + 10; i++)
             {
                 res += arr[i];
@@ -419,21 +374,77 @@ namespace DTM
 
         private void button7_Click(object sender, EventArgs e)
         {
-            busTcpClient1.Write("198",1);
-           // busTcpClient1.Write("3089",true);
+            bool[] temp = new bool[] { true,true};
+            busTcpClient1.Write("198",1);//发送移动盘片位置
+           
+            busTcpClient1.Write("2360", temp);//计算
+           
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            busTcpClient1.Write("198", 2);
-          //  busTcpClient1.Write("3090", true);
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 2);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            busTcpClient1.Write("198", 3);
-          //  busTcpClient1.Write("3091", true);
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 3);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 4);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 25);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 18);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 5);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 6);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient1.Write("198", 7);//发送移动盘片位置
+
+            busTcpClient1.Write("2360", temp);//计算
+        }
+
     }
     
 }
