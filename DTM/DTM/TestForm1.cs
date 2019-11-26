@@ -22,9 +22,12 @@ namespace DTM
         List<Label> label_list = new List<Label>();
         Thread th = null;
         OperateResult op_res = null;
+        public static bool odd_even_flag = true;//测量盒子的奇数偶数的判断的标志位，用于区分显示坐标
         private ModbusTcpNet busTcpClient2 = new ModbusTcpNet("192.168.43.198");
-        private ModbusTcpNet busTcpClient1 = new ModbusTcpNet("192.168.1.5");
+        private ModbusTcpNet busTcpClient1 = new ModbusTcpNet("192.168.43.198");
         DataTable dt = new DataTable();
+        List<Button> list_button1 = new List<Button>();
+        List<Button> list_button2 = new List<Button>();
         public TestForm1()
         {
             InitializeComponent();
@@ -39,10 +42,25 @@ namespace DTM
             OpenCSV(parentPath);
             label_init();
             Control.CheckForIllegalCrossThreadCalls = false;
-           
+            Init_Button();
 
 
             // dataGridView1.DataSource = dt;
+        }
+        public void Init_Button()
+        {
+            list_button1.Add(button7); list_button1.Add(button8); list_button1.Add(button9); list_button1.Add(button18); list_button1.Add(button17);
+            list_button1.Add(button16); list_button1.Add(button23); list_button1.Add(button22); list_button1.Add(button21); list_button1.Add(button20);
+            list_button1.Add(button19); list_button1.Add(button14); list_button1.Add(button15); list_button1.Add(button13); list_button1.Add(button24);
+            list_button1.Add(button26); list_button1.Add(button25); list_button1.Add(button29); list_button1.Add(button28); list_button1.Add(button27);
+            list_button1.Add(button32); list_button1.Add(button31); list_button1.Add(button30); list_button1.Add(button34); list_button1.Add(button33);
+
+            list_button2.Add(button62); list_button2.Add(button61); list_button2.Add(button60); list_button2.Add(button54); list_button2.Add(button53);
+            list_button2.Add(button52); list_button2.Add(button51); list_button2.Add(button50); list_button2.Add(button49); list_button2.Add(button48);
+            list_button2.Add(button47); list_button2.Add(button57); list_button2.Add(button55); list_button2.Add(button56); list_button2.Add(button46);
+            list_button2.Add(button45); list_button2.Add(button44); list_button2.Add(button43); list_button2.Add(button42); list_button2.Add(button41);
+            list_button2.Add(button40); list_button2.Add(button39); list_button2.Add(button38); list_button2.Add(button37); list_button2.Add(button36);
+
         }
         public void label_init()
         {
@@ -137,6 +155,10 @@ namespace DTM
         bool thread_flag = true;
         static short flag = 0;//PLC寄存器中记录的测量位置
         Thread th2 = null;
+        bool temp_flag = true;
+        bool temp_flag1 = true;
+        bool temp_flag2 = true;
+        static int count_num = 0;
         public void watch_measure_flag()
         {
             while (true)
@@ -144,21 +166,89 @@ namespace DTM
                 flag = busTcpClient1.ReadInt16("900").Content;
                 if (flag!=0)
                 {
-                    measure_show(flag);//奇数盘片测量
-                    //偶数盘进行测量tudo
+                    //获取盘片信息并显示
+                    if (temp_flag1)//保证执行一次
+                    {
 
-                    //判断是否补料或者抽检
+                         MessageBox.Show("查询数据库，获取清洗盒信息"+"当前已测量" + count_num);
+                        //Thread.Sleep(1000);
+                        temp_flag1 = false;
+                        count_num++;//数据是通过数据库获的
+                    }
+                    if (flag==25&&temp_flag)//判断奇偶数
+                    {
+                        measure_show(flag);
+                        temp_flag = false;
+                    }
+                    else if (flag != 25)
+                    {
+                        measure_show(flag);
+                    }                    
 
-                    label27.Text = res_25[flag - 1].ToString();//显示当前测量数据
+                        label27.Text = res_25[flag - 1].ToString();//显示当前测量数据
+                    temp_flag2 = true;
                 }
                
-                else
+                else if(flag ==0 )//测量完成
                 {
                     label27.Text = "-1";//显示当前测量数据
+                    temp_flag = true;
+                    temp_flag1 = true;                                
+                    if (busTcpClient1.ReadCoil("3").Content && temp_flag2)//读取两盒测量完成的线圈，如果完成//note:要在900寄存器清零前，plc给出这个信号
+                    {
+                        //判断是否补料或者抽检 
+                        if (huanliao_id_odd.Count > 0 )
+                        {
+                            MessageBox.Show("第一盒请补料");                          
+                            busTcpClient1.Write("0",true);//给线圈信号，标记换料的盒子
+                        }
+                        if(huanliao_id_even.Count > 0)
+                        {
+                            MessageBox.Show("第二盒请补料");
+                            busTcpClient1.Write("1", true);////给线圈信号，标记换料的盒子
+                        }
+                        if (count_num % 4==0)//如果到达了抽检的设定值
+                        {
+                            busTcpClient1.Write("4", true);//给线圈信号，进入换料站
+                            MessageBox.Show("请抽检" + count_num);
+                        }
+                        if(huanliao_id_odd.Count==0&& huanliao_id_even.Count ==0)
+                        {
+                            busTcpClient1.Write("4", true);//给线圈信号，进入倒盒站
+                            //数据入库
+                            MessageBox.Show("入库");
+                        }
+                        if (huanliao_id_odd.Count > 0 || huanliao_id_even.Count > 0)//进入换料站
+                        {
+                            busTcpClient1.Write("4", true);//给线圈信号，进入换料站
+                            buliaozhan(huanliao_id_odd, huanliao_id_even);//todu,加使能控制
+
+                        }
+                        temp_flag2 = false;
+                    }
+                    
+                   
                 }
                 label37.Text = flag.ToString();//显示测量的进度
                 Thread.Sleep(20);
+               
             }
+        }
+        public void buliaozhan(List<int> list1,List<int>list2)
+        {
+            for (int i = 0;i < list_button1.Count;i++)
+            {
+                if (list1.Contains(i + 1))
+                {
+                    list_button1[i].BackColor = Color.Red;
+                }
+                if (list2.Contains(i + 1))
+                {
+                    list_button2[i].BackColor = Color.Red;
+                }
+
+            }
+           
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -211,10 +301,11 @@ namespace DTM
             return res;            
         }
         float[] temp = new float[4];
-        List<int> huanliao_id = new List<int>();
+        List<int> huanliao_id_odd = new List<int>();
+        List<int> huanliao_id_even = new List<int>();
         List<float> dp_list = new List<float>();
         int[] dt_arr = new int[250];
-        int m = 0;
+        
         /// <summary>
         /// 数据展示
         /// </summary>
@@ -243,27 +334,44 @@ namespace DTM
                 if (Math.Abs(res_25[flag-1] - float.Parse(textBox1.Text)) > float.Parse(textBox2.Text))//如果不符合标准
                 {
                      label_list[flag -1].ForeColor = Color.Red;
-                     if(!huanliao_id.Contains(flag ))
-                          huanliao_id.Add(flag );//记录换料的编号
-                  }
+                    if (odd_even_flag&& !huanliao_id_odd.Contains(flag))//分别以奇偶盒记录信息
+                    {                    
+                        huanliao_id_odd.Add(flag);//记录换料的编号
+                     }
+                    if(!odd_even_flag&&!huanliao_id_even.Contains(flag))//偶数盒//todu
+                    {
+                        huanliao_id_even.Add(flag);//记录换料的编号
+                    }        
+                 }
                 else
                 {
                      label_list[flag -1].ForeColor = Color.Black;
-                  }
+                }
                   th = new Thread(curveShow);//表格显示数据线程
                   th.IsBackground = true;
                   th.Start();            
 
-                string str = "";
-                
-                if (huanliao_id.Count > 0)
+                string str1 = " ";
+                string str2 = " ";
+
+            if (huanliao_id_odd.Count > 0)
+            {
+                for (int i = 0; i < huanliao_id_odd.Count; i++)
                 {
-                    for (int i = 0; i < huanliao_id.Count; i++)
-                    {
-                        str = str + huanliao_id[i] + ",";
-                    }
-                    label39.Text = str.Substring(0, str.Length - 1);
+                   str1 = str1 + huanliao_id_odd[i] + ",";
                 }
+                    
+                label39.Text = str1.Substring(0, str1.Length - 1);
+               
+            }
+            if (huanliao_id_even.Count > 0)
+            {
+                for (int i = 0; i < huanliao_id_even.Count; i++)
+                {
+                    str2 = str2 + huanliao_id_even[i] + ",";
+                }
+                label40.Text = str2.Substring(0, str2.Length - 1);
+            }
                 Console.WriteLine();
                 //显示当前测量的统计结果
                 temp = tongji(res_25);
@@ -296,27 +404,41 @@ namespace DTM
             //去掉最大值和最小值
             return (res- max_pre - min_pre); //取平均值//todu
         }
-
+        
         public void curveShow()
         {
-           
-                //ucCurve1.ValueMinLeft = (float)Math.Round((double)temp[1], 3);
-                //ucCurve1.ValueMaxLeft = (float)Math.Round((double)temp[0], 3);
-                //ucCurve1.ValueSegment = 10;
-              
-                ucCurve1.SetLeftCurve("测量值", res_25);
 
-               // for (int i = 0; i <= flag; i++)
-              //  {           
-
-                //ucCurve1.AddMarkText("测量值", count, res_25[count >24 ? 0 : count].ToString());
-               // ucCurve1.AddMarkText("测量值", flag,"");
-
-         //   }
-            
-            if (flag == 25)
+            //ucCurve1.ValueMinLeft = (float)Math.Round((double)temp[1], 3);
+            //ucCurve1.ValueMaxLeft = (float)Math.Round((double)temp[0], 3);
+            //ucCurve1.ValueSegment = 10;
+            if (odd_even_flag)
             {
-             //   ucCurve1.AddLeftAuxiliary(temp[3], Color.Blue);
+                ucCurve1.SetLeftCurve("测量值", res_25);//用于显示奇数盒
+                ucCurve1.AddMarkText("测量值", flag, "");
+                
+            }
+            else
+            {
+                ucCurve2.SetLeftCurve("测量值", res_25); //用于显示偶数盒
+                ucCurve2.AddMarkText("测量值", flag, "");
+                
+            }
+
+
+           
+            // for (int i = 0; i <= flag; i++)
+            //  {           
+
+            //ucCurve1.AddMarkText("测量值", count, res_25[count >24 ? 0 : count].ToString());
+            // ucCurve1.AddMarkText("测量值", flag,"");
+
+            //   }
+
+            if (flag == 25&&temp_flag)
+            {
+                //   ucCurve1.AddLeftAuxiliary(temp[3], Color.Blue);
+                odd_even_flag = !odd_even_flag;     //显示完成后，标志位取反
+               
             }
                
            
@@ -445,6 +567,18 @@ namespace DTM
             busTcpClient1.Write("2360", temp);//计算
         }
 
+        private void button12_Click(object sender, EventArgs e)
+        {
+            huanliao_id_odd.Clear();
+            busTcpClient1.Write("3", false);
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            huanliao_id_even.Clear();
+            busTcpClient1.Write("3", false);
+
+        }
     }
     
 }
