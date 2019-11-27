@@ -12,6 +12,8 @@ using HslCommunication.ModBus;
 using HslCommunication;
 using System.Threading;
 using HZH_Controls;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace DTM
 {
@@ -23,8 +25,11 @@ namespace DTM
         Thread th = null;
         OperateResult op_res = null;
         public static bool odd_even_flag = true;//测量盒子的奇数偶数的判断的标志位，用于区分显示坐标
-        private ModbusTcpNet busTcpClient2 = new ModbusTcpNet("192.168.43.198");
-        private ModbusTcpNet busTcpClient1 = new ModbusTcpNet("192.168.43.198");
+        private ModbusTcpNet busTcpClient2 = new ModbusTcpNet("10.177.144.231");
+        private ModbusTcpNet busTcpClient1 = new ModbusTcpNet("10.177.144.231");
+        static string connetStr = "server=106.12.3.103;port=3501;user=root;password=MysqlPassword; database=DTM";
+        MySqlConnection conn = null;
+        string cur_date_table = "";
         DataTable dt = new DataTable();
         List<Button> list_button1 = new List<Button>();
         List<Button> list_button2 = new List<Button>();
@@ -42,8 +47,14 @@ namespace DTM
             OpenCSV(parentPath);
             label_init();
             Control.CheckForIllegalCrossThreadCalls = false;
-            Init_Button();
+            Init_Button();            
+            cur_date_table = "measure_" + DateTime.Now.ToString("yyyy_MM_dd"); ;//获取当天的表格名称
 
+            Mysql_init();//连接数据库
+            count_num = get_count(cur_date_table);//获取已测量的数据
+            label43.Text = count_num.ToString();//显示测量完成的盒数
+
+          
 
             // dataGridView1.DataSource = dt;
         }
@@ -136,6 +147,10 @@ namespace DTM
                 busTcpClient1.ConnectTimeOut = 1000;
                 op_res = busTcpClient1.ConnectServer();
                 busTcpClient2.ConnectServer();
+                Mysql_init();//连接数据库
+                //Thread.Sleep(300);
+                count_num = get_count(cur_date_table);//获取已测量的数据
+                label43.Text = count_num.ToString();//显示测量完成的盒数
                 if (op_res.IsSuccess)
                 {
                     MessageBox.Show("连接成功");
@@ -149,8 +164,96 @@ namespace DTM
             }
             catch
             {
-                MessageBox.Show("plc连接异常");
+                MessageBox.Show("连接异常");
             }
+        }
+        /// <summary>
+        /// mysql连接初始化
+        /// </summary>
+        public void Mysql_init()
+        {
+            try
+            {
+                if (conn == null)
+                {
+                    conn = new MySqlConnection(connetStr);
+                    conn.Open();//打开通道，建立连接，可能出现异常,使用try catch语句                  
+                }
+                //查询是否存在每日测量数据表格，如果不存在，以日期的名字进行命名，新建table
+                string sql = String.Format("CREATE TABLE IF NOT EXISTS {0}(RCno VARCHAR(100) NOT NULL,Avg VARCHAR(100) NOT NULL,Checked INT,Other VARCHAR(100),PRIMARY KEY (RCno)); ", cur_date_table);
+                executeMysql(sql);
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                conn.Close();
+            }
+            finally
+            {
+                //
+            }
+        }
+        /// <summary>
+        /// 执行mysql语句
+        /// </summary>
+        /// <param name="sql"></param>
+        public int executeMysql(string sql)
+        {
+            int result = 0;
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+                MySqlCommand sqlInsert = new MySqlCommand(sql, conn);
+                result = sqlInsert.ExecuteNonQuery();//3.执行插入、删除、更改语句。执行成功返回受影响的数据的行数，返回1可做true判断。执行失败不返回任何数据，报错，
+                if (result == 1)
+                {
+                    // richTextBox1.AppendText("增加成功" + "\r\n");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                //richTextBox1.AppendText(ex.Message + "\r\n");
+            }
+            return result;
+        }
+        /// <summary>
+        /// 查询测量个数
+        /// </summary>
+        /// <returns>返回已经测量的值</returns>
+        public int get_count(string para)
+        {
+            int res = 0;
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }           
+            string sql = String.Format("select count(*) as count from {0}", para);
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    res = int.Parse(reader.GetString("count"));
+                }               
+            }
+            if (conn != null || conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            return res;
         }
         bool thread_flag = true;
         static short flag = 0;//PLC寄存器中记录的测量位置
@@ -159,6 +262,7 @@ namespace DTM
         bool temp_flag1 = true;
         bool temp_flag2 = true;
         static int count_num = 0;
+        static int RCno = 1000;
         public void watch_measure_flag()
         {
             while (true)
@@ -169,11 +273,14 @@ namespace DTM
                     //获取盘片信息并显示
                     if (temp_flag1)//保证执行一次
                     {
-
-                         MessageBox.Show("查询数据库，获取清洗盒信息"+"当前已测量" + count_num);
+                        count_num = get_count(cur_date_table);//获取已测量的数据
+                        label43.Text = count_num.ToString();//显示测量完成的盒数
+                        //todo,查询webapi，获取当前盒的信息
+                       
                         //Thread.Sleep(1000);
                         temp_flag1 = false;
-                        count_num++;//数据是通过数据库获的
+                        // count_num++;//数据是通过数据库获的
+                       
                     }
                     if (flag==25&&temp_flag)//判断奇偶数
                     {
@@ -191,6 +298,24 @@ namespace DTM
                
                 else if(flag ==0 )//测量完成
                 {
+                    if (busTcpClient1.ReadCoil("5").Content)//TODO,读取测量完成线圈每测完一盒进行入库，
+                    {
+                        //插入之前先判断是否存在，如果存在，则需要进行修改,如果不存在，则直接插入
+                        string sql = String.Format("INSERT INTO {0}(RCno, Avg, Checked, Other) VALUE('{1}', '{2}', {3}, '{4}') ON DUPLICATE KEY UPDATE RCno = '{5}', Avg = '{6}';", cur_date_table,RCno.ToString(), temp[3].ToString(), 1, "NULL", RCno.ToString(), temp[3].ToString());
+                        int res = executeMysql(sql);
+                       // MessageBox.Show(res.ToString());
+                        if (res!=0)
+                        {
+                            RCno++;
+                            //线圈5置0
+                            busTcpClient1.Write("5", false);//表示读取成功
+                            count_num = get_count(cur_date_table);//更新测量数
+                            label43.Text = count_num.ToString();//显示测量完成的盒数
+                        }                   
+                                                                     
+                    }
+                   // Thread.Sleep(50);
+
                     label27.Text = "-1";//显示当前测量数据
                     temp_flag = true;
                     temp_flag1 = true;                                
@@ -221,7 +346,8 @@ namespace DTM
                         if (huanliao_id_odd.Count > 0 || huanliao_id_even.Count > 0)//进入换料站
                         {
                             busTcpClient1.Write("4", true);//给线圈信号，进入换料站
-                            buliaozhan(huanliao_id_odd, huanliao_id_even);//todu,加使能控制
+                            //
+                            buliaozhan(huanliao_id_odd, huanliao_id_even);//todo,何时加入使能？
 
                         }
                         temp_flag2 = false;
@@ -338,7 +464,7 @@ namespace DTM
                     {                    
                         huanliao_id_odd.Add(flag);//记录换料的编号
                      }
-                    if(!odd_even_flag&&!huanliao_id_even.Contains(flag))//偶数盒//todu
+                    if(!odd_even_flag&&!huanliao_id_even.Contains(flag))//偶数盒
                     {
                         huanliao_id_even.Add(flag);//记录换料的编号
                     }        
@@ -378,7 +504,7 @@ namespace DTM
                 label29.Text = temp[0].ToString();
                 label30.Text = temp[1].ToString();
                 label33.Text = temp[2].ToString();
-                label35.Text = temp[3].ToString();
+                label35.Text = temp[3].ToString();//平均值
               
         }
         public float [] avg_dt_arr(int []arr)
@@ -402,7 +528,7 @@ namespace DTM
                 min_pre = Math.Min(min_pre, arr[i]);
             }
             //去掉最大值和最小值
-            return (res- max_pre - min_pre); //取平均值//todu
+            return (res- max_pre - min_pre); //取平均
         }
         
         public void curveShow()

@@ -61,3 +61,4 @@ D:\DTM-Software\TestPLC\TestPLC\obj\Debug\TestPLC.csproj.GenerateResource.Cache
 D:\DTM-Software\TestPLC\TestPLC\bin\Debug\MySql.Data.dll
 D:\DTM-Software\TestPLC\TestPLC\bin\Debug\HttpCodeLib.dll
 D:\DTM-Software\TestPLC\TestPLC\bin\Debug\Newtonsoft.Json.dll
+D:\DTM-Software\TestPLC\TestPLC\bin\Debug\HslCommunication.dll

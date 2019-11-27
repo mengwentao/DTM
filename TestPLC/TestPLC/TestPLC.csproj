@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HslCommunication">
+      <HintPath>..\..\DTM\DTM\dll\HslCommunication.dll</HintPath>
+    </Reference>
     <Reference Include="HttpCodeLib">
       <HintPath>dll\HttpCodeLib.dll</HintPath>
     </Reference>

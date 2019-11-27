@@ -241,7 +241,7 @@ namespace DTM
             p2_20.Add(pictureBox295); p2_20.Add(pictureBox296); p2_20.Add(pictureBox297); p2_20.Add(pictureBox298);
             p2_20.Add(pictureBox299); p2_20.Add(pictureBox300); p2_20.Add(pictureBox301); p2_20.Add(pictureBox302);
            
-            //总伺服on和off //todu
+            //总伺服on和off //todo
             p28.Add(pictureBox289); p28.Add(pictureBox290);
 
 

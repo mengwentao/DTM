@@ -14,6 +14,8 @@ using System.Net;
 using HZH_Controls;
 using MySql.Data.MySqlClient;
 using System.Net.Http;
+using HslCommunication.ModBus;
+using HslCommunication;
 
 //modbus格式说明
 //https://blog.csdn.net/weixin_33788244/article/details/86003757
@@ -56,6 +58,7 @@ namespace TestPLC
         static int[] DT_data5 = new int[125];
         static int[] one_arr = new int[20];//测试一个盘片的厚度
         static int[] cal_data = new int[25];//储存25片最终的数据数据
+        private ModbusTcpNet busTcpClient1 = new ModbusTcpNet("192.168.1.5");
         public TestPLC()
         {
             InitializeComponent();
@@ -63,7 +66,8 @@ namespace TestPLC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Connect();
+            //Connect();
+            busTcpClient1.ConnectServer();
         }
         /// <summary>
         /// 测试远程mysql连接
@@ -915,6 +919,35 @@ namespace TestPLC
             }                     
             
         }
+        public void find_no(string id,string name)
+        {
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
+            string sql = "select * from test_table where id= @para1 and name = @para2";//在sql语句中定义parameter，然后再给parameter赋值
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("para1", id);
+                cmd.Parameters.AddWithValue("para2", name);
+                MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+                while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
+                {
+                    richTextBox1.AppendText(reader.GetString("id") + "    " + reader.GetString("name") + "\r\n");
+                }
+
+            }
+            if (conn != null || conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+
+            }
+        }
         GetData getData = new GetData();
         TestHttpAPI testAPI = new TestHttpAPI();
        // TestJson2Domain user = new TestJson2Domain();
@@ -958,6 +991,95 @@ namespace TestPLC
             byte[] responseData = webClient.UploadData(url, "POST", postData);//得到返回字符流  
             string srcString = Encoding.UTF8.GetString(responseData);//解码 
             Console.WriteLine(srcString);
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            
+            MessageBox.Show(get_count().ToString());
+        }
+        public int get_count()
+        {
+            int res = 0;
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            string sql = "select count(*) as count from test_table";
+
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+               while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
+                {
+                    richTextBox1.AppendText(reader.GetString("count") + "\r\n");
+                }
+                res = int.Parse(reader.GetString("count"));
+            }
+           
+            if (conn != null || conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+
+            }
+            return res;
+        }
+        public void executeMysql(string sql)
+        {
+           
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+                MySqlCommand sqlInsert = new MySqlCommand(sql, conn);
+                int result = sqlInsert.ExecuteNonQuery();//3.执行插入、删除、更改语句。执行成功返回受影响的数据的行数，返回1可做true判断。执行失败不返回任何数据，报错，
+                if (result == 1)
+                {
+                    richTextBox1.AppendText("增加成功" + "\r\n");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                richTextBox1.AppendText(ex.Message + "\r\n");
+            }
+
+        }
+        private void button18_Click(object sender, EventArgs e)
+        {
+            string date = "measure_" + DateTime.Now.ToString("yyyy_MM_dd");
+            string sql = String.Format("CREATE TABLE IF NOT EXISTS {0}(id int primary key auto_increment); ",date);
+            executeMysql(sql);
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            string cur_date_table = "measure_2019_11_27";
+            string RCno = "0";
+          //  string 
+            string sql = String.Format("INSERT INTO {0}(RCno, Avg, Checked, Other) VALUE('{1}', '{2}', {3}, '{4}') ON DUPLICATE KEY UPDATE RCno = '{5}', Avg = '{6}';", cur_date_table, RCno.ToString(), "30", 1, "NULL", RCno.ToString(), "30");
+            //string sql = String.Format("INSERT INTO measure_2019_11_27(RCno, Avg, Checked, Other) VALUE('{0}', '{1}', {2}, '{3}') ON DUPLICATE KEY UPDATE RCno = '{4}', Avg = '{5}';", textBox28.Text, textBox29.Text,int.Parse(textBox30.Text), "NULL",textBox28.Text, textBox29.Text);
+            Console.WriteLine(sql);
+            //executeMysql(sql);
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+           MessageBox.Show(busTcpClient1.ReadCoil("2049").Content.ToString());
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            busTcpClient1.Write("2049",true);
         }
     }
 }

@@ -241,10 +241,18 @@
             this.textBox26 = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button16 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -316,6 +324,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button21);
+            this.groupBox1.Controls.Add(this.button20);
             this.groupBox1.Controls.Add(this.label68);
             this.groupBox1.Controls.Add(this.textBox13);
             this.groupBox1.Controls.Add(this.link_btn);
@@ -2177,6 +2187,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.textBox30);
+            this.tabPage3.Controls.Add(this.textBox29);
+            this.tabPage3.Controls.Add(this.textBox28);
+            this.tabPage3.Controls.Add(this.button19);
             this.tabPage3.Controls.Add(this.button10);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
@@ -2237,6 +2251,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.button18);
+            this.tabPage6.Controls.Add(this.button17);
             this.tabPage6.Controls.Add(this.label132);
             this.tabPage6.Controls.Add(this.label131);
             this.tabPage6.Controls.Add(this.textBox27);
@@ -2305,6 +2321,16 @@
             this.tabPage7.Text = "json测试";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(366, 41);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(121, 48);
+            this.button16.TabIndex = 3;
+            this.button16.Text = "提交表单";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
             // button14
             // 
             this.button14.Location = new System.Drawing.Point(204, 41);
@@ -2333,15 +2359,79 @@
             this.richTextBox1.TabIndex = 65;
             this.richTextBox1.Text = "";
             // 
-            // button16
+            // button17
             // 
-            this.button16.Location = new System.Drawing.Point(366, 41);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(121, 48);
-            this.button16.TabIndex = 3;
-            this.button16.Text = "提交表单";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.button17.Location = new System.Drawing.Point(370, 21);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(129, 54);
+            this.button17.TabIndex = 72;
+            this.button17.Text = "查询个数";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(578, 21);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(129, 54);
+            this.button18.TabIndex = 73;
+            this.button18.Text = "新建表格";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(53, 228);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(129, 54);
+            this.button19.TabIndex = 66;
+            this.button19.Text = "插入或修改";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(47, 154);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(100, 28);
+            this.textBox28.TabIndex = 67;
+            this.textBox28.Text = "502";
+            // 
+            // textBox29
+            // 
+            this.textBox29.Location = new System.Drawing.Point(186, 154);
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(100, 28);
+            this.textBox29.TabIndex = 68;
+            this.textBox29.Text = "502";
+            // 
+            // textBox30
+            // 
+            this.textBox30.Location = new System.Drawing.Point(323, 154);
+            this.textBox30.Name = "textBox30";
+            this.textBox30.Size = new System.Drawing.Size(100, 28);
+            this.textBox30.TabIndex = 69;
+            this.textBox30.Text = "502";
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(450, 0);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(96, 28);
+            this.button20.TabIndex = 11;
+            this.button20.Text = "测试";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(322, 0);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(96, 28);
+            this.button21.TabIndex = 12;
+            this.button21.Text = "测试写";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // TestPLC
             // 
@@ -2415,6 +2505,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
@@ -2643,6 +2734,14 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button21;
     }
 }
 
