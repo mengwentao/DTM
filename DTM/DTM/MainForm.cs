@@ -34,7 +34,7 @@ namespace DTM
         {
              
         //获取csv文件路径
-        Directory.SetCurrentDirectory(Directory.GetParent(Directory.GetCurrentDirectory()).FullName);
+            Directory.SetCurrentDirectory(Directory.GetParent(Directory.GetCurrentDirectory()).FullName);
             Directory.SetCurrentDirectory(Directory.GetParent(Directory.GetCurrentDirectory()).FullName);
             parentPath = Directory.GetCurrentDirectory() + "\\Data\\curData.csv";
             Console.WriteLine(parentPath);

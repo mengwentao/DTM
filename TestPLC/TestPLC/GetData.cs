@@ -20,20 +20,18 @@ namespace TestPLC
         public string HttpCodeCreate()
         {
             string res = string.Empty;//请求结果,请求类型不是图片时有效
-            string url = "http://car.autohome.com.cn/javascript/NewSpecCompare.js?20131010";//请求地址
+            string url = "https://www.easy-mock.com/mock/5ddfd4937605f1121decf358/test1/test#!method=get";//请求地址
             items = new HttpItems();//每次重新初始化请求对象
             items.URL = url;//设置请求地址
-            items.Referer = "https://car.autohome.com.cn/price/brand-35.html";//设置请求来源
+           // items.Referer = "";//设置请求来源
             items.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0";//设置UserAgent
             items.Cookie = StrCookie;//设置字符串方式提交cookie
             items.Allowautoredirect = true;//设置自动跳转(True为允许跳转) 如需获取跳转后URL 请使用 hr.RedirectUrl
-            items.ContentType = "application/x-www-form-urlencoded";//内容类型
+            items.ContentType = "application/json";//内容类型
             Encoding encoding = Encoding.Default;//根据网站的编码自定义
             hr = helper.GetHtml(items, ref StrCookie);//提交请求
             res = hr.Html;//具体结果
-            res = res.Split('=')[1];
-            int x = res.LastIndexOf(";", res.Length); //lastindexof是从最后开始取.indexof才是从前面开始
-            res = res.Substring(0, x);
+          
             return res.Trim();//返回具体结果
         }
 

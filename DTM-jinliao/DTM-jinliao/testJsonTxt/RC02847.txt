@@ -1,0 +1,25 @@
+﻿{
+    "Error":404,    
+    "Success":false,  
+    "Data":[           
+        {
+            "RCNo":"RC02847",  
+            "PrdName":"H500A", 
+            "MaterialCode":"F", 
+            "IDODMachineNo":"L31", 
+            "IDODDTime":"2019-11-19 04:42:14", 
+            "SXMachineNo":"E02", 
+            "SXDTime":"2019-11-19 08:02:55", 
+            "RGMachineNo":"G76", 
+            "RGDTime":"2019-11-19 08:32:59", 
+            "CXMachineNo":"CD01-1", 
+            "CXDTime":"2019-11-19 09:03:57", 
+            "THMachineNo":"A-01", 
+            "THDTime":"2019-11-19 09:22:23", 
+            "THEquipment1":"T035066", 
+            "THEquipment2":"T035058", 
+            "FGMachineNo":"G26", 
+            "FGDTime":"2019-11-19 14:16:14"  
+        }
+    ]
+}

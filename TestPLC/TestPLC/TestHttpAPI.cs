@@ -57,6 +57,7 @@ namespace TestPLC
 
             //string str = jo.GetValue("username").ToString();
              user.username = json.username;
+            user.address = json.address;
             return user;
         }
 

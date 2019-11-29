@@ -16,6 +16,13 @@ using MySql.Data.MySqlClient;
 using System.Net.Http;
 using HslCommunication.ModBus;
 using HslCommunication;
+using System.IO;
+using MySqlX.Serialization;
+using Newtonsoft.Json;
+//引入命名空间：
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using Newtonsoft.Json.Linq;
 
 //modbus格式说明
 //https://blog.csdn.net/weixin_33788244/article/details/86003757
@@ -67,7 +74,16 @@ namespace TestPLC
         private void button1_Click(object sender, EventArgs e)
         {
             //Connect();
-            busTcpClient1.ConnectServer();
+            OperateResult op_res = busTcpClient1.ConnectServer();
+            if (op_res.IsSuccess)
+            {
+                MessageBox.Show("成功");
+            }
+            else
+            {
+                MessageBox.Show("失败");
+
+            }
         }
         /// <summary>
         /// 测试远程mysql连接
@@ -903,6 +919,7 @@ namespace TestPLC
             string sql = "select * from test_table where id= @para1 and name = @para2";//在sql语句中定义parameter，然后再给parameter赋值
             using (MySqlCommand cmd = new MySqlCommand(sql, conn))
             {
+
                 cmd.Parameters.AddWithValue("para1", id);
                 cmd.Parameters.AddWithValue("para2", name);
                 MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
@@ -958,14 +975,17 @@ namespace TestPLC
         /// <param name="e"></param>
         private void button15_Click(object sender, EventArgs e)
         {
-            string url = "http://106.12.3.103:8080/MyProject/user/MyTest.do";
-            //string url = "http://car.autohome.com.cn/javascript/NewSpecCompare.js?20131010";
+            //string url = "http://106.12.3.103:8080/MyProject/user/MyTest.do";
+            // string url = "http://car.autohome.com.cn/javascript/NewSpecCompare.js?20131010";
             //string res = testAPI.HttpApi(url,"{}","get");
-            string res = testAPI.HttpGetJsonAPI(url);
+            //  string str = File.ReadAllText(@"D:\DTM-Software\TestPLC\TestPLC\1.txt",Encoding.UTF8);
+              string url = "https://www.easy-mock.com/mock/5ddfd4937605f1121decf358/test1/test#!method=get";
+            string res = testAPI.HttpGetJsonAPI(url);//访问web，获取json数据
             Console.WriteLine(res);
-            TestJson2Domain user = testAPI.GetJson2Item(res);
+           // richTextBox1.AppendText(res);
+           // TestJson2Domain user = testAPI.GetJson2Item(res);//序列化
 
-            richTextBox1.AppendText(user.username);
+             //richTextBox1.AppendText(user.username + "\r\n" + user.address);
 
             /*
             HttpClient client = new HttpClient(url);
@@ -1080,6 +1100,230 @@ namespace TestPLC
         private void button21_Click(object sender, EventArgs e)
         {
             busTcpClient1.Write("2049",true);
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            string str = File.ReadAllText(@"D:\DTM-Software\TestPLC\TestPLC\jsonTest.txt", Encoding.UTF8);//得到json数据
+
+            //string res = testAPI.HttpGetJsonAPI(str);
+            //Console.WriteLine(res);
+            // richTextBox1.AppendText(res);
+            // TestJson2Domain user = testAPI.GetJson2Item(str);
+            JSONObject jp = (JSONObject)JsonConvert.DeserializeObject<JSONObject>(str);//序列化
+            if(jp.Error == null)
+            {
+               // MessageBox.Show("数据获取正常");
+            }
+            List<DataItem> list = jp.Data;
+            list = jp.Data;
+            DataItem da = list[0];
+            MessageBox.Show(da.RCNo);
+           
+            /*dr["RCNo"] = data.RCNo;
+               dr["PrdName"] = data.PrdName;
+               dr["MaterialCode"] = data.MaterialCode;
+               dr["IDODMachineNo"] = data.IDODMachineNo;
+               dr["IDODDTime"] = data.IDODDTime;
+               dr["SXMachineNo"] = data.SXMachineNo;
+               dr["SXDTime"] = data.SXMachineNo;
+               dr["RGMachineNo"] = data.RGMachineNo;
+               dr["RGDTime"] = data.RGDTime;
+               dr["CXMachineNo"] = data.CXMachineNo;
+               dr["CXDTime"] = data.CXDTime;
+               dr["THMachineNo"] = data.THMachineNo;
+               dr["THDTime"] = data.THDTime;
+               dr["THEquipment1"] = data.THEquipment1;
+               dr["THEquipment2"] = data.THEquipment2;
+               dr["FGMachineNo"] = data.FGMachineNo;
+               dr["FGDTime"] = data.FGDTime;*/
+
+            foreach (DataItem data in list)
+            {
+                DataRow dr = dt.NewRow();
+                //MessageBox.Show(data.RCNo);
+               
+               // dt.Rows.Add(dr);
+            }
+        //   MessageBox.Show( dt.Rows[0]["RCNo"].ToString());
+        }
+
+        private void tabPage7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            GetData g = new GetData();
+            ServicePointManager.ServerCertificateValidationCallback += RemoteCertificateValidate;
+            string res = g.HttpCodeCreate();
+
+            string str = res;//得到json数据
+
+            //string res = testAPI.HttpGetJsonAPI(str);
+            //Console.WriteLine(res);
+            // richTextBox1.AppendText(res);
+            // TestJson2Domain user = testAPI.GetJson2Item(str);
+            JSONObject jp = (JSONObject)JsonConvert.DeserializeObject<JSONObject>(str);//序列化
+            if (jp.Error == null)
+            {
+                // MessageBox.Show("数据获取正常");
+            }
+            List<DataItem> list = jp.Data;
+            list = jp.Data;
+            DataItem da = list[0];
+            MessageBox.Show(da.RCNo);
+
+            Console.WriteLine(res);
+            richTextBox1.AppendText(res);
+        }
+        private static bool RemoteCertificateValidate(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors error)
+        {
+            //为了通过证书验证，总是返回true
+            return true;
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            string URL = "http://106.12.3.103:8080/MyProject/user/login.do";
+            sdf(URL);
+        }
+        public static void sdf(string urls)
+        {
+            string url = urls;
+            //定义request并设置request的路径
+            WebRequest request = WebRequest.Create(url);
+            request.Method = "post";
+            //初始化request参数
+            string postData = "{\"dataSource\":\"DataSource=192.168.0.70/orcl70;UserID=sde;PassWord=sde;\",\"type\":\"0\",\"whereCondition\":\"dlwz='国和百寿一村6号'\",\"tableName\":\"hzdzd_pt\"}";
+            //var json = "{ \"dataSource\": \"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.70)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl70)));User ID=sde;Password=sde;Unicode=True\" }";
+            //设置参数的编码格式，解决中文乱码
+            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            //设置request的MIME类型及内容长度
+            request.ContentType = "application/json";
+            request.ContentLength = byteArray.Length;
+            //打开request字符流
+            Stream dataStream = request.GetRequestStream();
+            dataStream.Write(byteArray, 0, byteArray.Length);
+           
+            dataStream.Close();
+            try
+            {
+                WebResponse response = request.GetResponse();
+               
+                //获取相应的状态代码
+                if (((HttpWebResponse)response).StatusDescription == "OK")
+                {
+                    MessageBox.Show("发送成功");
+                }
+                else
+                {
+                    MessageBox.Show("上传失败");
+                }
+
+                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+            }
+            catch
+            {
+                // Console.WriteLine(((HttpWebResponse)response).StatusCode.ToString());
+                MessageBox.Show("请求失败");
+            }
+            //定义response为前面的request响应
+           
+            //定义response字符流
+           /* dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            string responseFromServer = reader.ReadToEnd();//读取所有
+            Console.WriteLine(responseFromServer);*/
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            String userName = "张三";
+            String uploadtime = "2019-12-01";
+
+            JObject postedJObject = new JObject();
+            postedJObject.Add("user", userName);
+            postedJObject.Add("upLoadTime", uploadtime);
+
+            JArray jArray = new JArray();//添加测量数据
+
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
+            string sql = "select * from measure_2019_11_28";//在sql语句中定义parameter，然后再给parameter赋值
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            {
+
+                /*cmd.Parameters.AddWithValue("para1", id);
+                cmd.Parameters.AddWithValue("para2", name);*/
+                MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+                while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
+                {
+                    JObject arr = new JObject();
+                    arr.Add("RCno", reader.GetString("RCno"));
+                    arr.Add("Avg", reader.GetString("Avg"));
+                    jArray.Add(arr);
+                    richTextBox1.AppendText(reader.GetString("RCno") + "    " + reader.GetString("Avg") + "\r\n");
+                }
+
+            }
+            if (conn != null || conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+
+            }
+
+            /*JObject arr1 = new JObject();
+            arr1.Add("arr1", "this is arr1");
+            jArray.Add(arr1);
+
+            JObject arr2 = new JObject();
+            arr2.Add("arr2", "this is arr2");
+            jArray.Add(arr2);*/
+
+            postedJObject.Add("data", jArray);
+            String paramString = postedJObject.ToString(Newtonsoft.Json.Formatting.Indented, null);
+            Console.WriteLine(paramString);
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
+            string sql = "select * from measure_2019_11_28";//在sql语句中定义parameter，然后再给parameter赋值
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            {
+
+                /*cmd.Parameters.AddWithValue("para1", id);
+                cmd.Parameters.AddWithValue("para2", name);*/
+                MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+                while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
+                {
+                    richTextBox1.AppendText(reader.GetString("RCno") + "    " + reader.GetString("Avg") + "\r\n");
+                }
+
+            }
+            if (conn != null || conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+
+            }
         }
     }
 }

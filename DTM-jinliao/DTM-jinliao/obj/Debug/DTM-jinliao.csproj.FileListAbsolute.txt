@@ -1,0 +1,12 @@
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\bin\Debug\DTM-jinliao.exe.config
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\bin\Debug\DTM-jinliao.exe
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\bin\Debug\DTM-jinliao.pdb
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\obj\Debug\DTM-jinliao.csprojResolveAssemblyReference.cache
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\obj\Debug\DTM_jinliao.Form1.resources
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\obj\Debug\DTM_jinliao.Properties.Resources.resources
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\obj\Debug\DTM-jinliao.csproj.GenerateResource.Cache
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\obj\Debug\DTM-jinliao.exe
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\obj\Debug\DTM-jinliao.pdb
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\bin\Debug\HttpCodeLib.dll
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\bin\Debug\MySql.Data.dll
+D:\DTM-Software\DTM-jinliao\DTM-jinliao\bin\Debug\Newtonsoft.Json.dll

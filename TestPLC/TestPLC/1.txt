@@ -1,0 +1,8 @@
+{
+username: "jack",
+age: 12,
+id: 1,
+address: "12",
+pic: "12",
+password: "123"
+}

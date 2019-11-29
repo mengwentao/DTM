@@ -1,0 +1,25 @@
+﻿{
+    "Error":null,    
+    "Success":true,  
+    "Data":[           
+        {
+            "RCNo":"RC02848",  
+            "PrdName":"H499A", 
+            "MaterialCode":"F", 
+            "IDODMachineNo":"L39", 
+            "IDODDTime":"2019-11-21 04:42:14", 
+            "SXMachineNo":"E02", 
+            "SXDTime":"2019-11-21 08:02:55", 
+            "RGMachineNo":"G78", 
+            "RGDTime":"2019-11-21 08:32:59", 
+            "CXMachineNo":"CD01-1", 
+            "CXDTime":"2019-11-21 09:03:57", 
+            "THMachineNo":"A-02", 
+            "THDTime":"2019-11-21 09:22:23", 
+            "THEquipment1":"T035053", 
+            "THEquipment2":"T035090", 
+            "FGMachineNo":"G27", 
+            "FGDTime":"2019-11-21 14:16:14"  
+        }
+    ]
+}

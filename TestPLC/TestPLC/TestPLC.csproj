@@ -62,7 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataItem.cs" />
     <Compile Include="GetData.cs" />
+    <Compile Include="JSONObject.cs" />
     <Compile Include="TestHttpAPI.cs" />
     <Compile Include="TestJson2Domain.cs" />
     <Compile Include="TestPLC.cs">
