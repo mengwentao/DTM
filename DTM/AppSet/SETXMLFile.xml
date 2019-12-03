@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<setItem>
+  <connectSet name=" 连接设置">
+    <PLC_1 name=" 第一台PLC网络设置">
+      <ipaddress>192.168.1.5</ipaddress>
+      <port>502</port>
+    </PLC_1>
+    <PLC_2 name=" 第二台PLC网络设置">
+      <ipaddress>192.168.1.6</ipaddress>
+      <port>502</port>
+    </PLC_2>
+  </connectSet>
+  <checkSet name=" 抽检设置">
+    <timeInterval>5000</timeInterval>
+  </checkSet>
+  <measureSet name=" 测量设置">
+    <referenceValue>1.733</referenceValue>
+    <deviationValue>0.0015</deviationValue>
+  </measureSet>
+</setItem>
