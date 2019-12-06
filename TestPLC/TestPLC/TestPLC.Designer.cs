@@ -241,6 +241,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.button12 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button26 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.label132 = new System.Windows.Forms.Label();
@@ -249,15 +250,14 @@
             this.textBox26 = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -2325,6 +2325,16 @@
             this.tabPage6.Text = "查";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(626, 251);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(129, 54);
+            this.button26.TabIndex = 74;
+            this.button26.Text = "查询测量数据";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
             // button18
             // 
             this.button18.Location = new System.Drawing.Point(578, 21);
@@ -2406,9 +2416,29 @@
             this.tabPage7.UseVisualStyleBackColor = true;
             this.tabPage7.Click += new System.EventHandler(this.tabPage7_Click);
             // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(522, 196);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(138, 48);
+            this.button25.TabIndex = 7;
+            this.button25.Text = "访问数据库创建json最终";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
+            // button24
+            // 
+            this.button24.Location = new System.Drawing.Point(522, 41);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(121, 48);
+            this.button24.TabIndex = 6;
+            this.button24.Text = "提交json";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(34, 196);
+            this.button23.Location = new System.Drawing.Point(39, 217);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(121, 48);
             this.button23.TabIndex = 5;
@@ -2418,7 +2448,7 @@
             // 
             // button22
             // 
-            this.button22.Location = new System.Drawing.Point(34, 118);
+            this.button22.Location = new System.Drawing.Point(39, 126);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(121, 48);
             this.button22.TabIndex = 4;
@@ -2463,36 +2493,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(678, 425);
             this.richTextBox1.TabIndex = 65;
             this.richTextBox1.Text = "";
-            // 
-            // button24
-            // 
-            this.button24.Location = new System.Drawing.Point(522, 41);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(121, 48);
-            this.button24.TabIndex = 6;
-            this.button24.Text = "提交json";
-            this.button24.UseVisualStyleBackColor = true;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
-            // button25
-            // 
-            this.button25.Location = new System.Drawing.Point(522, 196);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(138, 48);
-            this.button25.TabIndex = 7;
-            this.button25.Text = "创建json最终";
-            this.button25.UseVisualStyleBackColor = true;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
-            // 
-            // button26
-            // 
-            this.button26.Location = new System.Drawing.Point(626, 251);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(129, 54);
-            this.button26.TabIndex = 74;
-            this.button26.Text = "查询测量数据";
-            this.button26.UseVisualStyleBackColor = true;
-            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
             // TestPLC
             // 

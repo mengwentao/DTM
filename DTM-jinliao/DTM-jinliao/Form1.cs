@@ -206,7 +206,38 @@ namespace DTM_jinliao
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            get_messageBywebapi("RC02848");
         }
+        public void get_messageBywebapi(string RCname)
+        {
+           
+            string testUrl = basePath + "\\testJsonTxt\\" + RCname + ".txt";//拼接路径
+            string res = File.ReadAllText(testUrl);//通过读取txt,模拟获取到json数据
+
+            //以下内容为通过webapi获取数据
+            // string url = "https://www.easy-mock.com/mock/5ddfd4937605f1121decf358/test1/test#!method=get";
+            /* string url = "http://106.12.3.103:8080/MyProject/user/MyTest.do";
+             GetData getJson = new GetData();
+             ServicePointManager.ServerCertificateValidationCallback += RemoteCertificateValidate;
+             string res = getJson.HttpCodeCreate(url);//获取到json数据*/
+
+            //以下内容为序列化，解析json数据
+            JSONObject jp = (JSONObject)JsonConvert.DeserializeObject<JSONObject>(res);//序列化
+            if (jp.Success == "true")
+            {
+                this.label4.ForeColor = Color.Blue;
+                List<DataItem> list = jp.Data;
+                list = jp.Data;
+                DataItem data = list[0];
+                // MessageBox.Show(data.RCNo);
+                show_message(data);
+                Console.WriteLine(res);
+            }
+            else
+            {
+                MessageBox.Show("错误编号:" + jp.Error);
+            }
+        }
+        
     }
 }

@@ -1083,11 +1083,18 @@ namespace TestPLC
 
         private void button19_Click(object sender, EventArgs e)
         {
-            string cur_date_table = "measure_2019_11_27";
+            float[] temp = new float[4] {1.23455f,1.2345f,2.24352f,122342 };
+            string cur_date_table = "measure_2019_11_30";
             string RCno = "0";
-          //  string 
-            string sql = String.Format("INSERT INTO {0}(RCno, Avg, Checked, Other) VALUE('{1}', '{2}', {3}, '{4}') ON DUPLICATE KEY UPDATE RCno = '{5}', Avg = '{6}';", cur_date_table, RCno.ToString(), "30", 1, "NULL", RCno.ToString(), "30");
+            string Operator = "张三";
+            string date = DateTime.Now.ToLocalTime().ToString();
+            int Checked = 0;
+            int Replenished = 0;
+            string sql = String.Format("INSERT INTO {0}(RCno, Average, Checked, Replenished,MeasureTime,Operator) VALUE('{1}', '{2}', {3}, {4},'{5}','{6}') ON DUPLICATE KEY UPDATE RCno = '{1}', Average = '{2}',Checked = {3}, Replenished = {4};", cur_date_table, RCno.ToString(), temp[3].ToString(), Checked, Replenished, date, Operator, RCno.ToString(), temp[3].ToString(), Checked, Replenished);
+            //  string 
+            // string sql = String.Format("INSERT INTO {0}(RCno, Avg, Checked, Other) VALUE('{1}', '{2}', {3}, '{4}') ON DUPLICATE KEY UPDATE RCno = '{5}', Avg = '{6}';", cur_date_table, RCno.ToString(), "30", 1, "NULL", RCno.ToString(), "30");
             //string sql = String.Format("INSERT INTO measure_2019_11_27(RCno, Avg, Checked, Other) VALUE('{0}', '{1}', {2}, '{3}') ON DUPLICATE KEY UPDATE RCno = '{4}', Avg = '{5}';", textBox28.Text, textBox29.Text,int.Parse(textBox30.Text), "NULL",textBox28.Text, textBox29.Text);
+            executeMysql(sql);
             Console.WriteLine(sql);
             //executeMysql(sql);
         }
@@ -1187,18 +1194,17 @@ namespace TestPLC
 
         private void button24_Click(object sender, EventArgs e)
         {
-            string URL = "http://106.12.3.103:8080/MyProject/user/login.do";
-            sdf(URL);
+            string rcno = "1004";
+            uploadJson2Mes(rcno);
         }
-        public static void sdf(string urls)
+        public void uploadJson2Mes(string rcno)
         {
-            string url = urls;
+            string url = "http://106.12.3.103:8080/MyProject/user/login.do";
             //定义request并设置request的路径
             WebRequest request = WebRequest.Create(url);
             request.Method = "post";
             //初始化request参数
-            string postData = "{\"dataSource\":\"DataSource=192.168.0.70/orcl70;UserID=sde;PassWord=sde;\",\"type\":\"0\",\"whereCondition\":\"dlwz='国和百寿一村6号'\",\"tableName\":\"hzdzd_pt\"}";
-            //var json = "{ \"dataSource\": \"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.70)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl70)));User ID=sde;Password=sde;Unicode=True\" }";
+            string postData = getJson(rcno);//TODO，传入RCno数据           
             //设置参数的编码格式，解决中文乱码
             byte[] byteArray = Encoding.UTF8.GetBytes(postData);
             //设置request的MIME类型及内容长度
@@ -1238,7 +1244,53 @@ namespace TestPLC
             string responseFromServer = reader.ReadToEnd();//读取所有
             Console.WriteLine(responseFromServer);*/
         }
+        public string getJson(string RCNo)
+        {
+          
+            String uploadtime = DateTime.Now.ToLocalTime().ToString();//TODO，时间，精确到分秒？
 
+            JObject postedJObject = new JObject();
+           // postedJObject.Add("user", userName);
+            postedJObject.Add("upLoadTime", uploadtime);
+
+            JArray jArray = new JArray();//添加测量数据
+
+            if (conn == null)
+            {
+                conn = new MySqlConnection(connetStr);
+            }
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
+            string sql = String.Format("select * from measure_2019_12_02 where RCno = '{0}'",RCNo);//todo,修改今日表格名称
+            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();//执行ExecuteReader()返回一个MySqlDataReader对象
+                while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
+                {
+                    JObject arr = new JObject();
+                    arr.Add("RCno", reader.GetString("RCno"));
+                    arr.Add("Average", reader.GetString("Average"));
+                    arr.Add("Checked", reader.GetString("Checked"));
+                    arr.Add("Replenished", reader.GetString("Replenished"));
+                    arr.Add("MeasureTime", (reader.GetString("MeasureTime")).ToString());
+                    arr.Add("Operator", reader.GetString("Operator"));
+                    jArray.Add(arr);
+                    richTextBox1.AppendText(reader.GetString("RCno") + "    " + reader.GetString("Average") + "\r\n");
+                }
+            }
+            if (conn != null || conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            postedJObject.Add("data", jArray);
+            String paramString = postedJObject.ToString(Newtonsoft.Json.Formatting.Indented, null);
+            Console.WriteLine(paramString);
+            return paramString;
+           
+        }
         private void button25_Click(object sender, EventArgs e)
         {
             String userName = "张三";
@@ -1259,7 +1311,7 @@ namespace TestPLC
                 conn.Open();
             }
             //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
-            string sql = "select * from measure_2019_11_28";//在sql语句中定义parameter，然后再给parameter赋值
+            string sql = "select * from measure_2019_11_30";//在sql语句中定义parameter，然后再给parameter赋值
             using (MySqlCommand cmd = new MySqlCommand(sql, conn))
             {
 
@@ -1270,9 +1322,13 @@ namespace TestPLC
                 {
                     JObject arr = new JObject();
                     arr.Add("RCno", reader.GetString("RCno"));
-                    arr.Add("Avg", reader.GetString("Avg"));
+                    arr.Add("Average", reader.GetString("Average"));
+                    arr.Add("Checked", reader.GetString("Checked"));
+                    arr.Add("Replenished", reader.GetString("Replenished"));
+                    arr.Add("MeasureTime", (reader.GetString("MeasureTime")).ToString());
+                    arr.Add("Operator", reader.GetString("Operator"));                   
                     jArray.Add(arr);
-                    richTextBox1.AppendText(reader.GetString("RCno") + "    " + reader.GetString("Avg") + "\r\n");
+                    richTextBox1.AppendText(reader.GetString("RCno") + "    " + reader.GetString("Average") + "\r\n");
                 }
 
             }
