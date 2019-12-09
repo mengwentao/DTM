@@ -28,14 +28,15 @@ namespace DTM
         DataTable dt = new DataTable();
         int q = 0;//定义合格产品数量
         int uq = 0;//定义不合格产品数数量
-        public static int boxId = 0;//盒子id
+        //public static int boxId = 0;//盒子id
         public static string barCode ="";//条形码
         public int standard_pan_thickness = 0;//盘片厚度（标准） 
         string connStr = ConfigurationManager.ConnectionStrings["str"].ConnectionString;      
-        public static bool reflag = false;
+        public static bool reflag = false;//恢复启动是否完成
         List<BoxState> list = new List<BoxState>();
-        public static Thread th = null;//系统线程 在系统发生故障时将其杀死
-        public int number = 0;//判断是否进入盒子奇偶
+        public static Thread th = null;//系统线程 
+        public static bool runSuccess=true;
+        public int number = 0;//判断是否进入盒子数量
         //private ModbusFactory modbusFactory;
         //private IModbusMaster master;
         //写线圈或写寄存器数组
@@ -64,6 +65,7 @@ namespace DTM
         string Operator = "张三";
         public static bool odd_even_flag = true;//测量盒子的奇数偶数的判断的标志位，用于区分显示坐标
         static string connetStr = "server=127.0.0.1;port=3306;user=root;password=root; database=dtm;charset=utf8";
+        //static string connetStr = "server=106.12.3.103;port=3501;user=root;password=MysqlPassword; database=DTM;charset=utf8";
         List<Button> list_button1 = new List<Button>();
         List<Button> list_button2 = new List<Button>();
         public MainForm()
@@ -411,19 +413,23 @@ namespace DTM
                                 while (sdr.Read()) //如果读取账户成功(文本框中的用户名在数据库中存在)
                                 {
                                     string[] numberid = { sdr.GetString("NumberID1"), sdr.GetString("NumberID2") };
-                                    BoxState boxState = new BoxState(list, sdr.GetInt16("positionState"), sdr.GetString("barCode"), sdr.GetInt16("boxId"), numberid);                                    
-                                    int testFlag = sdr.GetInt16("measureState");
-                                    boxState.measureState = testFlag == 0 ? false : true;
-                                    BoxState.boxCount = sdr.GetInt16("boxCount");
+                                    BoxState boxState = new BoxState(list, sdr.GetInt16("positionState"), sdr.GetString("barCode"), numberid);                                    
+                                    //int testFlag = sdr.GetInt16("measureState");
+                                    //boxState.measureState = testFlag == 0 ? false : true;
+                                    //BoxState.boxCount = sdr.GetInt16("boxCount");
                                     number = sdr.GetInt16("Number");
-                                    testFlag = sdr.GetInt16("exflag");
+                                    int testFlag = sdr.GetInt16("exflag");
                                     boxState.exflag = testFlag == 0 ? false : true;
+                                    testFlag = sdr.GetInt16("reach");
+                                    boxState.reach = testFlag == 0 ? false : true;
                                     testFlag = sdr.GetInt16("chooseFlag");
                                     boxState.chooseFlag = testFlag == 0 ? false : true;
                                     testFlag = sdr.GetInt16("measureFlag");
                                     boxState.measureFlag = testFlag == 0 ? false : true;
                                     testFlag = sdr.GetInt16("changeFlag");
                                     boxState.changeFlag = testFlag == 0 ? false : true;
+                                    testFlag = sdr.GetInt16("changeboxfirstflag");
+                                    boxState.changeBoxFirstFlag = testFlag == 0 ? false : true;
                                     boxState.standard_pan_thickness = sdr.GetInt16("standardpanthickness");
                                     String teststring;
                                     if (!sdr.IsDBNull(8))
@@ -435,7 +441,7 @@ namespace DTM
                                             BoxState.InList.Clear();
                                             for (int i = 0; i < teststr.Length; i++)
                                             {
-                                                BoxState.InList.Add(Convert.ToInt16(teststr[i]));
+                                                BoxState.InList.Add(teststr[i]);
                                             }
                                         }
                                     }
@@ -448,26 +454,26 @@ namespace DTM
                                             BoxState.OutList.Clear();
                                             for (int i = 0; i < teststr.Length; i++)
                                             {
-                                                BoxState.OutList.Add(Convert.ToInt16(teststr[i]));
+                                                BoxState.OutList.Add(teststr[i]);
                                             }
                                         }
                                     }
-                                    teststring = sdr.GetString("measurepanthicknessflag");
+                                    /*teststring = sdr.GetString("measurepanthicknessflag");
                                     for (int i = 0; i < teststring.Length; i++)
                                     {
                                         boxState.measure_pan_thickness_flag[i] = (teststring.Substring(i, 1) == "0" ? false : true);
-                                    }
+                                    }*/
 
-                                    teststring = sdr.GetString("measurepanthickness");
+                                    /*teststring = sdr.GetString("measurepanthickness");
                                     string[] teststrings = teststring.Split(',');
                                     for (int i = 0; i < teststrings.Length; i++)
                                     {
                                         boxState.measure_pan_thickness[i] = Convert.ToInt16(teststrings[i]);
-                                    }
+                                    }*/
                                     th1 = new Thread(boxState.Run);
                                     th1.IsBackground = true;
                                     th1.Start();
-                                    Thread.Sleep(100);
+                                    Thread.Sleep(5);
                                 }
                             }
                         }
@@ -482,6 +488,7 @@ namespace DTM
                     con.Close();
                 }
              }
+            Thread.Sleep(50);
             number=number == 4 ? 0 :number ;
             reflag = true;
             Thread.Sleep(100);
@@ -526,6 +533,7 @@ namespace DTM
                 }
                 catch (Exception ex)
                 {
+                    runSuccess = false;
                     MessageBox.Show("数据库连接异常！");
                     con.Close();
                 }
@@ -538,13 +546,13 @@ namespace DTM
                 while (true)
              {                       
                 Thread.Sleep(10);
-                    //coilsBuffer = master.ReadCoils(0,2049,1);//参数为气缸1顶起
+                    //coilsBuffer = master.ReadCoils(0,2082,1);//参数为气缸1顶起
                     if (busTcpClient1.ReadCoil("2082").Content)
                     {
                         while (true)
                         {
                             Thread.Sleep(10);
-                            //coilsBuffer = master.ReadCoils(0,2049,1);//参数为气缸1落下
+                            //coilsBuffer = master.ReadCoils(0,2083,1);//参数为气缸1落下
                             if (busTcpClient1.ReadCoil("2083").Content)
                             {                              
                                 number+=2;
@@ -555,7 +563,7 @@ namespace DTM
                     else continue;
                 if (number % 2 == 0)
                 {
-                    if (BoxState.InList.Count == 0)
+                    /*if (BoxState.InList.Count == 0)
                     {
                         boxId = 0;
                     }
@@ -563,7 +571,7 @@ namespace DTM
                     {
                         boxId = BoxState.InList.Last() + 1;
                     }
-                    boxId = boxId > 1000 ? 0 : boxId;//1000保证了运行在系统上的盒子ID是不重复的
+                    boxId = boxId > 1000 ? 0 : boxId;//1000保证了运行在系统上的盒子ID是不重复的*/
                     string[] numberid=new string[2];
                     if (number == 2)
                     {
@@ -589,6 +597,7 @@ namespace DTM
                                     }
                                 }catch(Exception ex)
                                 {
+                                    runSuccess = false;
                                     MessageBox.Show("数据库连接异常！");
                                     con.Close();
                                 }
@@ -605,7 +614,7 @@ namespace DTM
                         numberid[0] = numberId[2];
                         numberid[1] = numberId[3];
                     }
-                    th1 = new Thread(new BoxState(list, this.standard_pan_thickness, barCode, boxId,numberid).Run);
+                    th1 = new Thread(new BoxState(list, this.standard_pan_thickness, barCode,numberid).Run);
                     th1.IsBackground = true;
                     th1.Start();                    
                     if(number%4==0)number = 0;                      
@@ -614,6 +623,7 @@ namespace DTM
             }
             } catch(Exception ex)
             {
+                runSuccess = false;
                 MessageBox.Show("系统异常退出！");
                 return;
             }      
@@ -633,28 +643,57 @@ namespace DTM
                 label18.Text = count_num.ToString();//显示测量完成的盒数
                 if (op_res.IsSuccess)
                 {
-                    MessageBox.Show("1连接成功");
-                   // pictureBox1.BackColor = Color.Lime;
-                    // timer1.Enabled = true;
+                    MessageBox.Show("1连接成功");                    
+                    timer1.Enabled = true;
                 }
                 if (o.IsSuccess)
                 {
                     MessageBox.Show("2连接成功");
+
+                }
+                if (op_res.IsSuccess&& o.IsSuccess){
+                    pictureBox181.BackColor = Color.Lime;
                 }
                
                 Thread thread = new Thread(new ThreadStart(watch_measure_flag));//启动监听测量标志位
                 thread.Start(); //启动线程
                 th = new Thread(Runsystem);
                 th.Start();
-
+                Thread threadback = new Thread(killMainThread);
+                threadback.IsBackground = true;
+                threadback.Start();
                 Thread thread1 = new Thread(new ThreadStart(jianting_huanliao));//启动换料监听进程
                 thread1.Start();                 //启动线程
+                Thread thread2 = new Thread(new ThreadStart(jianting_chengpinzhan));//启动成品站监听进程
+                thread2.Start();                 //启动线程
             }
             catch (ThreadAbortException ex)
             {
+                runSuccess = false;
                 return;
             }
+           
                       
+        }
+        public void jianting_chengpinzhan()
+        {
+            while (true)
+            {
+                bool[] chengpin_state = busTcpClient2.ReadCoil("2477", 3).Content;
+                if (chengpin_state[0])
+                {
+                    MessageBox.Show("请及时取出空盒");
+                }
+                if (chengpin_state[1])
+                {
+                    MessageBox.Show("请及时取出成品盒");
+                }
+                if (chengpin_state[2])
+                {
+                    MessageBox.Show("请及时放入空成品盒");
+                }
+                Thread.Sleep(50);
+            }
         }
         //仿真测试流程
         //1.textbox输入PCno，保证PCno在当日的测试表中能够查询到
@@ -688,6 +727,7 @@ namespace DTM
         {
             string str = "";
             string str2 = "";
+            string avg = "";
             // groupBox3.Enabled = false;
             // groupBox8.Enabled = false;
             label54.Text = cur_rcno;
@@ -703,7 +743,7 @@ namespace DTM
             }
             List<int> panpian_id = new List<int>();
             //string sql = String.Format("select * from test_table where id='{0}' and name='{1}'",id,name);
-            string sql = string.Format("select ReplenishID from {0} where RCno= '{1}';", cur_date_table, cur_rcno);//在sql语句中定义parameter，然后再给parameter赋值
+            string sql = string.Format("select * from {0} where RCno= '{1}';", cur_date_table, cur_rcno);//在sql语句中定义parameter，然后再给parameter赋值
             using (MySqlCommand cmd = new MySqlCommand(sql, conn))
             {
 
@@ -711,6 +751,7 @@ namespace DTM
                 while (reader.Read())//初始索引是-1，执行读取下一行数据，返回值是bool
                 {
                     str = reader.GetString("ReplenishID");
+                    avg = reader.GetString("Average");
                     string[] tem = str.Substring(0, str.Length - 1).Split(',');
                     //string[] temp = "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,".Split(',');
                     Console.WriteLine(str);
@@ -722,6 +763,7 @@ namespace DTM
 
 
             }
+            label55.Text = avg;//显示补料的厚度
             if (jiou_flag == 2 || jiou_flag == 3)//如果是第一盒
             {
                 str=str == "" ? "1,2,3,4," : str; 
@@ -1129,8 +1171,8 @@ namespace DTM
             //ucCurve1.ValueMinLeft = (float)Math.Round((double)temp[1], 3);
             //ucCurve1.ValueMaxLeft = (float)Math.Round((double)temp[0], 3);
             //ucCurve1.ValueSegment = 10;
-            label52.Text = odd_even_flag.ToString();
-            if (count_num %2 == 0)
+           
+            if (count_flag % 2 == 0)
             {
                 ucCurve1.SetLeftCurve("测量值", res_25);//用于显示奇数盒
                 ucCurve1.AddMarkText("测量值", flag - 1, res_25[flag - 1].ToString());
@@ -1164,9 +1206,17 @@ namespace DTM
         }
         private void killMainThread()
         {
-            Thread.Sleep(10000);
-            MessageBox.Show("系统异常退出！");
-            th.Abort();
+
+            while (true)
+            {
+            Thread.Sleep(1000);
+            if (!runSuccess)
+            {
+             th.Abort();
+             MessageBox.Show("系统异常退出！"); 
+             return;
+              } 
+            }  
         }
         private void Run()
         {  //向数据库保存当前所有盒子的信息
@@ -1178,7 +1228,7 @@ namespace DTM
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                    list.Remove(list.Where(p => (p.positionState == 6 || p.positionState == 10)).FirstOrDefault());
+                    list.Remove(list.Where(p => (p.positionState == 6)).FirstOrDefault());
                     }         
                 label32.Text = list.Count.ToString();               
                 //List<BoxState> list = list;
@@ -1223,12 +1273,12 @@ namespace DTM
                             {
                              foreach (BoxState box_state in list)
                             {
-                                if (box_state.positionState == 6 || box_state.positionState == 10) continue;
-                                String value = "";
-                                String value1 = "";
+                                if (box_state.positionState == 6) continue;
+                                //String value = "";
+                                //String value1 = "";
                                 String value2 = "";
                                 String value3 = "";
-                                for (int i = 0; i < box_state.measure_pan_thickness.Length - 1; i++)
+                                /*for (int i = 0; i < box_state.measure_pan_thickness.Length - 1; i++)
                                 {
                                     value += "" + box_state.measure_pan_thickness[i] + ",";
                                 }
@@ -1236,7 +1286,7 @@ namespace DTM
                                 for (int i = 0; i < box_state.measure_pan_thickness_flag.Length; i++)
                                 {
                                     value1 += "" + (box_state.measure_pan_thickness_flag[i] == false ? 0 : 1);
-                                }
+                                }*/
                                 for (int i = 0; i < BoxState.InList.Count; i++)
                                 {
                                         if (BoxState.InList.Count == 1)
@@ -1269,7 +1319,7 @@ namespace DTM
                                            value3 += "" + BoxState.OutList[i];
                                         }                                        
                                     }
-                                sql = string.Format("insert into preventdisaster(positionState, measureState, boxCount,chooseFlag,boxId,barCode,measurepanthickness,measurepanthicknessflag,InList,standardpanthickness,Outlist,measureFlag,changeFlag,Number,NumberID1,NumberID2,exflag)values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}')", box_state.positionState, box_state.measureState == false ? 0 : 1, BoxState.boxCount, box_state.chooseFlag == false ? 0 : 1, box_state.boxId, box_state.barCode, value, value1, value2, box_state.standard_pan_thickness,value3, box_state.measureFlag == false ? 0 : 1,box_state.changeFlag == false ? 0 : 1,number,box_state.numberId[0],box_state.numberId[1],box_state.exflag==false?0:1);
+                                sql = string.Format("insert into preventdisaster(positionState,chooseFlag,barCode,InList,standardpanthickness,Outlist,measureFlag,changeFlag,Number,NumberID1,NumberID2,exflag,reach,changeboxfirstflag)values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')", box_state.positionState, box_state.chooseFlag == false ? 0 : 1,box_state.barCode,value2, box_state.standard_pan_thickness,value3, box_state.measureFlag == false ? 0 : 1,box_state.changeFlag == false ? 0 : 1,number,box_state.numberId[0],box_state.numberId[1],box_state.exflag==false?0:1,box_state.reach==false?0:1,box_state.changeBoxFirstFlag==false?0:1);
                                 cmd.CommandText = sql;
                                 cmd.ExecuteNonQuery();
                             }
@@ -1450,6 +1500,10 @@ namespace DTM
 
         private void ucBtnExt2_BtnClick(object sender, EventArgs e)
         {
+          
+            th.Abort();            
+            busTcpClient1.ConnectClose();
+            busTcpClient2.ConnectClose();
 
         }
 
@@ -1489,11 +1543,7 @@ namespace DTM
              Console.WriteLine(o.IsSuccess);
         }
 
-        private void ucBtnExt3_BtnClick(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -1501,13 +1551,53 @@ namespace DTM
 
         private void button54_Click(object sender, EventArgs e)
         {
-            busTcpClient2.Write("2611", true);//完成补料信息
+            bool temp_button = true;
+            for (int i = 0;i < list_button1.Count;i++)
+            {
+                if (list_button1[i].BackColor == Color.Red)
+                {
+                    temp_button = false;
+                    break;
+                }
+            }
+            if (temp_button)
+            {
+                busTcpClient2.Write("2611", true);//完成补料信息
+            }else
+            {
+                DialogResult res = MessageBox.Show("存在未完成换料的盘片", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res.ToString() == "OK")
+                {
+                    busTcpClient2.Write("2611", true);//完成补料信息
+                }              
+            } 
         }
 
         private void button55_Click(object sender, EventArgs e)
         {
             huanliao_id_even.Clear();
-            busTcpClient2.Write("2611", true);
+            bool temp_button = true;
+            for (int i = 0; i < list_button1.Count; i++)
+            {
+                if (list_button1[i].BackColor == Color.Red)
+                {
+                    temp_button = false;
+                    break;
+                }
+            }
+            if (temp_button)
+            {
+                busTcpClient2.Write("2611", true);//完成补料信息
+            }
+            else
+            {
+                DialogResult res = MessageBox.Show("存在未完成换料的盘片", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res.ToString() == "OK")
+                {
+                    busTcpClient2.Write("2611", true);//完成补料信息
+                }
+            }
+            
         }
 
         private void button56_Click(object sender, EventArgs e)
@@ -1523,6 +1613,778 @@ namespace DTM
         }
 
         private void groupBox7_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 2);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button2.BackColor != Color.Lime)
+            {
+                this.button2.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button2.BackColor = Color.Gray;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 3);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button4.BackColor != Color.Lime)
+            {
+                this.button4.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button4.BackColor = Color.Gray;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 4);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button3.BackColor != Color.Lime)
+            {
+                this.button3.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button3.BackColor = Color.Gray;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 5);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button8.BackColor != Color.Lime)
+            {
+                this.button8.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button8.BackColor = Color.Gray;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 6);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button7.BackColor != Color.Lime)
+            {
+                this.button7.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button7.BackColor = Color.Gray;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 7);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button6.BackColor != Color.Lime)
+            {
+                this.button6.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button6.BackColor = Color.Gray;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 8);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button5.BackColor != Color.Lime)
+            {
+                this.button5.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button5.BackColor = Color.Gray;
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 9);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button11.BackColor != Color.Lime)
+            {
+                this.button11.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button11.BackColor = Color.Gray;
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 10);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button10.BackColor != Color.Lime)
+            {
+                this.button10.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button10.BackColor = Color.Gray;
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 11);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button9.BackColor != Color.Lime)
+            {
+                this.button9.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button9.BackColor = Color.Gray;
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 12);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button12.BackColor != Color.Lime)
+            {
+                this.button12.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button12.BackColor = Color.Gray;
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 13);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button13.BackColor != Color.Lime)
+            {
+                this.button13.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button13.BackColor = Color.Gray;
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 14);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button15.BackColor != Color.Lime)
+            {
+                this.button15.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button15.BackColor = Color.Gray;
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 15);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button14.BackColor != Color.Lime)
+            {
+                this.button14.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button14.BackColor = Color.Gray;
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 16);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button17.BackColor != Color.Lime)
+            {
+                this.button17.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button17.BackColor = Color.Gray;
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 17);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button16.BackColor != Color.Lime)
+            {
+                this.button16.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button16.BackColor = Color.Gray;
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 18);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button21.BackColor != Color.Lime)
+            {
+                this.button21.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button21.BackColor = Color.Gray;
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 19);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button20.BackColor != Color.Lime)
+            {
+                this.button20.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button20.BackColor = Color.Gray;
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 20);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button19.BackColor != Color.Lime)
+            {
+                this.button19.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button19.BackColor = Color.Gray;
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 21);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button18.BackColor != Color.Lime)
+            {
+                this.button18.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button18.BackColor = Color.Gray;
+            }
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 22);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button25.BackColor != Color.Lime)
+            {
+                this.button25.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button25.BackColor = Color.Gray;
+            }
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 23);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button24.BackColor != Color.Lime)
+            {
+                this.button24.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button24.BackColor = Color.Gray;
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 24);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button23.BackColor != Color.Lime)
+            {
+                this.button23.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button23.BackColor = Color.Gray;
+            }
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 25);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button22.BackColor != Color.Lime)
+            {
+                this.button22.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button22.BackColor = Color.Gray;
+            }
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 1);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button31.BackColor != Color.Lime)
+            {
+                this.button31.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button31.BackColor = Color.Gray;
+            }
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 2);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button33.BackColor != Color.Lime)
+            {
+                this.button33.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button33.BackColor = Color.Gray;
+            }
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 3);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button37.BackColor != Color.Lime)
+            {
+                this.button37.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button37.BackColor = Color.Gray;
+            }
+        }
+
+        private void button39_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 4);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button39.BackColor != Color.Lime)
+            {
+                this.button39.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button39.BackColor = Color.Gray;
+            }
+        }
+
+        private void button43_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 5);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button43.BackColor != Color.Lime)
+            {
+                this.button43.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button43.BackColor = Color.Gray;
+            }
+        }
+
+        private void button47_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 6);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button47.BackColor != Color.Lime)
+            {
+                this.button47.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button47.BackColor = Color.Gray;
+            }
+        }
+
+        private void button51_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 7);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button51.BackColor != Color.Lime)
+            {
+                this.button51.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button51.BackColor = Color.Gray;
+            }
+        }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 8);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button48.BackColor != Color.Lime)
+            {
+                this.button48.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button48.BackColor = Color.Gray;
+            }
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 9);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button49.BackColor != Color.Lime)
+            {
+                this.button49.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button49.BackColor = Color.Gray;
+            }
+        }
+
+        private void button52_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 10);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button52.BackColor != Color.Lime)
+            {
+                this.button52.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button52.BackColor = Color.Gray;
+            }
+        }
+
+        private void button50_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 11);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button50.BackColor != Color.Lime)
+            {
+                this.button50.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button50.BackColor = Color.Gray;
+            }
+        }
+
+        private void button45_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 12);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button45.BackColor != Color.Lime)
+            {
+                this.button45.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button45.BackColor = Color.Gray;
+            }
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 13);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button41.BackColor != Color.Lime)
+            {
+                this.button41.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button41.BackColor = Color.Gray;
+            }
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 14);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button35.BackColor != Color.Lime)
+            {
+                this.button35.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button35.BackColor = Color.Gray;
+            }
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 15);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button29.BackColor != Color.Lime)
+            {
+                this.button29.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button29.BackColor = Color.Gray;
+            }
+        }
+
+        private void button46_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 16);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button46.BackColor != Color.Lime)
+            {
+                this.button46.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button46.BackColor = Color.Gray;
+            }
+        }
+
+        private void button44_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 17);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button44.BackColor != Color.Lime)
+            {
+                this.button44.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button44.BackColor = Color.Gray;
+            }
+        }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 18);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button42.BackColor != Color.Lime)
+            {
+                this.button42.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button42.BackColor = Color.Gray;
+            }
+        }
+
+        private void button40_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 19);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button40.BackColor != Color.Lime)
+            {
+                this.button40.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button40.BackColor = Color.Gray;
+            }
+        }
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 20);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button38.BackColor != Color.Lime)
+            {
+                this.button38.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button38.BackColor = Color.Gray;
+            }
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 21);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button36.BackColor != Color.Lime)
+            {
+                this.button36.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button36.BackColor = Color.Gray;
+            }
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 22);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button34.BackColor != Color.Lime)
+            {
+                this.button34.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button34.BackColor = Color.Gray;
+            }
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 23);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button32.BackColor != Color.Lime)
+            {
+                this.button32.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button32.BackColor = Color.Gray;
+            }
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 24);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button30.BackColor != Color.Lime)
+            {
+                this.button30.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button30.BackColor = Color.Gray;
+            }
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            bool[] temp = new bool[] { true, true };
+            busTcpClient2.Write("559", 25);//发送移动盘片位置           
+            busTcpClient2.Write("2779", temp);//计算          
+            if (this.button28.BackColor != Color.Lime)
+            {
+                this.button28.BackColor = Color.Lime;
+            }
+            else
+            {
+                this.button28.BackColor = Color.Gray;
+            }
+        }
+
+        /// <summary>
+        /// 清除电机测量故障
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button58_Click(object sender, EventArgs e)
+        {
+            
+            DialogResult res = MessageBox.Show("清除凸轮故障", "提示信息", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res.ToString() == "OK")
+            {
+                busTcpClient1.Write("2290", true);
+            }
+               
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void ucBtnExt1_BtnClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox181_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucPieChart1_Load(object sender, EventArgs e)
         {
 
         }
