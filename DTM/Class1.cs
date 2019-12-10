@@ -28,10 +28,10 @@ namespace DTM
         private ModbusTcpNet busTcpClient2 = MainForm.busTcpClient2;
         public string[] numberId = new string[2];//扫码枪扫出来的盒子id
         public List<BoxState> list;
-        public static long warnTime = 7000;
-        public static bool warning_loss_box = false;//非法拿走盒子
+        public static long warnTime = 5000;
+        public int warning_loss_box = 0;//非法拿走盒子
         //public static List<string> InList = new List<string>();//进队排队队列
-        public static List<string> OutList = new List<string>();//出队排队队列
+        //public static List<string> OutList = new List<string>();//出队排队队列
         public bool measureFlag = false;//测厚仪器上传送带上有两个盒子
         public bool changeFlag = true;//换盒传送带上是一组的第一个盒子
         public bool changeBoxFirstFlag = true;//第一个盒子在换料站
@@ -117,7 +117,7 @@ namespace DTM
                     }
                 }
             }*/
-            if (positionState == 5 && reach && (!MainForm.reflag))
+           /* if (positionState == 5 && reach && (!MainForm.reflag))
             {
                 while (true)
                 {
@@ -142,7 +142,7 @@ namespace DTM
                         break;
                     }
                 }
-            }
+            }*/
             //初始化modbusmaster
             //modbusFactory = new ModbusFactory();
             //在本地测试 所以使用回环地址,modbus协议规定端口号 502
@@ -229,7 +229,7 @@ namespace DTM
                         long now1 = nowTime();
                         if (now1 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            warning_loss_box = 1;
                         }
                         if (busTcpClient1.ReadCoil("2053").Content)//参数为光电开光5
                         {
@@ -239,12 +239,12 @@ namespace DTM
                                 long now2 = nowTime();
                                 if (now2 - past >= warnTime)
                                 {
-                                    warning_loss_box = true;
+                                    warning_loss_box = 1;
                                 }
                                 if (busTcpClient1.ReadCoil("2052").Content)//参数为光电开光4
                                 {
                                     positionState = 21;
-                                    warning_loss_box = false;
+                                    warning_loss_box = 0;
                                     break;
                                 }
                             }
@@ -265,16 +265,16 @@ namespace DTM
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2085").Content)
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸2落下
                     }
                     if (!busTcpClient1.ReadCoil("2052").Content || !busTcpClient1.ReadCoil("2053").Content)//光电开关5和光电开关4
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     } 
                 }
             }          
@@ -285,7 +285,7 @@ namespace DTM
                     long now1 = nowTime();
                     if (now1 - past >= warnTime)
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     if (busTcpClient1.ReadCoil("2055").Content)//参数为光电开光7
                     {
@@ -295,12 +295,12 @@ namespace DTM
                             long now2 = nowTime();
                             if (now2 - past >= warnTime)
                             {
-                                warning_loss_box = true;
+                                warning_loss_box = 1;
                             }
                             if (busTcpClient1.ReadCoil("2054").Content)//参数为光电开光6
                             {
                                 positionState = 22;
-                                warning_loss_box = false;
+                                warning_loss_box = 0;
                                 break;
                             }
                         }
@@ -317,16 +317,16 @@ namespace DTM
                 {
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2087").Content) {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸3落下
                     }
                     if (!busTcpClient1.ReadCoil("2055").Content || !busTcpClient1.ReadCoil("2054").Content)//光电开关7和光电开关6
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     }
                     
                 }
@@ -338,7 +338,7 @@ namespace DTM
                 long now1 = nowTime();
                 if (now1 - past >= warnTime)
                 {
-                    warning_loss_box = true;
+                    warning_loss_box = 1;
                 }
                 if (busTcpClient1.ReadCoil("2057").Content)//参数为光电开光9
                 {
@@ -348,12 +348,12 @@ namespace DTM
                         long now2 = nowTime();
                         if (now2 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            warning_loss_box = 1;
                         }
                         if (busTcpClient1.ReadCoil("2056").Content)//参数为光电开光8
                         {
                             positionState = 23;
-                            warning_loss_box = false;
+                            warning_loss_box = 0;
                             break;
                         }
                     }
@@ -370,16 +370,16 @@ namespace DTM
                 {
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2089").Content) {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸4落下
                     }
                     if (!busTcpClient1.ReadCoil("2056").Content || !busTcpClient1.ReadCoil("2057").Content)//光电开关8和光电开关9
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     }                    
                 }
             }
@@ -390,7 +390,7 @@ namespace DTM
                 long now1 = nowTime();
                 if (now1 - past >= warnTime)
                 {
-                    warning_loss_box = true;
+                    warning_loss_box = 1;
                 }
                 if (busTcpClient1.ReadCoil("2059").Content)//参数为光电开光11
                 {
@@ -400,12 +400,12 @@ namespace DTM
                         long now2 = nowTime();
                         if (now2 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            warning_loss_box = 1;
                         }
                         if (busTcpClient1.ReadCoil("2058").Content)//参数为光电开光10
                         {
                             positionState = 24;
-                            warning_loss_box = false;
+                            warning_loss_box = 0;
                             break;
                         }
                     }
@@ -423,16 +423,16 @@ namespace DTM
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2091").Content)
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸5落下
                     }
                     if (!busTcpClient1.ReadCoil("2059").Content || !busTcpClient1.ReadCoil("2058").Content)//光电开关10和光电开关11
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     }
                     
                 }
@@ -444,7 +444,7 @@ namespace DTM
                 long now1 = nowTime();
                 if (now1 - past >= warnTime)
                 {
-                    warning_loss_box = true;
+                    warning_loss_box = 1;
                 }
                 if (busTcpClient1.ReadCoil("2061").Content)//参数为光电开光13
                 {
@@ -454,12 +454,12 @@ namespace DTM
                         long now2 = nowTime();
                         if (now2 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            warning_loss_box = 1;
                         }
                         if (busTcpClient1.ReadCoil("2060").Content)//参数为光电开光12
                         {
                             positionState = 25;
-                            warning_loss_box = false;
+                            warning_loss_box = 0;
                             break;
                         }
                     }
@@ -477,16 +477,16 @@ namespace DTM
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2093").Content)
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸6落下
                     }
                     if (!busTcpClient1.ReadCoil("2061").Content || !busTcpClient1.ReadCoil("2060").Content)//光电开关13和光电开关12
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     }
                     
                 }
@@ -498,7 +498,7 @@ namespace DTM
                 long now1 = nowTime();
                 if (now1 - past >= warnTime)
                 {
-                    warning_loss_box = true;
+                    warning_loss_box = 1;
                 }
                 if (busTcpClient1.ReadCoil("2063").Content)//参数为光电开光15
                 {
@@ -508,12 +508,12 @@ namespace DTM
                         long now2 = nowTime();
                         if (now2 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            warning_loss_box = 1;
                         }
                         if (busTcpClient1.ReadCoil("2062").Content)//参数为光电开光14
                         {
                             positionState = 26;
-                            warning_loss_box = false;
+                            warning_loss_box = 0;
                             break;
                         }
                     }
@@ -531,16 +531,16 @@ namespace DTM
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2095").Content)
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸7落下
                     }
                     if (!busTcpClient1.ReadCoil("2063").Content || !busTcpClient1.ReadCoil("2062").Content)//光电开关15和光电开关14
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     }
                     
                 }
@@ -552,7 +552,7 @@ namespace DTM
                 long now1 = nowTime();
                 if (now1 - past >= warnTime)
                 {
-                    warning_loss_box = true;
+                    warning_loss_box = 1;
                 }
                 if (busTcpClient1.ReadCoil("2065").Content)//参数为光电开光17
                 {
@@ -562,12 +562,12 @@ namespace DTM
                         long now2 = nowTime();
                         if (now2 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            warning_loss_box = 1;
                         }
                         if (busTcpClient1.ReadCoil("2064").Content)//参数为光电开光16
                         {
                             positionState = 20;
-                            warning_loss_box = false;
+                            warning_loss_box = 0;
                             break;
                         }
                     }
@@ -586,16 +586,16 @@ namespace DTM
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2097").Content)
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸8落下
                     }
                     if (!busTcpClient1.ReadCoil("2065").Content || !busTcpClient1.ReadCoil("2064").Content)//光电开关17和光电开关16
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     }
                     
                 }
@@ -607,7 +607,7 @@ namespace DTM
                 long now1 = nowTime();
                 if (now1 - past >= warnTime)
                 {
-                    warning_loss_box = true;
+                    warning_loss_box = 1;
                 }
                 if (busTcpClient1.ReadCoil("2107").Content)//参数为光电开光19
                 {
@@ -617,12 +617,12 @@ namespace DTM
                         long now2 = nowTime();
                         if (now2 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            warning_loss_box = 1;
                         }
                         if (busTcpClient1.ReadCoil("2106").Content)//参数为光电开光18
                         {
                             positionState = 1;
-                            warning_loss_box = false;
+                            warning_loss_box = 0;
                             break;
                         }
                     }
@@ -640,20 +640,20 @@ namespace DTM
                     Thread.Sleep(10);
                     if (busTcpClient1.ReadCoil("2123").Content)
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                         break;//气缸10落下
                     }
                     if (!busTcpClient1.ReadCoil("2106").Content || !busTcpClient1.ReadCoil("2107").Content)//光电开关18和光电开关19
                     {
-                        warning_loss_box = true;
+                        warning_loss_box = 1;
                     }
                     else
                     {
-                        warning_loss_box = false;
+                        warning_loss_box = 0;
                     }                   
                 }
             }
-            //new Thread(onetotwo).Start();
+            new Thread(onetotwo).Start();
             long past = nowTime();
             while (true)
             {
@@ -667,13 +667,15 @@ namespace DTM
                         long now1 = nowTime();
                         if (now1 - past >= warnTime)
                         {
-                            warning_loss_box = true;
+                            if (warning_loss_box == 0) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 3;
                         }
                         //coilsBuffer = master.ReadCoils(0, 2134,1);//参数为光电开光22
                         if (busTcpClient1.ReadCoil("2134").Content)
                         {
                             positionState = 2;
-                            warning_loss_box = false;
+                            if (warning_loss_box == 3) warning_loss_box = 2;
+                            if (warning_loss_box == 1) warning_loss_box = 0;
                             measureFlag = false;
                             break;
                         }
@@ -684,241 +686,339 @@ namespace DTM
              //master.Dispose();
              return;
         }
-        private void onrtotwo()
+        private void onetotwo()
         {
-            if (!busTcpClient1.ReadCoil("2106").Content)//光电开关18
+            while (true)
             {
-
+                if (positionState == 1 || (positionState == 2 && !measureFlag))
+                {
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2120").Content)//气缸9顶起
+                    {
+                     if (!busTcpClient1.ReadCoil("2106").Content)//光电开关18
+                    {
+                            if (warning_loss_box == 1) warning_loss_box = 3;
+                            if (warning_loss_box == 0) warning_loss_box = 2;
+                    }
+                    else
+                    {                          
+                            if (warning_loss_box == 3) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 0;
+                    }   
+                    }                                                    
+                else
+                {
+                    warning_loss_box = 0;                
+                    break;
+                }
             }
+        }
         }
         private void waitSign2_1()
         {
             while (true)
             {
-                Thread.Sleep(10);
-                //coilsBuffer = master.ReadCoils(0,2135,1);//参数为光电开光23
-                if (busTcpClient1.ReadCoil("2135").Content)
+                Thread.Sleep(10);                
+                if (!busTcpClient1.ReadCoil("2134").Content)//参数为光电开光22
+                {
+                    long past = nowTime();
+                    while (true)
+                    {
+                        Thread.Sleep(10);
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
+                        {
+                            if (warning_loss_box == 0) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 3;
+                        }
+                        //coilsBuffer = master.ReadCoils(0,2135,1);//参数为光电开光23
+                        if (busTcpClient1.ReadCoil("2135").Content)
+                        {
+                            if (warning_loss_box == 3) warning_loss_box = 2;
+                            if (warning_loss_box == 1) warning_loss_box = 0;
+                            new Thread(twototwo).Start();
+                            past = nowTime();
+                            while (true)
+                            {
+                                Thread.Sleep(10);
+                                long now2 = nowTime();
+                                if (now2 - past >= warnTime)
+                                {
+                                    if (warning_loss_box == 1) warning_loss_box = 3;
+                                    if (warning_loss_box == 0) warning_loss_box = 2;
+                                }
+                                //coilsBuffer = master.ReadCoils(0,2134,1);//参数为光电开光22
+                                if (busTcpClient1.ReadCoil("2134").Content)
+                                {
+                                    if (warning_loss_box == 3) warning_loss_box = 1;
+                                    if (warning_loss_box == 2) warning_loss_box = 0;
+                                    measureFlag = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+
+                }
+            } 
+        }
+        private void twototwo()
+        {
+            while (true)
+            {         
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2150").Content)//气缸15顶起
+                  {
+                    while (true)
+                    {
+                        Thread.Sleep(10);
+                        if (!busTcpClient1.ReadCoil("2135").Content)//光电开关23
+                        {
+                            if (warning_loss_box == 0) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 3;
+                        }
+                        else
+                        {
+                            if (warning_loss_box == 3) warning_loss_box = 2;
+                            if (warning_loss_box == 1) warning_loss_box = 0;
+                        }
+                        if(busTcpClient1.ReadCoil("2151").Content)//气缸15落下
+                        {
+                            warning_loss_box = 0;
+                            return;
+                        }
+                    }    
+                }                                
+            }
+        }
+        private void waitSign2()
+        {         
+            if (busTcpClient1.ReadCoil("2150").Content)//气缸15顶起
+            {
+                while (true)
+                {
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2151").Content)
+                    {
+                        warning_loss_box = 0;                    
+                        break;//气缸15落下
+                    }
+                    if (!busTcpClient1.ReadCoil("2135").Content || !busTcpClient1.ReadCoil("2134").Content)//光电开关22和光电开关23
+                    {
+                        warning_loss_box = 1;
+                    }
+                    else
+                    {
+                        warning_loss_box = 0;
+                    }
+                }
+            }
+            if (busTcpClient1.ReadCoil("2151").Content)//气缸15落下
+            {
+                bool flag1 = busTcpClient1.ReadCoil("2554").Content;
+                bool flag2 = busTcpClient1.ReadCoil("2555").Content;
+                chooseFlag = busTcpClient1.ReadCoil("2557").Content;
+                long past = nowTime();
+                if ((!flag1) && (!flag2) && (!chooseFlag))
                 {
                     while (true)
                     {
                         Thread.Sleep(10);
-                        //coilsBuffer = master.ReadCoils(0,2134,1);//参数为光电开光22
-                        if (busTcpClient1.ReadCoil("2134").Content)
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
                         {
-                            measureFlag = true;
-                            break;
+                            warning_loss_box = 1;
                         }
-                    }
-                    break;
-                }
-            }
-        }
-        private void waitSign2()
-        {
-            Thread.Sleep(10);
-            //thickSide();//测厚          
-            //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
-            //if (!measureFlag) return;           
-            while (true)
-            {
-                Thread.Sleep(10);
-                bool flag1 = busTcpClient1.ReadCoil("2554").Content;
-                bool flag2 = busTcpClient1.ReadCoil("2555").Content;
-                chooseFlag = busTcpClient1.ReadCoil("2557").Content;
-                //coilsBuffer = master.ReadCoils(0,2134,1);//参数为光电开光22
-                if (!busTcpClient1.ReadCoil("2134").Content)
-                {
-                    if ((!flag1)&&(!flag2)&&(!chooseFlag))
-                    {
-                     while (true)
-                      {
-                        Thread.Sleep(10);
                         //coilsBuffer = master.ReadCoils(0, 2177, 1);//参数为光电开光26
                         if (busTcpClient2.ReadCoil("2177").Content)
                         {
                             while (true)
                             {
                                 Thread.Sleep(10);
+                                long now2 = nowTime();
+                                if (now2 - past >= warnTime)
+                                {
+                                    warning_loss_box = 1;
+                                }
                                 //coilsBuffer = master.ReadCoils(0, 2177, 1);//参数为光电开光27
                                 if (busTcpClient2.ReadCoil("2176").Content)
                                 {
-                                  positionState = 3;
-                                  break;
+                                    warning_loss_box = 0;
+                                    positionState = 3;
+                                    break;
                                 }
                             }
-                           break;
+                            break;
                         }
                     }
-                break;
-                    }
-                    else
-                    {
-                        while (true)
-                        {
-                            Thread.Sleep(10);
-                            //coilsBuffer = master.ReadCoils(0, 2179, 1);//参数为光电开光29
-                            if (busTcpClient2.ReadCoil("2179").Content)
-                            {
-                                while (true)
-                                {
-                                    Thread.Sleep(10);
-                                    //coilsBuffer = master.ReadCoils(0, 2178, 1);//参数为光电开光28
-                                    if (busTcpClient2.ReadCoil("2178").Content)
-                                    {
-                                        positionState = 7;
-                                        break;
-                                    }
-                                }
-                                break;
-                            }
-                        }
-                        break;
-                    }
                 }
-            }                             
-            return;
-        }
-        /*private void thickSide()
-        {
-            int baseNumber = 0;
-            if (measureFlag == true)
-            {
-                baseNumber = 25;
-            }
-            //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
-            for (int i = 0; i < measure_pan_thickness.Length; i++)
-            {                       
-                slaveAddress = 0;startAddress = 3;
-                master.WriteSingleCoil(slaveAddress, startAddress, true);//向plc告诉准备好开始读数据,每调用一次让plc换下一个盘片
-                startAddress += 1; numberOfPoints = 1;       
-                while (true)
-                {   Thread.Sleep(100);
-                    coilsBuffer = master.ReadCoils(slaveAddress, startAddress, numberOfPoints);//向plc询问是否可以接收数据了
-                    if (!coilsBuffer[0]) break;
-                }
-                numberOfPoints = 10;
-                registerBuffer = master.ReadHoldingRegisters(slaveAddress, startAddress, numberOfPoints);
-                int temp = 0;
-                temp = evaluation(registerBuffer);
-                measure_pan_thickness[baseNumber+i] = temp;
-                if (temp < standard_pan_thickness * 0.9 || temp > standard_pan_thickness * 1.1)//+-10%误差
-                {
-                    measure_pan_thickness_flag[baseNumber+i] = true;
-                    measureState = true;
-                    pastmeasureState = true;
-                }
-            }
-            if (measureState||boxCount == 40)
-            {
-                chooseFlag = true;
-                if(boxCount==40)boxCount = 0;
-            }
-            slaveAddress = 30;                       
-            if(measureFlag)master.WriteSingleCoil(slaveAddress, startAddress, measureState||chooseFlag);//告诉plc应该是用缓存轨还是换料轨
-            if(measureFlag)measureState = false;
-        }
-        private int evaluation(ushort[] values) //求得数组舍弃一些差异较大的数据，并且求剩余数据平均值
-        {
-            int sum = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                sum += values[i];
-            }
-            float agv = (sum+0f) / values.Length;          
-            List<float> templist = new List<float>();
-            for (int i = 0; i < values.Length; i++)
-            {
-                templist.Add(values[i]-agv);
-            }
-            templist.Sort();
-            float numberAdd = 0f;
-            for (int i = 0; i < 6; i++)
-            {
-                numberAdd += (templist[i] + agv);
-            }
-            int number = (int)numberAdd / 6;
-            return number;
-        }*/
-        private void waitSign3()
-        {   //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
-            while (true)
-            {
-                Thread.Sleep(10);
-                //coilsBuffer = master.ReadCoils(0, 2176, 1);//参数为光电开光26
-                if (!busTcpClient2.ReadCoil("2177").Content)
+                else
                 {
                     while (true)
                     {
                         Thread.Sleep(10);
-                        //coilsBuffer = master.ReadCoils(0, 2204, 1);//参数为光电开光30
-                        if (busTcpClient2.ReadCoil("2204").Content)
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
                         {
-                            positionState = 4;
-                            changeFlag = true;
+                            warning_loss_box = 1;
+                        }
+                        //coilsBuffer = master.ReadCoils(0, 2179, 1);//参数为光电开光29
+                        if (busTcpClient2.ReadCoil("2179").Content)
+                        {
+                            while (true)
+                            {
+                                Thread.Sleep(10);
+                                long now2 = nowTime();
+                                if (now2 - past >= warnTime)
+                                {
+                                    warning_loss_box = 1;
+                                }
+                                //coilsBuffer = master.ReadCoils(0, 2178, 1);//参数为光电开光28
+                                if (busTcpClient2.ReadCoil("2178").Content)
+                                {
+                                    warning_loss_box = 0;
+                                    positionState = 7;
+                                    break;
+                                }
+                            }
                             break;
                         }
-
                     }
-                    break;
+                }
+            }                                     
+         return;
+        }
+      
+        private void waitSign3()
+        {   //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
+            if (busTcpClient1.ReadCoil("2192").Content)//气缸21顶起
+            {
+                while (true)
+                {
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2193").Content)
+                    {
+                        warning_loss_box = 0;
+                        break;//气缸21落下
+                    }
+                    if (!busTcpClient1.ReadCoil("2177").Content || !busTcpClient1.ReadCoil("2176").Content)//光电开关26和光电开关27
+                    {
+                        warning_loss_box = 1;
+                    }
+                    else
+                    {
+                        warning_loss_box = 0;
+                    }
                 }
             }
-            //changeFlag = true;
-            return;
-        }
-        private void waitSign7()
-        {
-            //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
-            /*if (chooseFlag)
-            {
-              MessageBox.Show("请拿走抽检盒子！");
-            }*/
+            new Thread(threetofour).Start();
+            long past = nowTime();
             while (true)
             {
                 Thread.Sleep(10);
-                
-                //coilsBuffer = master.ReadCoils(0, 2179, 1);//参数为光电开光29
-                if (!busTcpClient2.ReadCoil("2179").Content)
+                long now1 = nowTime();
+                if (now1 - past >= warnTime)
                 {
-                    /*if (chooseFlag)
+                    if (warning_loss_box == 2) warning_loss_box = 3;
+                    if (warning_loss_box == 0) warning_loss_box = 1;
+                }
+                //coilsBuffer = master.ReadCoils(0, 2204, 1);//参数为光电开光30
+                if (busTcpClient2.ReadCoil("2204").Content)
+                {
+                    if (warning_loss_box == 3) warning_loss_box = 2;
+                    if (warning_loss_box == 1) warning_loss_box = 0;
+                    positionState = 4;
+                    changeFlag = true;
+                    break;
+                }
+            }            
+            //changeFlag = true;
+            return;
+        }
+        private void threetofour()
+        {
+            while (true)
+            {
+                if (positionState==3||positionState==4&&changeFlag)
+                {
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2190").Content)//气缸20顶起
                     {
-                        while (true)
+                        if (!busTcpClient1.ReadCoil("2176").Content)//光电开关27
                         {
-                            Thread.Sleep(10);
-                            //coilsBuffer = master.ReadCoils(0, 2178, 1);//参数为光电开光28
-                            if (!busTcpClient2.ReadCoil("2178").Content)
-                            {
-                                positionState = 10;
-                                break;
-                            }
+                            if (warning_loss_box == 1) warning_loss_box = 3;
+                            if (warning_loss_box == 0) warning_loss_box = 2;
                         }
-                        break;
-                    }*/
-                    //else
-                    //{
-                        while (true)
+                        else
                         {
-                            Thread.Sleep(10);
-                            //coilsBuffer = master.ReadCoils(0, 2156, 1);//参数为光电开光24
-                            if (busTcpClient2.ReadCoil("2156").Content)
-                            {
-                                while (true)
-                                {
-                                    Thread.Sleep(10);
-                                    //coilsBuffer = master.ReadCoils(0, 2157, 1);//参数为光电开光25
-                                    if (busTcpClient2.ReadCoil("2157").Content)
-                                    {
-                                        positionState = 8;
-                                        changeBoxFirstFlag = true;                                        
-                                        break;
-                                    }
-                                }
-                                break;
-                            }
+                            if (warning_loss_box == 3) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 0;
                         }
+                    }               
+                else
+                {
+                    warning_loss_box=0;
                         break;
-                   // }
                 }
             }
+        }
+        }
+        private void waitSign7()
+        {
+            if (busTcpClient1.ReadCoil("2194").Content)//气缸22顶起
+            {
+                while (true)
+                {
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2195").Content)
+                    {
+                        warning_loss_box = 0;
+                        break;//气缸22落下
+                    }
+                    if (!busTcpClient1.ReadCoil("2178").Content || !busTcpClient1.ReadCoil("2179").Content)//光电开关28和光电开关29
+                    {
+                        warning_loss_box = 1;
+                    }
+                    else
+                    {
+                        warning_loss_box = 0;
+                    }
+                }
+            }
+            long past = nowTime();
+            while (true)
+            {
+
+                Thread.Sleep(10);
+                long now1 = nowTime();
+                if (now1 - past >= warnTime)
+                {
+                    warning_loss_box = 1;
+                }                    
+                //coilsBuffer = master.ReadCoils(0, 2156, 1);//参数为光电开光24
+                if (busTcpClient2.ReadCoil("2156").Content)
+                {
+                   while (true)
+                    {
+                      Thread.Sleep(10);
+                      long now2 = nowTime();
+                        if (now2 - past >= warnTime)
+                        {
+                            warning_loss_box = 1;
+                        }
+                        //coilsBuffer = master.ReadCoils(0, 2157, 1);//参数为光电开光25
+                        if (busTcpClient2.ReadCoil("2157").Content)
+                      {
+                            warning_loss_box = 0;
+                            positionState = 8;
+                            changeBoxFirstFlag = true;                                        
+                            break;
+                       }
+                     }
+                    break;
+                   }
+                 }                
             return;
         }
         private void waitSign4_1()
@@ -926,15 +1026,45 @@ namespace DTM
             while (true)
             {
                 Thread.Sleep(10);
-                //coilsBuffer = master.ReadCoils(0, 2176, 1);//参数为光电开光27
-                if (!busTcpClient2.ReadCoil("2176").Content)
-                {     
+                if (busTcpClient2.ReadCoil("2225").Content)//气缸25落下
+                {
+                    long past = nowTime();
                     while (true)
                     {
+                        Thread.Sleep(10);
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
+                        {
+                            if (warning_loss_box == 0) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 3;
+                        }
+                        if(busTcpClient2.ReadCoil("2240").Content)//光电开关34
+                        {
+                            if (warning_loss_box == 1) warning_loss_box = 0;
+                            if (warning_loss_box == 3) warning_loss_box = 2;
+                            break;
+                        }
+                    }
+                }
+                //coilsBuffer = master.ReadCoils(0, 2176, 1);//参数为光电开光27
+                 if (busTcpClient2.ReadCoil("2191").Content)//气缸20落下
+                {
+                    new Thread(fourtofive).Start();
+                    long past = nowTime();
+                    while (true)
+                    {
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
+                        {
+                            if (warning_loss_box == 0) warning_loss_box = 2;
+                            if (warning_loss_box == 1) warning_loss_box = 3;
+                        }
                         Thread.Sleep(10);
                         //coilsBuffer = master.ReadCoils(0, 2204, 1);//参数为光电开光30
                         if (busTcpClient2.ReadCoil("2204").Content)
                         {
+                            if (warning_loss_box == 3) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 0;
                             changeFlag = false;
                             break;
                         }
@@ -944,6 +1074,35 @@ namespace DTM
             }
             return;
         }
+        private void fourtofive()
+        {
+            while (true)
+            {
+                if (positionState == 4)
+                {
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2250").Content)//气缸28顶起
+                    {
+                        if (!busTcpClient1.ReadCoil("2240").Content)//光电开关34
+                        {
+                            if (warning_loss_box == 0) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 3;
+                        }
+                        else
+                        {
+                            if (warning_loss_box == 3) warning_loss_box = 2;
+                            if (warning_loss_box == 1) warning_loss_box = 0;
+                        }
+                    }
+                    else
+                    {
+                        warning_loss_box = 0;
+                        break;
+                    }
+                }
+            }
+
+        }
         
         private void waitSign4()
         {   //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
@@ -951,21 +1110,30 @@ namespace DTM
             {
                 Thread.Sleep(10);
                 //coilsBuffer = master.ReadCoils(0, 2240, 1);//参数为光电开光34
-                if (busTcpClient2.ReadCoil("2240").Content)
+                if (busTcpClient2.ReadCoil("2225").Content)//气缸25落下
                 {
+                    long past = nowTime();
                     while (true)
                     {
                         Thread.Sleep(10);
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
+                        {
+                            if (warning_loss_box == 1) warning_loss_box = 3;
+                            if (warning_loss_box == 0) warning_loss_box = 2;
+                        }
                         //coilsBuffer = master.ReadCoils(0, 2239, 1);//参数为光电开光33
                         if (busTcpClient2.ReadCoil("2239").Content)
                         {
-                            if (MainForm.reflag)
+                            if (warning_loss_box == 3) warning_loss_box = 1;
+                            if (warning_loss_box == 2) warning_loss_box = 0;
+                            /*if (MainForm.reflag)
                             {
                                 lock (OutList)
                                 {
                                     OutList.Add(this.numberId[0]);
                                 }        
-                            }
+                            }*/
                             positionState = 5;
                             break;
                         }
@@ -977,7 +1145,7 @@ namespace DTM
         }
         private void waitSign5()
         {
-            //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
+            /*//master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
             while (true)
             {
                 
@@ -1029,6 +1197,57 @@ namespace DTM
                   }
                }
             }            
+            return;*/
+            if (busTcpClient1.ReadCoil("2250").Content)//气缸28顶起
+            {
+                while (true)
+                {
+                    Thread.Sleep(10);
+                    if (busTcpClient1.ReadCoil("2251").Content)
+                    {
+                        warning_loss_box = 0;
+                        break;//气缸28落下
+                    }
+                    if (!busTcpClient1.ReadCoil("2239").Content || !busTcpClient1.ReadCoil("2240").Content)//光电开关33和光电开关34
+                    {
+                        warning_loss_box = 1;
+                    }
+                    else
+                    {
+                        warning_loss_box = 0;
+                    }
+
+                }
+            }
+            long past = nowTime();
+            while (true)
+            {
+                Thread.Sleep(10);
+                long now1 = nowTime();
+                if (now1 - past >= warnTime)
+                {
+                    warning_loss_box = 1;
+                }
+                if (busTcpClient1.ReadCoil("2242").Content)//参数为光电开光36
+                {
+                    while (true)
+                    {
+                        Thread.Sleep(10);
+                        long now2 = nowTime();
+                        if (now2 - past >= warnTime)
+                        {
+                            warning_loss_box = 1;
+                        }
+                        if (busTcpClient1.ReadCoil("2241").Content)//参数为光电开光35
+                        {
+                            positionState = 6;
+                            warning_loss_box = 0;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
             return;
         }    
         private void waitSign8_1()
@@ -1043,14 +1262,30 @@ namespace DTM
                 Thread.Sleep(10);
                 changeBoxFirstFlag = true;
                 //coilsBuffer = master.ReadCoils(0, 2157, 1);//参数为光电开光25
-                if (!busTcpClient2.ReadCoil("2157").Content)
+                if (busTcpClient2.ReadCoil("2167").Content)//气缸18落下
                 {
-                    changeBoxFirstFlag = false;                   
+                    long past = nowTime();
+                    changeBoxFirstFlag = false;
+                    while (true)
+                    {
+                        Thread.Sleep(10);
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
+                        {
+                            warning_loss_box = 1;
+                        }
+                        if(busTcpClient2.ReadCoil("2167").Content)//参数为光电开光20
+                        {
+                            warning_loss_box = 0;
+                            break;
+                        }
+                    }                                       
                     break;
                 }
             }
+            return;
         }
-          
+       
         private void waitSign8()
         {
             if (chooseFlag)
@@ -1078,17 +1313,46 @@ namespace DTM
             while (true)
             {
                 Thread.Sleep(10);
-                //coilsBuffer = master.ReadCoils(0, 2108, 1);//参数为光电开光20
-                if (busTcpClient1.ReadCoil("2108").Content)
+                if (busTcpClient1.ReadCoil("2166").Content)//气缸18顶起
                 {
+                    long past = nowTime();
                     while (true)
                     {
                         Thread.Sleep(10);
-                        //coilsBuffer = master.ReadCoils(0, 2109, 1);//参数为光电开光21
-                        if (busTcpClient1.ReadCoil("2109").Content)
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
                         {
-                            positionState = 9;
-                            exflag = true;
+                            warning_loss_box = 1;
+                        }
+                        if (busTcpClient1.ReadCoil("2156").Content)// 参数为光电开光24
+                        {
+                            warning_loss_box = 0;
+                            while (true)
+                            {
+                                Thread.Sleep(10);
+                                if (busTcpClient1.ReadCoil("2166").Content)//气缸18落下
+                                {
+                                    past = nowTime();
+                                    while (true)
+                                    {
+                                        Thread.Sleep(10);
+                                        long now2 = nowTime();
+                                        if (now2 - past >= warnTime)
+                                        {
+                                            warning_loss_box = 1;
+                                        }
+                                        if (busTcpClient1.ReadCoil("2109").Content)// 参数为光电开光21
+                                        {
+                                            warning_loss_box = 0;
+                                            positionState = 9;
+                                            exflag = true;
+                                            break;
+                                        }
+                                    }
+                                    break;
+
+                                }
+                            }
                             break;
                         }
                     }
@@ -1097,6 +1361,7 @@ namespace DTM
             }
             return;
         }
+
         private void waitSign10()
         {   
             while (true)
@@ -1129,18 +1394,30 @@ namespace DTM
             while (true)
             {
                 Thread.Sleep(10);
-                if (!busTcpClient2.ReadCoil("2157").Content) //参数为光电开光25
+                if (busTcpClient2.ReadCoil("2167").Content) //气缸18落下
                 {
+                    long past = nowTime();
                     while (true)
                     {
                         Thread.Sleep(10);
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
+                        {
+                            warning_loss_box = 1;
+                        }
                         if (busTcpClient1.ReadCoil("2108").Content)//参数为光电开光20
                         {
                             while (true)
                             {
                                 Thread.Sleep(10);
+                                long now2 = nowTime();
+                                if (now2 - past >= warnTime)
+                                {
+                                    warning_loss_box = 1;
+                                }
                                 if (busTcpClient1.ReadCoil("2109").Content)//参数为光电开光21
                                 {
+                                    warning_loss_box = 0;
                                     positionState = 9;
                                     break;
                                 }
@@ -1163,12 +1440,19 @@ namespace DTM
                 //coilsBuffer = master.ReadCoils(0, 2109, 1);//参数为光电开光21
                 if (!busTcpClient1.ReadCoil("2109").Content)
                 {
+                    long past = nowTime();
                     while (true)
                     {
                         Thread.Sleep(10);
+                        long now2 = nowTime();
+                        if (now2 - past >= warnTime)
+                        {
+                            warning_loss_box = 1;
+                        }
                         //coilsBuffer = master.ReadCoils(0, 2134, 1);//参数为光电开光22
                         if (busTcpClient1.ReadCoil("2134").Content)
                         {
+                            warning_loss_box = 0;
                             positionState = 2;
                             measureFlag = false;
                             exflag = true;
@@ -1183,25 +1467,36 @@ namespace DTM
 
         private void waitSign2_2()
         {
-            //master = modbusFactory.CreateMaster(new TcpClient("127.0.0.1", 502));
             while (true)
             {
                 Thread.Sleep(10);
-                //coilsBuffer = master.ReadCoils(0, 2108, 1);//参数为光电开光20
-                if (!busTcpClient1.ReadCoil("2108").Content)
+                if (!busTcpClient1.ReadCoil("2134").Content)//参数为光电开光22
                 {
+                    long past = nowTime();
                     while (true)
                     {
                         Thread.Sleep(10);
-                        //coilsBuffer = master.ReadCoils(0, 2135, 1);//参数为光电开光23
+                        long now1 = nowTime();
+                        if (now1 - past >= warnTime)
+                        {
+                            warning_loss_box = 1;
+                        }
+                        //coilsBuffer = master.ReadCoils(0,2135,1);//参数为光电开光23
                         if (busTcpClient1.ReadCoil("2135").Content)
-                        {                          
+                        {                                                
+                            past = nowTime();
                             while (true)
                             {
                                 Thread.Sleep(10);
-                                //coilsBuffer = master.ReadCoils(0, 2134, 1);//参数为光电开光22
+                                long now2 = nowTime();
+                                if (now2 - past >= warnTime)
+                                {
+                                    warning_loss_box = 1;
+                                }
+                                //coilsBuffer = master.ReadCoils(0,2134,1);//参数为光电开光22
                                 if (busTcpClient1.ReadCoil("2134").Content)
                                 {
+                                    warning_loss_box = 0;
                                     measureFlag = true;
                                     exflag = false;
                                     break;
@@ -1213,9 +1508,7 @@ namespace DTM
                     break;
                 }
             }
-            //master.Dispose();
-            return;
-
+            return;          
         }
 
     }

@@ -193,6 +193,8 @@
             this.button58 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox181 = new System.Windows.Forms.PictureBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2046,6 +2048,25 @@
             this.pictureBox181.TabStop = false;
             this.pictureBox181.Click += new System.EventHandler(this.pictureBox181_Click);
             // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(635, 71);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(63, 15);
+            this.label56.TabIndex = 82;
+            this.label56.Text = "label56";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(592, 71);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(37, 15);
+            this.label57.TabIndex = 91;
+            this.label57.Text = "警告";
+            this.label57.Click += new System.EventHandler(this.label57_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -2056,6 +2077,8 @@
             this.CaptionBackColorBottom = System.Drawing.Color.White;
             this.CaptionBackColorTop = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1707, 899);
+            this.Controls.Add(this.label57);
+            this.Controls.Add(this.label56);
             this.Controls.Add(this.pictureBox181);
             this.Controls.Add(this.button58);
             this.Controls.Add(this.groupBox4);
@@ -2278,6 +2301,8 @@
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.PictureBox pictureBox181;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label57;
     }
 }
 

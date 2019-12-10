@@ -36,6 +36,7 @@ namespace DTM
         List<BoxState> list = new List<BoxState>();
         public static Thread th = null;//系统线程 
         public static bool runSuccess=true;
+        public static bool warning = false;
         public int number = 0;//判断是否进入盒子数量
         //private ModbusFactory modbusFactory;
         //private IModbusMaster master;
@@ -432,7 +433,7 @@ namespace DTM
                                     boxState.changeBoxFirstFlag = testFlag == 0 ? false : true;
                                     boxState.standard_pan_thickness = sdr.GetInt16("standardpanthickness");
                                     String teststring;
-                                    if (!sdr.IsDBNull(8))
+                                    /*if (!sdr.IsDBNull(8))
                                     {
                                         teststring = sdr.GetString("InList");
                                         if (teststring != "")
@@ -444,8 +445,8 @@ namespace DTM
                                                 BoxState.InList.Add(teststr[i]);
                                             }
                                         }
-                                    }
-                                    if (!sdr.IsDBNull(10))
+                                    }*/
+                                    /*if (!sdr.IsDBNull(10))
                                     {
                                         teststring = sdr.GetString("OutList");
                                         if (teststring != "")
@@ -457,7 +458,7 @@ namespace DTM
                                                 BoxState.OutList.Add(teststr[i]);
                                             }
                                         }
-                                    }
+                                    }*/
                                     /*teststring = sdr.GetString("measurepanthicknessflag");
                                     for (int i = 0; i < teststring.Length; i++)
                                     {
@@ -555,14 +556,12 @@ namespace DTM
                             //coilsBuffer = master.ReadCoils(0,2083,1);//参数为气缸1落下
                             if (busTcpClient1.ReadCoil("2083").Content)
                             {                              
-                                number+=2;
+                                number++;
                                 break;
                             }
                         }
                     }
-                    else continue;
-                if (number % 2 == 0)
-                {
+                    else continue;               
                     /*if (BoxState.InList.Count == 0)
                     {
                         boxId = 0;
@@ -571,10 +570,8 @@ namespace DTM
                     {
                         boxId = BoxState.InList.Last() + 1;
                     }
-                    boxId = boxId > 1000 ? 0 : boxId;//1000保证了运行在系统上的盒子ID是不重复的*/
-                    string[] numberid=new string[2];
-                    if (number == 2)
-                    {
+                    */
+                    string[] numberid=new string[2];                   
                             using (MySqlConnection con = new MySqlConnection(connStr))
                             {
                                 try {
@@ -587,11 +584,10 @@ namespace DTM
                                             while (sdr.Read())//如果读取账户成功
                                             {
                                                 barCode = sdr.GetString("barCode");
-                                                numberId[0]= sdr.GetString("numberId0");
+                                                numberId[0] = sdr.GetString("numberId0");
                                                 numberId[1] = sdr.GetString("numberId1");
                                                 numberId[2] = sdr.GetString("numberId2");
                                                 numberId[3] = sdr.GetString("numberId3");
-
                                             }
                                         }
                                     }
@@ -606,20 +602,12 @@ namespace DTM
                                     con.Close();
                                 }
                                 }                                                          
-                        numberid[0] = numberId[0];
-                        numberid[1] = numberId[1];
-                    }
-                    if (number == 4)
-                    {
-                        numberid[0] = numberId[2];
-                        numberid[1] = numberId[3];
-                    }
+                    numberid[0] = numberId[number-1];
+                    numberid[1] = numberId[number-1];                                      
                     th1 = new Thread(new BoxState(list, this.standard_pan_thickness, barCode,numberid).Run);
                     th1.IsBackground = true;
                     th1.Start();                    
-                    if(number%4==0)number = 0;                      
-                }
-                else continue;                                              
+                    if(number==4)number = 0;                                                                     
             }
             } catch(Exception ex)
             {
@@ -644,7 +632,7 @@ namespace DTM
                 if (op_res.IsSuccess)
                 {
                     MessageBox.Show("1连接成功");                    
-                    timer1.Enabled = true;
+                    //timer1.Enabled = true;
                 }
                 if (o.IsSuccess)
                 {
@@ -1276,8 +1264,8 @@ namespace DTM
                                 if (box_state.positionState == 6) continue;
                                 //String value = "";
                                 //String value1 = "";
-                                String value2 = "";
-                                String value3 = "";
+                                //String value2 = "";
+                                //String value3 = "";
                                 /*for (int i = 0; i < box_state.measure_pan_thickness.Length - 1; i++)
                                 {
                                     value += "" + box_state.measure_pan_thickness[i] + ",";
@@ -1287,7 +1275,7 @@ namespace DTM
                                 {
                                     value1 += "" + (box_state.measure_pan_thickness_flag[i] == false ? 0 : 1);
                                 }*/
-                                for (int i = 0; i < BoxState.InList.Count; i++)
+                                /*for (int i = 0; i < BoxState.InList.Count; i++)
                                 {
                                         if (BoxState.InList.Count == 1)
                                         {
@@ -1303,8 +1291,8 @@ namespace DTM
                                           value2 += "" + BoxState.InList[i];
                                         }
                                         
-                                    }
-                                for (int i = 0; i < BoxState.OutList.Count; i++)
+                                    }*/
+                                /*for (int i = 0; i < BoxState.OutList.Count; i++)
                                 {
                                         if (BoxState.OutList.Count == 1)
                                         {
@@ -1318,8 +1306,8 @@ namespace DTM
                                         {
                                            value3 += "" + BoxState.OutList[i];
                                         }                                        
-                                    }
-                                sql = string.Format("insert into preventdisaster(positionState,chooseFlag,barCode,InList,standardpanthickness,Outlist,measureFlag,changeFlag,Number,NumberID1,NumberID2,exflag,reach,changeboxfirstflag)values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')", box_state.positionState, box_state.chooseFlag == false ? 0 : 1,box_state.barCode,value2, box_state.standard_pan_thickness,value3, box_state.measureFlag == false ? 0 : 1,box_state.changeFlag == false ? 0 : 1,number,box_state.numberId[0],box_state.numberId[1],box_state.exflag==false?0:1,box_state.reach==false?0:1,box_state.changeBoxFirstFlag==false?0:1);
+                                    }*/
+                                sql = string.Format("insert into preventdisaster(positionState,chooseFlag,barCode,standardpanthickness,measureFlag,changeFlag,Number,NumberID1,NumberID2,exflag,reach,changeboxfirstflag)values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')", box_state.positionState, box_state.chooseFlag == false ? 0 : 1,box_state.barCode, box_state.standard_pan_thickness,box_state.measureFlag == false ? 0 : 1,box_state.changeFlag == false ? 0 : 1,number,box_state.numberId[0],box_state.numberId[1],box_state.exflag==false?0:1,box_state.reach==false?0:1,box_state.changeBoxFirstFlag==false?0:1);
                                 cmd.CommandText = sql;
                                 cmd.ExecuteNonQuery();
                             }
@@ -1361,9 +1349,14 @@ namespace DTM
                     string value9 = "";
                     bool testflag = false;
                     bool changestateflag = false;
+                    int i = 0;
                     foreach (BoxState box_state in list)
                     {
-                        if (box_state.positionState == 0)
+                        if (box_state.warning_loss_box != 0)
+                        {
+                            i++;
+                        }
+                        if (box_state.positionState == 0|| box_state.positionState >= 20)
                     {
                             value0 += box_state.numberId[0] + "," + box_state.numberId[1]+"   ";
                             continue;                                               
@@ -1459,6 +1452,15 @@ namespace DTM
                             continue;
                         }
                     }
+                    if (i != 0)
+                    {
+                        warning = true;
+                    }
+                    else
+                    {
+                        warning=false;
+                    }
+                    label56.Text = warning.ToString();
                     if (!testflag)
                     {
                         //label6.Text = "编号：";
@@ -2385,6 +2387,11 @@ namespace DTM
         }
 
         private void ucPieChart1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label57_Click(object sender, EventArgs e)
         {
 
         }
